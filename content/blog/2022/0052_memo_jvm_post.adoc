@@ -8,7 +8,7 @@
 :jbake-date: 2022-05-28
 :summary: simple mémo JVM
 
-== toc [[toc]]
+== table des matieres[[toc]]
 . <<char>>
 . <<math>>
 . <<date>>
@@ -676,6 +676,83 @@ class ArrayCollectionStreamTest {
         assertTrue(type.isArray())
         //est ce que data est un tableau de byte
         assertEquals(Byte::class.java, type.getComponentType())
+
+
+        //Collection
+        val s = java.util.HashSet<String>()
+        s.add("test")
+        assertTrue(s.contains("test"))
+        assertFalse(s.contains("test2"))
+        s.remove("test")
+        assertFalse(s.contains("test"))
+
+        val ss = TreeSet<String>()
+        ss.add("b")
+        ss.add("a")
+        ss.iterator().forEach { assertTrue(it == "a" || it == "b") }
+
+        //liste doublement chainée
+        var dll: List<String> = LinkedList<String>()
+
+        //plus efficace
+        val l = java.util.ArrayList<String>()
+        l.addAll(ss)
+        l.addAll(1, ss)
+
+        val obj = l.get(1)
+        val obj_prime = l[1]
+        assertEquals(obj, obj_prime)
+
+        l.set(3, "nouvel élément")
+        l.add("test")
+        l.add(0, "test2")
+        l.removeAt(1)
+        l.remove("a")
+        assertFalse(l.contains("a"))
+        l.removeAll(ss)
+        assertFalse(l.containsAll(ss))
+        assertFalse(l.isEmpty())
+        assertTrue(l.isNotEmpty())
+
+
+        val sublist = l.subList(1, 3)
+        val elements = l.toArray()
+        l.clear()
+
+        val m = HashMap<String, Integer>()
+        m.put("clé", Integer(42))
+        m["clé"] = Integer(42)
+        val value: Integer = m.get("clé")!!
+        assertEquals(Integer(42), value)
+        m.remove("clé")
+        assertTrue(m.isEmpty())
+        val keys = m.keys
+        assertTrue(keys.isEmpty())
+
+
+        val set = HashSet<String>()
+        set.add("key_1")
+        set.add("key_2")
+        set.add("key_3")
+        val members = set.toArray()
+        assertEquals(3, members.size)
+        val list = ArrayList<String>()
+        list.add("items1")
+        list.add("items2")
+        list.add("items3")
+        val items = list.toArray()
+        assertEquals(3, items.size)
+
+        //trie et recherche d'éléments sur les collections
+        list.add("clé")
+        //en premier on trie
+        Collections.sort(list)
+        //en deuxieme on cherche
+        //retourne l'index du premier trouvé sinon -1
+        pos = Collections.binarySearch(list, "clé")
+        assertEquals(0,pos)
+        //autre méthides intéressantes concernant Collections
+
     }
 }
 ----
