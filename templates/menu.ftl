@@ -28,12 +28,12 @@
                 <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">Memos<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2020/0021_memo_git_post.html">git</a></li>
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2021/0030_memo_nix_post.html">nix</a></li>
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0047_memo_gradle_post.html">gradle</a></li>
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0052_memo_jvm_post.html">jvm</a></li>
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0053_memo_kotlin_post.html">kotlin</a></li>
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0031_memo_design_system_post.html">design system</a></li>
+                    <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0052_memo_jvm_post.html">jvm</a></li>
+                    <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0053_memo_kotlin_post.html">kotlin</a></li>
+                    <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0031_memo_design_system_post.html">design system</a></li>
+                    <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0047_memo_gradle_post.html">gradle</a></li>
+                    <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2020/0021_memo_git_post.html">git</a></li>
+                    <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2021/0030_memo_nix_post.html">nix</a></li>
                     </ul>
                 </li>
 
