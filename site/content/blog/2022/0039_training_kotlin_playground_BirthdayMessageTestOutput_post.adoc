@@ -1,0 +1,17 @@
+= Training - Playground kotlin: ensembles, boucles
+@CherOliv
+2022-05-15
+:jbake-title: Training - Playground kotlin: ensembles, boucles
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, playground
+:jbake-status: published
+:jbake-date: 2022-05-15
+:summary: Playground de programmation en kotlin, BirthdayMessageTestOutput: ensembles, boucles
+
+
+== BirthdayMessageTestOutput
+
+https://developer.android.com/codelabs/basic-android-kotlin-training-first-kotlin-program?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-one%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-first-kotlin-program[Introduction to kotlin] +
+
+BirthdayMessageTestOutput: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/BirthdayMessageTestOutput.kt[source] +
+notions: ensembles, boucles

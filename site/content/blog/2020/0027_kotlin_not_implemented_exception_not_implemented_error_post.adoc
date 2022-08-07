@@ -1,0 +1,17 @@
+= Kotlin: NotImplementedException, NotImplementedError
+@CherOliv
+2020-09-27
+:jbake-title: Kotlin: NotImplementedException, NotImplementedError
+:jbake-type: post
+:jbake-tags: blog, ticket, NotImplementedException, NotImplementedError, kotlin, tdd, memo
+:jbake-status: published
+:jbake-date: 2020-09-27
+:summary: Pas encore implémenté, permet de lever la bonne exception.
+
+NotImplementedException NotImplementedError, utilité pour les tests, ça permet de savoir, où on en est, et la cause du fail. +
+Pas encore implémenté, permet de lever la bonne exception. +
+Il y a : +
+http://commons.apache.org/proper/commons-lang/javadocs/api-release/org/apache/commons/lang3/NotImplementedException.html[org.apache.commons.lang3.NotImplementedException] +
+https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-not-implemented-error/[kotlin.NotImplementedError] +
+
+

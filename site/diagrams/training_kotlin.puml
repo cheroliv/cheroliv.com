@@ -1,0 +1,41 @@
+@startmindmap
+'https://plantuml.com/mindmap-diagram
+
+caption Playground kotlin
+title Training - Playground kotlin
+
+* <&flag>Kotlin lang
+
+** <&globe>Environnement
+*** kotlinlang online
+*** sdkman
+*** jdk/jre
+*** gradle
+*** android studio
+
+** <&globe>Syntaxe
+*** Imperative
+*** Orienté objet
+*** Boucles
+*** Function d'extension
+
+** <&graph>Design pattern
+** <&pulse>Programmation fonctionnelle
+** <&people>Stream
+** <&star>Reactive
+** <&star>Threads et coroutines
+** <&star>Concurrence
+** <&star>Idioms et anti-pattern
+** <&star>Reactive microservices
+
+
+header
+    cheroliv.com
+endheader
+
+center footer Trainings series
+
+legend right
+  Programmation et kotlin concepts
+endlegend
+@endmindmap

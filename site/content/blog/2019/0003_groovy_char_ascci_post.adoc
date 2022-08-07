@@ -1,0 +1,75 @@
+= Groovy: Caractères ASCII
+@CherOliv
+2019-07-10
+:jbake-title: Groovy: Caractères ASCII
+:jbake-tags: blog, Groovy, ASCII, string, char
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-07-10
+:summary: du groovy, des boucles et de la manipulation de code ascii
+
+Voici un bout de code fonctionnel en Groovy, qui génère un fichier texte, +
+avec les 256 premiers caractères lisibles du tableau ASCII +
+[source,groovy]
+----
+#!/usr/bin/env groovy
+import java.nio.charset.StandardCharsets
+
+List<Character> chars = new ArrayList<>()
+int j = 0
+Character jumpLine = '\n'
+
+256.times { Integer idx ->
+    if (Character.isAlphabetic(idx) || Character.isDigit(idx)) {
+        if (j % 10 == 0 && j != 0) {
+            chars.add(jumpLine)
+            chars.add(idx as char)
+        } else chars.add(idx as char)
+        j++
+    }
+}
+
+String seperator = System.getProperty("file.separator")
+
+String path = "${System.getProperty("user.home")}${seperator}ascii.txt"
+File speCharFile = new File(path)
+
+if (speCharFile.exists() && !speCharFile.directory) {
+    speCharFile.text = ""
+} else {
+    speCharFile.createNewFile()
+}
+
+String text = new String()
+
+chars.each { Character it ->
+    text = it == jumpLine ? "$text$it" : "$text $it "
+}
+
+speCharFile.setText(text, StandardCharsets.UTF_8.toString())
+----
+
+j'ai nommé le fichier spe_char.groovy, +
+depuis le dossier ou est le fichier +
+ouvrir un terminal et copier coller pour exécuter le script +
+[source,bash]
+----
+$ groovy spe_char.groovy
+----
+
+résultat:
+----
+  0  1  2  3  4  5  6  7  8  9
+  A  B  C  D  E  F  G  H  I  J
+  K  L  M  N  O  P  Q  R  S  T
+  U  V  W  X  Y  Z  a  b  c  d
+  e  f  g  h  i  j  k  l  m  n
+  o  p  q  r  s  t  u  v  w  x
+  y  z  ª  µ  º  À  Á  Â  Ã  Ä
+  Å  Æ  Ç  È  É  Ê  Ë  Ì  Í  Î
+  Ï  Ð  Ñ  Ò  Ó  Ô  Õ  Ö  Ø  Ù
+  Ú  Û  Ü  Ý  Þ  ß  à  á  â  ã
+  ä  å  æ  ç  è  é  ê  ë  ì  í
+  î  ï  ð  ñ  ò  ó  ô  õ  ö  ø
+  ù  ú  û  ü  ý  þ  ÿ
+----

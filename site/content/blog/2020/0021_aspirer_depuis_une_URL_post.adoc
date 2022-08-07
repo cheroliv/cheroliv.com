@@ -1,0 +1,19 @@
+= Aspirer depuis une URL
+@CherOliv
+2020-09-20
+:jbake-title: Aspirer depuis une URL
+:jbake-type: post
+:jbake-tags: blog, ticket, bash, wget, memo
+:jbake-status: published
+:jbake-date: 2020-09-20
+:summary: wget aspirateur d'URL
+==== Liens: https://stackoverflow.com/a/1078539/837404[stackoverflow]
+
+```
+$ wget -r -k -np http://site.com/docs/manual/
+```
+
+Pour définir un dossier cible ajouter l’argument -P puis donner le chemin.
+
+
+

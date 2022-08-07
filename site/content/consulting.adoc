@@ -1,0 +1,32 @@
+date=2021-12-31
+type=page
+status=published
+~~~~~~
+
+----
+                Artisanat Digital
+----
+
+
+*Mon but: Améliorer votre expérience digitale.*
+
+==== _Supports de communication:_
+* application android
+* site internet
+
+==== _Comment j'interviens ?_
+* Analyse des besoins, identifications des traitements
+* Prototypage et proposition de budget
+* Développement d'une solution
+* Déploiement et exploitation de la solution
+
+==== _Mes outils:_
+* Design: Figma
+* Langages: Java, Kotlin, Javascript
+* Mobile: Android
+* Back-end: Spring Framework
+* Front-end: Html, Css, ReactJs, GatsbyJs
+* DevOps: integration continue, déploiement continue
+* Méthodologies: Agile, Scrum, Kanban, Test Driven Developement
+
+==== contact: cheroliv.developer@laposte.net

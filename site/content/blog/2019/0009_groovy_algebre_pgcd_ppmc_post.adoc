@@ -1,0 +1,67 @@
+= Groovy: un peu d’algèbre, le pgcd et le ppmc
+@CherOliv
+2019-08-13
+:jbake-title: Groovy: un peu d’algèbre, le pgcd et le ppmc
+:jbake-tags: blog, mathematics, math, mathématique, mathematique, ppmc, gcd, lcm, pgcd, agebre, algebra, groovy, jvm
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-08-13
+:summary: de l'algebre en groovy
+=== Le PGCD
+https://fr.wikipedia.org/wiki/Plus_grand_commun_diviseur[wiki PGCD ou Plus Grand Commun Diviseur]
+
+=== Le PPMC
+https://fr.wikipedia.org/wiki/Plus_petit_commun_multiple[wiki PPMC ou Plus Petit Commun Multiple]
+
+
+AlgebraUtils.groovy +
+[source,groovy]
+----
+package com.cheroliv.misc
+
+import groovy.transform.CompileStatic
+
+@CompileStatic
+class AlgebraUtils {
+
+    /**
+     * Great common divisor
+     * Plus grand commun diviseur(pgcd)
+     * Great Common Divisor
+     * @param a
+     * @param b
+     * @return
+     */
+    static Integer gcd(Integer a, Integer b) {
+        !b ? a : gcd(b, a % b)
+    }
+
+
+    /**
+     * Least common multiple
+     * Plus petit commun multiplicateur(ppmc)
+     * @param a
+     * @param b
+     * @return
+     */
+    static BigInteger lcm(Integer a, Integer b) {
+        (a * b / gcd(a, b)) as BigInteger
+    }
+
+    static void main(String... args) {
+        Integer a = 96
+        Integer b = 28
+        println "gcd($a, $b) = ${gcd(a, b)}"
+        a = 790
+        b = 990
+        println "lcm($a, $b) = ${lcm(a, b)}"
+    }
+}
+----
+
+
+résultat:
+----
+gcd(96, 28) = 4
+lcm(790, 990) = 78210
+----

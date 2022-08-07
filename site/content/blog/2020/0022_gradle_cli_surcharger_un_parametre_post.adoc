@@ -1,0 +1,14 @@
+= Gradle cli: surcharger un paramètre
+@CherOliv
+2020-09-22
+:jbake-title: Gradle cli: surcharger un paramètre
+:jbake-type: post
+:jbake-tags: blog, ticket, gradle, override-parammeter, gradle-cli
+:jbake-status: published
+:jbake-date: 2020-09-22
+:summary: ./gradlew -Pparam_component=CUSTOM
+===== Surcharger un parametre par la ligne de commande :
+
+```
+$ ./gradlew -Pparam_component=CUSTOM
+```

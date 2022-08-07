@@ -1,0 +1,21 @@
+= Memo Jhipster
+@CherOliv
+2022-05-21
+:jbake-title: Memo Jhipster
+:jbake-type: post
+:jbake-tags: blog, ticket, jhipster, memo
+:jbake-status: published
+:jbake-date: 2022-05-21
+:summary: Memo Jhipster
+
+
+
+== ligne de commande pour creer un projet jhipster kotlin (khipster)
+https://www.jhipster.tech/creating-an-app/[doc create app]
+[source,bash]
+----
+jhipster --blueprints kotlin --skip-install --skip-client
+----
+
+==== liste de langues
+en, ar-ly, bn, zh-cn, fa, fr, de, hi, in, it, ja, ko, pt-pt, ru, es, tr, ta, th

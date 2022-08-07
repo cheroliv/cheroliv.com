@@ -1,0 +1,15 @@
+= Afficher la somme des tailles de fichier dans la liste des répertoires
+@CherOliv
+2020-09-17
+:jbake-title: Afficher la somme des tailles de fichier dans la liste des répertoires
+:jbake-type: post
+:jbake-tags: blog, ticket, bash, shell-script, awk, ls, memo
+:jbake-status: published
+:jbake-date: 2020-09-17
+:summary: la somme des tailles de fichiers dans un dossier
+
+==== Liens: https://unix.stackexchange.com/questions/72661/show-sum-of-file-sizes-in-directory-listing[stackexchange]
+
+```
+$ du -ach --exclude "./.*" /home/troll/
+```

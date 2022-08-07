@@ -1,0 +1,14 @@
+= Training - Android Jetpack - TP01AndroidHelloWorld
+@CherOliv
+2022-05-27
+:jbake-title: Training - Android Jetpack - TP 01 AndroidHelloWorld
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, jetpack, Android Jetpack, TP01AndroidHelloWorld
+:jbake-status: published
+:jbake-date: 2022-05-27
+:summary: Training - Android Jetpack - TP01AndroidHelloWorld
+
+github organisation: https://github.com/training-android-jetpack[Training - Android Jetpack] +
+dépot: https://github.com/training-android-jetpack/TP01AndroidHelloWorld[TP01AndroidHelloWorld]
+
+== TP Android 01 HelloWorld

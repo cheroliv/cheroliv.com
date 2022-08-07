@@ -1,0 +1,89 @@
+= Groovy: Recherche de fichiers avec critère, copie de la selection
+@CherOliv
+2019-07-19
+:jbake-title: Groovy: Recherche de fichiers avec critère, copie de la selection
+:jbake-tags: blog, string, file, copy, move, commons-io, NIO, groovy
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-07-19
+:summary: recherche de fichier par motif en groovy
+
+
+Le but de ce script est de rechercher des fichiers, +
+à partir d'un répertoire parent; récupérer la sélection +
+dans une liste. Enfin copier cette liste de fichiers +
+dans un répertoire destination cela en Groovy.
+
+
+findCopyTo.groovy +
+[source,groovy]
+----
+#!/usr/bin/env groovy
+@Grab("commons-io:commons-io:2.6")
+
+import groovy.io.FileType
+import org.apache.commons.io.FileUtils
+
+/**
+ * un separateur OS independant
+ * @return
+ */
+static String getSep() {
+    System.getProperty("file.separator")
+}
+/**
+ * la liste des fichiers dont le titre contient un item
+ * de la liste des motifs
+ *
+ * @param path
+ * @param motifs
+ * @return la liste des chemins complet de fichiers
+ */
+static List<String> findFilesContainingMotifs(
+        String path,
+        List<String> motifs) {
+    List<String> filePathResultList = new ArrayList<>()
+    new File(path)
+            .eachFileRecurse(FileType.FILES) {
+                if (it.name.toLowerCase().contains('cucumber')) {
+                    filePathResultList.add it.path
+                }
+            }
+    filePathResultList
+}
+
+/**
+ * copy vers la liste des fichiers
+ * @param files
+ * @param to
+ */
+static void copyFilesTo(List<String> files, String to) {
+    File toDirDest = new File(to)
+    files.each { String filepath ->
+        File file = new File(filepath)
+        //si le dernier caractere de to n'est pas un separateur
+        // alors ajoute le a la chaine
+        (to.substring(to.length() - 1) == sep) ?: to.concat(sep)
+        if (to + file.name != filepath) {
+            FileUtils.copyFileToDirectory(file, toDirDest)
+            file.delete()
+        }
+    }
+}
+/**
+ * la list des arguments
+ */
+String userName = System.getProperty("user.name")
+List<String> motifs = ['cucumber']
+String path = "/media/$userName/320/Books/"
+String to = "/media/$userName/320/Books/bdd/"
+/**
+ * lappel aux methodes
+ */
+copyFilesTo(findFilesContainingMotifs(path, motifs), to)
+
+//affiche moi les fichiers déplacés
+findFilesContainingMotifs(path, motifs).each {
+    println it
+}
+----

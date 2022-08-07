@@ -1,0 +1,34 @@
+= Mémo design system
+@CherOliv
+2022-01-09
+:jbake-title: Mémo design system
+:jbake-type: post
+:jbake-tags: blog, ticket, design system
+:jbake-status: published
+:jbake-date: 2022-01-09
+:summary: Simple mémo des liens utiles et des références dans le design system
+
+
+===== https://www.zetoolbox.fr/blog/https://www.zetoolbox.fr/blog/illustrations-gratuites-les-meilleurs-sites-pour-votre-prochain-projet-designillustrations-gratuites-les-meilleurs-sites-pour-votre-prochain-projet-design[source]
+
+
+
+== Tools
+
+.*Illustrations*
+
+https://undraw.co/[undraw.co]:: Open-source illustrations for any idea you can imagine and create.
+
+https://absurd.design/[absurd.design]:: absurd illustrations that make sense.
+
+https://drawkit.com/[drawkit.com]:: Beautiful, free illustrations. Updated weekly.
+
+https://icons8.com/[icons8.com]:: Icons, illustrations, photos, music, and design tools.
+
+https://blush.design/[blush.design]:: Racontez votre histoire avec des illustrations.
+
+https://www.humaaans.com/[humaaans.com]:: Mix-&-match illustrations of people with a design library.
+
+.*Couleurs*
+
+https://coolors.co/[coolors.co]:: The super fast color schemes generator!

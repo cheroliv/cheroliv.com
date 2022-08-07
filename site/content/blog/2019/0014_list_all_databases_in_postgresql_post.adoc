@@ -1,0 +1,100 @@
+= Lister les bases de données dans une instance de PostgreSQL
+@CherOliv
+2019-07-30
+:jbake-title: Lister les bases de données dans une instance de PostgreSQL
+:jbake-tags: blog, ticket, sgbdr, sgbd, postgresql, sql, database
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-07-30
+:summary: tatonnement de postgres
+
+Je n'ai pas envie d'installer https://www.pgadmin.org/[pgAdmin] ou http://phppgadmin.sourceforge.net/[phppgadmin]
+alors que tout est présent en ligne de commande. +
+Pour cela nous devons lancer le terminal et nous connecter en tant que user postgres. +
+le user postgres est le seul à avoir par défaut le droit de lancer l'application psql qui est le client ligne de commande
+(https://fr.wikipedia.org/wiki/Interface_en_ligne_de_commande[CLI]) postgresql, +
+pour pouvoir parler à la base de donnees en ligne de commande depuis le terminal. +
+Pour se connecter, lancer le terminal et taper ceci: +
+
+[source,bash]
+----
+$ sudo -i -u postgres
+----
+
+Pour se connecter et arriver directement à l'invite de commande postgresql, taper ceci :
+
+[source,bash]
+----
+$ sudo -i -u postgres psql
+----
+
+Pour lister les bases de données d'une instance de postgresql, voici la commande : +
+
+[source,SQL]
+----
+postgres=# \l
+----
+
+résultat:
+
+----
+
+                                  Liste des bases de données
+    Nom    | Propriétaire | Encodage | Collationnement | Type caract. |    Droits d'accès
+-----------+--------------+----------+-----------------+--------------+-----------------------
+ fiber     | tech         | UTF8     | fr_FR.UTF-8     | fr_FR.UTF-8  | =Tc/tech             +
+           |              |          |                 |              | tech=CTc/tech
+ fiberdev  | tech         | UTF8     | fr_FR.UTF-8     | fr_FR.UTF-8  | =Tc/tech             +
+           |              |          |                 |              | tech=CTc/tech
+ fiberweb  | tech         | UTF8     | fr_FR.UTF-8     | fr_FR.UTF-8  | =Tc/tech             +
+           |              |          |                 |              | tech=CTc/tech
+ postgres  | postgres     | UTF8     | fr_FR.UTF-8     | fr_FR.UTF-8  |
+ template0 | postgres     | UTF8     | fr_FR.UTF-8     | fr_FR.UTF-8  | =c/postgres          +
+           |              |          |                 |              | postgres=CTc/postgres
+ template1 | postgres     | UTF8     | fr_FR.UTF-8     | fr_FR.UTF-8  | =c/postgres          +
+           |              |          |                 |              | postgres=CTc/postgres
+(6 lignes)
+
+----
+taper q pour sortir de l'affichage des resulats +
+ +
+pour lister les schémas d'une instance de postgresl.
+
+
+[source,sql]
+----
+postgres=# SELECT schema_name FROM information_schema.schemata;
+----
+
+résultat
+
+----
+--------------------
+ public
+ information_schema
+ pg_catalog
+ pg_toast_temp_1
+ pg_temp_1
+ pg_toast
+(6 lignes)
+----
+
+ou
+
+[source,sql]
+----
+postgres=# SELECT nspname FROM pg_catalog.pg_namespace;
+----
+
+résultat
+
+----
+--------------------
+ pg_toast
+ pg_temp_1
+ pg_toast_temp_1
+ pg_catalog
+ information_schema
+ public
+(6 lignes)
+----

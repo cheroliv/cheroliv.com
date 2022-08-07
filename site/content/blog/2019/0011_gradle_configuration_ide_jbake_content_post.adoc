@@ -1,0 +1,81 @@
+= Gradle: dossier resources visible dans l'IDE
+@CherOliv
+2019-08-16
+:jbake-title: Gradle: dossier resources visible dans l'IDE
+:jbake-tags: blog, méthodologie, projet, cascade, classique, prédicitive, management
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-08-16
+:summary: ajouter un dossier au classpath d'un build gradle
+
+Dans un projet applicatif piloté par le gestionnaire de build Gradle +
+il est plus agréable d’avoir la visibilité sur tous les dossiers +
+participant au développement de l’application, +
+comme des dossiers de ressources qui ne sont pas +
+dans les chemins par convention. +
+Par exemple je veux que le dossier src/jbake, +
+soit visible en tant ‘resource folder’, +
+il est possible de le faire en rentrant dans la configuration du projet, +
+dans les wizards de l’IDE.
+Cependant cette option n’est pas sauvegardée au rechargement suivant +
+du projet Gradle dans l’IDE. Pour apporter cette configuration de façon permanente +
+la solution est de surcharger la configuration des chemins de sources +
+dans le fichier de configuration build.gradle tel que aux lignes 18, 19, 20 et 21 : +
+build.gradle +
+[source,groovy,numbered]
+----
+plugins {
+    id "java"
+    id "groovy"
+    id "org.jbake.site" version "5.0.0"
+    id "org.ajoberstar.git-publish" version "2.1.1"
+}
+repositories {
+    mavenCentral()
+    jcenter()
+}
+group project_group
+version project_version
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDirs =["src/main/java", "src/main/groovy"] }
+        resources {
+            srcDirs =[
+                    "src/main/resources",
+                    "src/jbake"//in order to get site src content in the IDE
+            ]
+        }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDirs =["src/test/java", "src/test/groovy"] }
+    }
+}
+test {
+    useJUnitPlatform()
+}
+configurations {
+    ivy
+}
+dependencies {
+    ivy "org.apache.ivy:ivy:$ivy_version"
+    implementation "org.codehaus.groovy:groovy-all:$groovy_version"
+    implementation "org.asciidoctor:asciidoctor-java-integration:$asciidoctor_java_integration_version"
+    implementation "org.freemarker:freemarker:$freemarker_version"
+    testImplementation "org.junit.jupiter:junit-jupiter-api:$junit5_version"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junit5_version"
+}
+gitPublish {
+    repoUri = github_pages_blog_repository
+    branch = git_branch
+    contents {
+        from(file(jbake_content_from)) {
+            into jbake_content_to
+        }
+    }
+}
+tasks.withType(GroovyCompile) {
+    groovyClasspath += configurations.ivy
+}
+----

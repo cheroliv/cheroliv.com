@@ -1,0 +1,30 @@
+= Bash : Trouver des fichiers par extension sortie sur fichier avec find
+@CherOliv
+2019-08-12
+:jbake-title: Bash : Trouver des fichiers par extension sortie sur fichier avec find
+:jbake-tags: blog, bash, find
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-08-12
+:summary: un peu de bash avec find
+
+Je recherche des fichiers par critères de nom:
+la liste des fichier qui ont pour extension .h et .cpp
+[source,bash]
+----
+$ find . -name '*.h' -o -name '*.cpp' + +
+----
+
+la liste des fichier qui ont pour extension .h et .cpp +
+le résultat est sauvegardé dans le fichier list_of_txt_files.list
+[source,bash]
+----
+$ find . -name '*.h' -o -name '*.cpp' -print > list_of_txt_files.list
+----
+
+Je recheche la liste des fichiers dont l'extension est .chm +
+et je détruit cette liste. +
+[source,bash]
+----
+$ find . -name "*.chm" -type f -delete
+----

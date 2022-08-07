@@ -1,0 +1,79 @@
+= Gherkin en francais :
+@CherOliv
+2020-09-23
+:jbake-title: Gherkin en francais :
+:jbake-type: post
+:jbake-tags: blog, ticket, bdd, gherkin, cucumber, memo
+:jbake-status: published
+:jbake-date: 2020-09-23
+:summary: BDD, cucumber, gherkin en français
+[source,json]
+----
+{"fr": {
+    "and": [
+      "* ",
+      "Et que ",
+      "Et qu'",
+      "Et "
+    ],
+    "background": [
+      "Contexte"
+    ],
+    "but": [
+      "* ",
+      "Mais que ",
+      "Mais qu'",
+      "Mais "
+    ],
+    "examples": [
+      "Exemples"
+    ],
+    "feature": [
+      "Fonctionnalité"
+    ],
+    "given": [
+      "* ",
+      "Soit ",
+      "Sachant que ",
+      "Sachant qu'",
+      "Sachant ",
+      "Etant donné que ",
+      "Etant donné qu'",
+      "Etant donné ",
+      "Etant donnée ",
+      "Etant donnés ",
+      "Etant données ",
+      "Étant donné que ",
+      "Étant donné qu'",
+      "Étant donné ",
+      "Étant donnée ",
+      "Étant donnés ",
+      "Étant données "
+    ],
+    "name": "French",
+    "native": "français",
+    "rule": [
+      "Règle"
+    ],
+    "scenario": [
+      "Exemple",
+      "Scénario"
+    ],
+    "scenarioOutline": [
+      "Plan du scénario",
+      "Plan du Scénario"
+    ],
+    "then": [
+      "* ",
+      "Alors ",
+      "Donc "
+    ],
+    "when": [
+      "* ",
+      "Quand ",
+      "Lorsque ",
+      "Lorsqu'"
+    ]
+  }
+}
+----

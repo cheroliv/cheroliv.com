@@ -1,0 +1,12 @@
+commonLabels:
+  app.kubernetes.io/genereted-by: JHipster
+
+resources:
+  # Individual apps
+  - organization-k8s/organization-deployment.yml
+  - organization-k8s/organization-service.yml
+  - organization-k8s/organization-postgresql.yml
+  - organization-k8s/jwt-secret.yml
+# service discovery eureka/consul
+
+patchesJson6902:

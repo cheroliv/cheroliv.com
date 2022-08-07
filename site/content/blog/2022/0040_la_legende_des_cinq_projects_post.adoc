@@ -1,0 +1,30 @@
+= La légende des cinqs projets
+@CherOliv
+2022-05-16
+:jbake-title: La légende des cinqs projets
+:jbake-type: post
+:jbake-tags: blog, ticket, La légende des cinqs projets
+:jbake-status: published
+:jbake-date: 2022-05-16
+:summary: La légende des cinqs projets
+
+== mobile
+. crane(agence de voyage)
+. jetsnack(online food)
+. jetnews(blog client)
+. jetcaster(podcast client)
+. owl(online web learning)
+
+== backend
+. monolith
+. gateway
+. microservice
+. batch
+. websocket - messenging
+
+== frontend
+. portfolio
+. digital-agency
+. ecommerce
+. realestate
+. restaurant

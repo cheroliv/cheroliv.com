@@ -1,0 +1,168 @@
+= Config Debian
+@CherOliv
+2019-04-19
+:jbake-title: Config Debian
+:jbake-type: post
+:jbake-tags: blog, debian, configuration
+:jbake-status: published
+:jbake-date: 2019-04-19
+:summary: ma configuration de poste
+
+
+Bonjour/bonsoir +
+Je suis à bout des blocages système de Ubuntu +
+toutes les 5 min après le lancement d’un navigateur et/ou d’un IDE. +
+J’ai décidé de donner sa chance à debian 9 avec bureau xfce (moche mais léger). +
+Avant de quitter le navire ubuntu bien-sur il faut sauvegarder mes données, +
+pour cela j’utilise l’utilitaire en ligne de commande rsync avec l’option -avr, +
+oliv est mon profil utilisateur et 320 est le nom de mon disque usb externe, +
+backup le nom du dossier ou je range ma sauvegarde. +
+voici la commande passé : +
+[source,bash]
+----
+$ rsync -avr /home/oliv /media/oliv/320/backUp
+----
+
+une fois la copie et la gravure de debian en CD Bootable effectué, +
+sans remord bye bye ubuntu.
+Le but de la nouvelle installe est d’éviter au maximum +
+les installations hors de mon home +
+cheroliv est le nom de mon home cad mon nom d’utilisateur de session sur debian. +
+
+== Installation de debian
+
+=== installer sudo
+[source,bash]
+----
+$ su -
+$ apt-get install sudo
+$ adduser cheroliv sudo
+$ touch /etc/sudoers.d/cheroliv
+$ chmod 0660 /etc/sudoers.d/cheroliv
+$ visudo
+# ajouter a la fin du fichier
+cheroliv ALL=(ALL:ALL) ALL
+# ou directement par la commande
+$ echo "cheroliv ALL=(ALL:ALL) ALL" >> /etc/sudoers
+----
+
+ajouter mon user au groupe sudo
+https://blog.seboss666.info/2014/05/installer-et-utiliser-sudo-sur-debian/
+
+https://forum.ubuntu-fr.org/viewtopic.php?id=2010211
+
+=== installation de sdkman
+[source,bash]
+----
+$ sudo apt-get install zip
+$ curl -s "https://get.sdkman.io" | bash
+----
+
+=== installation de java
+[source,bash]
+----
+$ sdk list java
+# pour sélectionner la ou les version de java a installer
+$ sdk install java 8.0.202-zulufx
+$ sdk install java 12.0.1-zulu
+----
+
+=== installation de groovy
+[source,bash]
+----
+$ sdk list groovy
+# pour sélectionner la ou les version de groovy a installer
+$ sdk install groovy 2.5.7
+----
+
+=== installation de jbake, gradle, maven
+
+[source,bash]
+----
+$ sdk install jbake // pour mon blog
+$ sdk install gradle
+$ sdk install maven
+$ sdk install ant
+----
+
+=== creation d’un desktop entry pour netbeans
+----
+/home/cheroliv/.local/share/applications/netbeans.desktop
+[Desktop Entry]
+Type=Application
+Name=NetBeans IDE 11
+Icon=/home/cheroliv/IDE/netbeans/nb/netbeans.png
+Exec=/home/cheroliv/IDE/netbeans/bin/netbeans
+Comment=NetBeans IDE
+Terminal=false
+Encoding=UTF-8
+GenericName=NetBeans IDE
+Categories=Development;IDE;
+StartupNotify=false
+----
+
+=== installation de nodejs-npm avec nvm
+https://tecadmin.net/install-nodejs-with-nvm/
+[source,bash]
+----
+$ curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+----
+
+=== installation de git
+[source,bash]
+----
+$ apt-get install git
+----
+
+création des clefs rsa pour github en ligne de commande
+[source,bash]
+----
+$ sudo apt-get install ssh-askpass
+# j’ai déjà des clé public rsa que j’ai recupreé de ma sauvegarde, pour les recuprer j’ai copier le dossier .ssh/ de mon home sauvegardé, puis tapé :
+$ chmod 600 ~/.ssh/id_rsa
+$ ssh-add ~/.ssh/id_rsa
+# le message devrait être :
+# Identity added: /home/cheroliv/.ssh/id_rsa (/home/cheroliv/.ssh/id_rsa)
+----
+sinon reprendre depuis le début la procédure
+https://help.github.com/en/enterprise/2.16/user/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent
+
+
+=== installation de vs code
+https://linuxize.com/post/how-to-install-visual-studio-code-on-debian-9/
+[source,bash]
+----
+$ sudo apt update
+$ sudo apt install software-properties-common apt-transport-https curl
+$ curl -sSL https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
+$ sudo add-apt-repository "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main"
+$ sudo apt update
+$ sudo apt install code
+----
+
+=== installation de intellij et android studio
+rien de bien compliqué se rendre sur le site telecharger l'executable et lancer depuis le terminal, ensuite 'create desktop shortcut' et c'est bon.
+
+=== installation de postgresql avec la version des dépots debian
+[source,bash]
+----
+$ sudo apt-get update
+$ apt-get install postgresql
+----
+=== demarrer et arreter postgresql
+
+    Demarrer PostgreSQL server:
+[source,bash]
+----
+$ sudo service postgresql start
+----
+
+    Arreter PostgreSQL server:
+[source,bash]
+----
+$ sudo service postgresql stop
+----
+
+
+voila that's it that's all, un pc avec debian,
+sdkman, java, gradle, maven, ant, jbake, vscode, npm, nodejs, github, intellij, android studio, postgresql

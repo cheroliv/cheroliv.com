@@ -1,0 +1,110 @@
+= Gradle: Groovy script, grab et ivy configuration
+@CherOliv
+2019-08-14
+:jbake-title: Groovy script, grab et ivy configuration
+:jbake-tags: blog, Gradle, Groovy, ivy, jvm, build, groovy-script, script
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-08-14
+:summary: gradle groovy ivy
+
+Le sujet du ticket est la configuration d'un script de build Gradle. +
+Je veux pouvoir utiliser un script Groovy sans faire référence +
+au projet Gradle dans lequel je l'ai attaché. +
+Je veux avoir la possibilité de lancer ce script Groovy hors de Gradle +
+sans que les annotations ivy de récupération de dépendance externe +
+ne viennent poser problème de performance ou de compilation +
+du script de build Gradle. +
+Pour illustrer la configuration je m'appuie sur deux scripts: +
+un script de build Gradle et un script Groovy. +
+Le script Groovy contient au début à la ligne 2, +
+une instruction pour tirer une dépendance  externe +
+à l'aide du gestionnaire de dépendance ivy. +
+[source,Groovy,numbered]
+----
+#!/usr/bin/env groovy
+@Grab("commons-io:commons-io:2.6")
+
+import org.apache.commons.io.FileUtils
+
+static String getSeparator() {
+    System.getProperty("file.separator")
+}
+
+String from = "${System.getProperty("user.home")}${separator}.config${separator}transmission${separator}torrents"
+String to = "${System.getProperty("user.home")}${separator}Documents${separator}torrents_completed"
+
+File fromDlDir = new File("${System.getProperty("user.home")}${separator}Téléchargements")
+File fromDir = new File(from)
+File toDir = new File(to)
+
+Collection<File> torrentFiles = FileUtils.listFiles(
+        fromDir,
+        ["torrent"] as String[],
+        false)
+torrentFiles.addAll(FileUtils.listFiles(
+        fromDlDir,
+        ["torrent", "torrent.added"] as String[],
+        false))
+
+
+torrentFiles.empty ?: torrentFiles.each { it ->
+    FileUtils.copyFileToDirectory(it, toDir)
+}
+println torrentFiles.size()
+
+----
+
+Dans le fichier build.gradle, maintenant voyons comment mettre en harmonie +
+les deux gestionnaires de dépendances, ivy et Gradle.
+L'accord entre les deux se fait aux lignes : +
+26, 30, 37, 38 et 39 +
+Ainsi je peux lancer mon script Groovy manuellement, +
+et la compilation de Gradle n'est pas gênée par le @Grab. +
+Les dépendances du script Groovy ne sont pas à fournir dans Gradle. +
+Par contre je ne peux pas lancer le script Groovy depuis Gradle. +
+
+[source,Groovy,numbered]
+----
+plugins {
+    id "java"
+    id "groovy"
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+sourceSets {
+    main {
+        java { srcDirs = [] }
+        groovy { srcDirs =["src/main/java", "src/main/groovy"] }
+        resources {
+            srcDirs =["src/main/resources"]
+        }
+    }
+    test {
+        java { srcDirs = [] }
+        groovy { srcDirs =["src/test/java", "src/test/groovy"] }
+    }
+}
+
+configurations {
+    ivy
+}
+
+dependencies {
+    ivy "org.apache.ivy:ivy:$ivy_version"
+    implementation "org.codehaus.groovy:groovy-all:$groovy_version"
+}
+
+
+
+tasks.withType(GroovyCompile) {
+    groovyClasspath += configurations.ivy
+}
+
+----
+
+référence du ticket  sur https://stackoverflow.com/a/18174033/837404[stackoverflow]

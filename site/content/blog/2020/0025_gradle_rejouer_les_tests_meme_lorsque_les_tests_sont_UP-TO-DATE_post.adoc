@@ -1,0 +1,14 @@
+= Gradle: Rejouer les tests même lorsque les tests sont UP-TO-DATE
+@CherOliv
+2020-09-25
+:jbake-title: Gradle: Rejouer les tests même lorsque les tests sont UP-TO-DATE
+:jbake-type: post
+:jbake-tags: blog, ticket, gradle, test, task, rerun-test, memo
+:jbake-status: published
+:jbake-date: 2020-09-25
+:summary: ajouter l’argument --rerun-tasks à la ligne commande.
+ajouter l’argument --rerun-tasks à la ligne commande.
+[source,bash]
+```
+$ ./gradlew test --rerun-tasks
+```

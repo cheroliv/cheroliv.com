@@ -1,0 +1,111 @@
+= Groovy: Manipulation de fichiers, recherche et suppression
+@CherOliv
+2019-07-18
+:jbake-title: Groovy: Manipulation de fichiers, recherche et suppression
+:jbake-tags: blog, string, properties, file, groovy
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-07-18
+:summary: manipulation de fichiers et recherche de caracteres en groovy
+
+
+Ici je vais m’intéresser au chargement d'une propriété dans un build projet https://docs.gradle.org/current/userguide/userguide.html[gradle] +
+sans que celle ci soit disponible dans le code. +
+La propriété sera défini dans le fichier gradle.properties du dossier ~/.gradle/gradle.properties +
+~ est un raccourcie de la variable symbolique HOME_PATH représentant la racine utilisateur de session: le https://fr.wikipedia.org/wiki/R%C3%A9pertoire_personnel[répertoire personnel]. +
+De la même façon dans un build projet https://maven.apache.org/guides/index.html[maven], avec ~/.m2/settings.xml
+Le but de ce script c'est de supprimer les fichiers qui correspondraient aux motifs énoncés +
+dans la variable strCriteria.
+Pour cela je vais utiliser les https://fr.wikipedia.org/wiki/Fermeture_(informatique)[closures]: each, findAll,  collect +
+ainsi que la classe StringTokenizer qui va découper en morceau ma chaîne de critères +
+pour en récupérer une liste de strings.
+Si un des fichiers de mon dossier à nettoyer contient un des motif dans son nom +
+alors il sera un candidat à la destruction en étant ajouté à la liste résultat. +
+Et à la dernière ligne un petit exemple d'https://en.wikipedia.org/wiki/Elvis_operator[Elvis operator] +
+filemanip.groovy +
+[source,groovy]
+----
+#!/usr/bin/env groovy
+//Mes criteres de selection des fichiers à detruire
+String strCriteria = "Dummies Dummie ajax Objective-C Windows blackberry " +
+        "wordpress joomla ios c# f# rails ruby flex asp flash Dreamweaver adobe " +
+        "CoffeeScript c++ .chm .epub .rar .zip .tar drupal drupals .net php javascript " +
+        ".js iphone ipad js _js facebook gwt vaadin linq python py zope window " +
+        "3D scala gaming active_directory tomcat jboss glassfish microsoft 2d " +
+        "lego blogger blog cocoa dojo dom dotnetnuke eclipse .gz unity sharepoint " +
+        ".tgz iwork filemaker .doc .txt"
+
+
+//repertoire personnel
+String userDir = System.getProperty("user.home")
+//un separateur de chemin crossplatform
+String sep = System.getProperty("file.separator")
+//la variable symbolique
+String sym_books_vrac_path = "books_vrac_path"
+
+//le chemin de mon fichier gradle.properties hors projet
+String propertiesFilePath = userDir
+        .concat("${sep}.gradle${sep}gradle.properties")
+
+
+File propertiesFile = new File(propertiesFilePath)
+
+
+//je m'aassure que le fichier existe et que ce n'est pas un dossier
+assert propertiesFile.exists() && !propertiesFile.directory
+
+Properties gradleProperties = new Properties()
+
+//on boucle avec un inpustream sur le fichier
+//gradle.properties pour peupler ma variable gradleProperties
+propertiesFile.withInputStream { InputStream it ->
+    gradleProperties.load(it)
+}
+
+//le chemin du dossier books_vrac est la valeur de notre clé books_vrac_path
+String pathVracDir = gradleProperties.get(sym_books_vrac_path)
+
+//j'ai récuperé tous ces livres en tapant cette commande dans le terminal
+//wget -m -np -c -R "index.html*" "http://the-eye.eu/public/Books/IT%20Various/"
+
+//on ouvre le dossier dont le chemin est dans la variable pathVracDir
+// on s'assure qu'il existe et que c'est un dossier
+File vracDir = new File(pathVracDir)
+assert vracDir.exists() && vracDir.directory
+
+
+//separer les élèments de ma liste de critère
+StringTokenizer tokenizer = new StringTokenizer(strCriteria)
+
+//la liste de critere
+List<String> criteriaList = new ArrayList<>()
+
+//j'itère sur les tokens et je construit ma liste de token,
+// mot clef critère de recherche
+tokenizer.each { String it ->
+    criteriaList.add(it.toLowerCase())
+}
+
+//je collect tous les noms de fichier dans le dossier
+List<String> fileNameList = vracDir
+        .listFiles()
+        .collect { File it ->
+            it.directory ?: it.name
+        }
+
+// je collect les noms de fichier qui contiendraient un des criteres
+List<String> resultList = fileNameList.findAll { String name ->
+    criteriaList.findAll { String crit ->
+        name.toLowerCase().contains(crit)
+    }
+}
+
+// je parcours ma liste de résultat pour les effacer
+resultList.each { String fileName ->
+    assert new File(vracDir.path + sep + fileName).delete()
+}
+
+println fileNameList.size()
+println resultList.size()
+resultList.empty ?: println(vracDir.path + sep + resultList.first())
+----

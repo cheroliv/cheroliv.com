@@ -1,0 +1,155 @@
+@startuml
+
+' hide the spot
+hide circle
+
+' avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity "pdf_file" as pdf_file {
+  *id : number <<PK>>\t
+  --
+  physical_file_id : number <<FK>>\t\t
+  description : text
+  pdf_version : text
+  pdf_producer : text
+  create_date : date
+  modify_date : date
+  creator_tool : text
+}
+
+entity "pdf_creator" as pdf_creator {
+  *id : number <<PK>>\t
+  --
+  creator : text
+  id : number <<FK>>\t
+}
+
+entity "pdf_date" as pdf_date {
+  *id : number <<PK>>\t
+  --
+  pdf_date : timestamp\t
+  id : number <<FK>>\t
+}
+
+entity "pdf_keyword" as pdf_keyword {
+  *id : number <<PK>>\t
+  --
+  keyword : text
+  id : number <<FK>>\t
+}
+
+entity "pdf_subject" as pdf_subject {
+  *id : number <<PK>>\t
+  --
+  subject : text
+  id : number <<FK>>\t
+}
+
+
+entity "movie_file" as movie_file {
+  *id : number <<PK>>\t
+  --
+  name : text
+  description : text
+  physical_file : number <<FK>>\t\t
+}
+
+entity "physical_file" as physical_file {
+  *id : number <<PK>>\t
+  --
+  name : text
+  can_execute : boolean\t
+  can_read : boolean
+  can_write : boolean
+  hash_code : number
+  is_absolute : boolean
+  is_directory : boolean
+  is_file : boolean
+  is_hidden : boolean
+  last_modified : number
+  length : number
+  to_string : text
+  absolute_path : text
+  canonical_path : text
+  path : text
+  uri : text
+}
+
+entity "picture_file" as picture_file {
+  *id : number <<PK>>\t
+  --
+  picture_extension : text
+  physical_file : number <<FK>>\t\t
+}
+
+entity "sound_file" as sound_file {
+  *id : number <<PK>>\t
+  --
+  physical_file : number <<FK>>\t
+  track : text
+  artist : text
+  title : text
+  album : text
+  year : number
+  genre : number
+  genre_description : text
+  comment : text
+  has_padding : boolean
+  has_footer : boolean
+  has_unsynchronisation : boolean\t\t
+  bpm : number
+  grouping : text
+  key : text
+  date : date
+  composer : text
+  publisher : text
+  original_artist : text
+  album_artist : text
+  copyright : text
+  artist_url : text
+  commercial_url : text
+  copyright_url : text
+  audio_file_url : text
+  audio_source_url : text
+  radio_station_url : text
+  payment_url : text
+  publisher_url : text
+  url : text
+  part_of_set : text
+  is_compilation : boolean
+  wmp_rating : number
+  itunes_comment : text
+  lyrics : text
+  encoder : text
+}
+
+
+entity "storage" as storage{
+    *id : number <<PK>>\t
+    --
+    storage_discriminator : text
+    api_uri : text
+    credential_id : number <<FK>>\t\t
+}
+
+entity "domain_credential" as domain_credential {
+  *id : number <<PK>>\t
+  --
+  domain : text
+  login : text
+  encrypted_password : text\t\t
+}
+
+''relations between entities
+physical_file "1" -- "0..1" pdf_file
+physical_file "1" -- "0..1" sound_file
+physical_file "1" -- "0..1" picture_file
+physical_file "1" -- "0..1" movie_file
+storage "0..n" -- "0..1" physical_file
+storage "1" -- "0..1" domain_credential
+pdf_file "0..n" -- "1" pdf_creator
+pdf_file "0..n" -- "1" pdf_date
+pdf_file "0..n" -- "1" pdf_keyword
+pdf_file "0..n" -- "1" pdf_subject
+@enduml

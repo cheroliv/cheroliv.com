@@ -1,0 +1,135 @@
+= Training - Jetpack Compose - fundamentals
+@CherOliv
+2022-05-24
+:jbake-title: Training - Jetpack Compose - fundamentals
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, jetpack, compose, fundamentals
+:jbake-status: published
+:jbake-date: 2022-05-24
+:summary: Training - Jetpack Compose - fundamentals
+
+sommaire: link:0043_training_jetpack-compose_post.html[Training - Jetpack Compose] +
+github organisation: https://github.com/training-jetpack-compose[Training - Jetpack Compose] +
+dépots: https://github.com/training-jetpack-compose/compose-fundamentals[compose-fundamentals]
+
+== Les mécanismes de fonctionnement
+
+
+== Refactorisation du starter
+
+Dans Router.kt
+[source,kotlin]
+----
+sealed class Screen {
+    object Navigation : Screen()
+    object Text : Screen()
+    object TextField : Screen()
+    object Buttons : Screen()
+    object ProgressIndicator : Screen()
+    object AlertDialog : Screen()
+}
+
+object Router {
+
+    var currentScreen: MutableState<Screen> = mutableStateOf(Navigation)
+
+    fun navigateTo(destination: Screen) {
+        currentScreen.value = destination
+    }
+}
+----
+
+devient
+[source,kotlin]
+----
+sealed class Screen {
+    object Navigation : Screen()
+    object Text : Screen()
+    object TextField : Screen()
+    object Buttons : Screen()
+    object ProgressIndicator : Screen()
+    object AlertDialog : Screen()
+}
+
+object Router {
+
+    val screens: Array<Pair<Int, Screen>> = arrayOf(
+        Pair(R.string.text, Screen.Text),
+        Pair(R.string.text_field, Screen.TextField),
+        Pair(R.string.buttons, Screen.Buttons),
+        Pair(R.string.progress_indicators, Screen.ProgressIndicator),
+        Pair(R.string.alert_dialog, Screen.AlertDialog),
+    )
+
+    var currentScreen: MutableState<Screen> = mutableStateOf(Navigation)
+
+    fun navigateTo(destination: Screen) {
+        currentScreen.value = destination
+    }
+}
+----
+
+Dans NavigationScreen.kt
+[source,kotlin]
+----
+@Composable
+fun NavigationScreen() {
+    Surface(
+        color = White,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            verticalArrangement = Center,
+            horizontalAlignment = CenterHorizontally
+        ) {
+            NavigationButton(stringResource(id = text), Text)
+            NavigationButton(stringResource(id = text_field), TextField)
+            NavigationButton(stringResource(id = buttons), Buttons)
+            NavigationButton(stringResource(id = progress_indicators), ProgressIndicator)
+            NavigationButton(stringResource(id = alert_dialog), AlertDialog)
+        }
+    }
+}
+----
+
+Devient
+[source,kotlin]
+----
+@Composable
+fun NavigationScreen() {
+    Surface(
+        color = Color.White,
+        modifier = Modifier.fillMaxSize()
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Router.screens.map {
+                NavigationButton(
+                    stringResource(it.first),
+                    it.second
+                )
+            }
+        }
+    }
+}
+----
+
+
+
+== TextScreen
+
+=== DemoText
+
+== TextFieldScreen
+
+=== DemoTextField
+
+=== DemoEmailTextField
+
+== ButtonsScreen
+
+== ProgressIndicatorScreen
+
+== AlertDialogScreen

@@ -1,0 +1,112 @@
+= Managed JBake, static site
+
+https://docs.gradle.org/current/userguide/userguide.html[Gradle]
++ https://jbake.org/[JBake]
++ https://pages.github.com/[Github Pages]
+
+== Modus operandi?
+todo
+
+====== Run in local mode :
+
+Just in case, you need to make the script executable, for the first time you run it
+```
+chmod u+x jbake.sh;
+```
+
+Now enjoy the live local mode :
+```
+./jbake.sh
+```
+
+===== Deploy blog to CDN
+```
+./gradlew publishSite
+```
+
+=== Installation webflux
+
+==== postgresql en dev test et prod local sous ubuntu
+
+4 users (login:mdp):
+
+- dba:dba
+- prod:prod
+- dev:dev
+- test:test
+
+se connecter avec le profile postgres
+----
+sudo -i -u postgres
+----
+
+se connecter au client cli psql
+----
+psql
+----
+
+
+pour quitter le client
+----
+\q
+----
+
+lancer directement le prompt psql sous le profile postgres 
+----
+sudo -u postgres psql
+----
+
+==== Création d’un nouveau rôle
+depuis psql
+----
+createuser --interactive
+----
+
+depuis le profil utilisateur
+----
+sudo -u postgres createuser --interactive
+----
+
+creation des 4 roles: dba(admin), dev(limited), prod(limited), test(limited)
+
+
+==== Création de trois nouvelles bases de données
+
+- organization
+- organization-dev
+- organization-test
+- organization-prod
+
+depuis psql
+----
+createdb organization
+----
+
+
+depuis le profil utilisateur
+----
+sudo -u postgres createuser --interactive
+----
+
+creation des 4 roles: dba(admin), dev(limited), prod(limited), test(limited)
+
+
+
+création des user system.
+----
+createuser dba
+createuser dev
+createuser prod
+createuser test
+----
+
+
+grant all privileges on database organization to dba;
+grant all privileges on database organization-prod to dba;
+grant all privileges on database organization-test to dba;
+grant all privileges on database organization-dev to dba;
+grant all privileges on database organization-prod to prod;
+grant all privileges on database organization-dev to dev;
+grant all privileges on database organization-test to test;
+
+sudo -i -u dev psql -d organization-dev

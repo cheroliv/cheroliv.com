@@ -1,0 +1,21 @@
+= notes
+=== apres avoir fait la commande : khipster kubernetes
+WARNING! Kubernetes configuration generated, but no Jib cache found
+If you forgot to generate the Docker image for this application, please run:
+To generate the missing Docker image(s), please run:
+  ./gradlew bootJar -Pprod jibDockerBuild in /home/ch/src/cheroliv.com/webflux
+
+
+WARNING! You will need to push your image to a registry. If you have not done so, use the following commands to tag and push the images:
+  docker push organization
+
+You can deploy all your apps by running the following kubectl command:
+  bash kubectl-apply.sh -f
+
+[OR]
+
+If you want to use kustomize configuration, then run the following command:
+  bash kubectl-apply.sh -k
+
+Use these commands to find your application's IP addresses:
+  kubectl get svc organization

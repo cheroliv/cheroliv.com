@@ -1,0 +1,64 @@
+= Mémo git
+@CherOliv
+2020-09-21
+:jbake-title: Mémo git
+:jbake-type: post
+:jbake-tags: blog, ticket, git, remote, repository, memo
+:jbake-status: published
+:jbake-date: 2020-09-21
+:summary: simple mémo git
+== Changer de depot distant dans git
+
+
+==== Sources:
+ * https://xenovation.com/blog/source-control-management/git/how-to-change-remote-git-repository[xenovation]
+ * https://intellipaat.com/community/3102/git-show-remote-url-how-can-i-determine-the-url-that-a-local-git-repository-was-originally-cloned-from[intellipaat]
+
+
+==== changer de repo distant dans git
+
+afficher l'url du repo distant courrant:
+[source,bash]
+```
+git config --get remote.origin.url
+```
+
+Pour plus d'information sur le depot distant:
+[source,bash]
+```
+git remote show origin
+```
+
+Lister les depots distants
+[source,bash]
+```
+git remote -v
+```
+
+Changer de dépot distants
+[source,bash]
+```
+git remote set-url origin git@github.com:kotlin-codes/hands-on-design-pattern-kotlin.git
+```
+
+Ajouter quand le dépot n’existe pas
+[source,bash]
+```
+git remote add origin git@github.com:kotlin-codes/foo.git
+```
+
+Pusher
+[source,bash]
+```
+git push -u origin master
+```
+ou
+```
+git push -u origin main
+```
+
+_changement d'adresse ip_ +
+relancer la commande suivante pour que les pushs passent. +
+```
+git remote set-url origin git@github.com:USER_ACCOUNT/PROJECT.git
+```

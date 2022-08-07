@@ -1,0 +1,20 @@
+= Dezipper en CLI dans un dossier cible
+@CherOliv
+2020-09-18
+:jbake-title: Dezipper en CLI dans un dossier cible
+:jbake-type: post
+:jbake-tags: blog, ticket, bash, shell-script, unzip, memo
+:jbake-status: published
+:jbake-date: 2020-09-18
+:summary: dezipper en ligne de commande
+
+==== Liens: https://askubuntu.com/questions/86849/how-to-unzip-a-zip-file-from-the-terminal[askubuntu]
+
+Si vous souhaitez extraire vers un dossier de destination particulier, vous pouvez utiliser :
+```
+$ unzip fichier.zip -d dossier_destination
+```
+Si les répertoires source et de destination sont identiques, vous pouvez simplement faire:
+```
+$ unzip file.zip
+```

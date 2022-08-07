@@ -1,0 +1,16 @@
+= Training - Android Jetpack
+@CherOliv
+2022-05-25
+:jbake-title: Training - Android Jetpack
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, jetpack, Android Jetpack
+:jbake-status: published
+:jbake-date: 2022-05-25
+:summary: Training - Android Jetpack
+
+github organisation: https://github.com/training-android-jetpack[Training - Android Jetpack]
+
+== Travaux pratiques
+
+. link:0050_training_android-jetpack_TP00AndroidAdb_post.html[TP00AndroidAdb]
+. link:0051_training_android-jetpack_TP01AndroidHelloWorld_post.html[TP01AndroidHelloWorld]

@@ -1,0 +1,80 @@
+= Mémo nix
+@CherOliv
+2021-12-04
+:jbake-title: Mémo nix
+:jbake-type: post
+:jbake-tags: blog, ticket, unix, linux, permissions
+:jbake-status: published
+:jbake-date: 2021-12-04
+:summary: Simple mémo sur unix/linux et le terminal bash
+mise à jour: 12-02-2022
+
+== Le clavier :
+
+=== *_la touche <Ctrl>_*
+
+[%header,format=csv]
+|===
+_Code_,     _Touches associées_,     _Fonction_
+*intr*,     *^C*,                    Stopper un programme
+*erase*,    *^H* _<Backspace>_,      Effacer le dernier caractère
+*werase*,   *^W*,                    Effacer le dernier mot
+*kill*,     *^U*,                    Effacer la ligne
+*quit*,     *^\*,                    Stopper programme avec core
+*stop*,     *^S*,                    Geler l'affichage à l'écran
+*start*,    *^Q*,                    Relancer l'affichage
+*eof*,      *^D*,                    Indiquer la fin des données
+*rprnt*,    *^R*,                    Réimpression de la ligne
+*flush*,    *^O*,
+*lnext*,    *^V*,
+*susp*,    *^Z /^Y*,
+,           *^I*,                    Tabulation
+|===
+
+https://korben.info/les-raccourcis-clavier-pour-bash-terminal-linux-et-macos.html[lien] +
+https://blogmotion.fr/systeme/astuces-bash-linux-16175[autre lien]
+
+
+== Permission(authorization)
+
+CHMOD est utilisé pour changer les permissions d'un fichier.
+
+```
+PERMISSION      COMMAND
+
+U   G   W
+rwx rwx rwx     chmod 777 filename
+rwx rwx r-x     chmod 775 filename
+rwx r-x r-x     chmod 755 filename
+rw- rw- r--     chmod 664 filename
+rw- r-- r--     chmod 644 filename
+
+U = User
+G = Group
+W = World
+
+r = Readable
+w = writable
+x = executable
+- = no permission
+```
+
+Une autre facon de voir les permissions:
+
+
+```
+400     read by owner
+040     read by group
+004     read by anybody (other)
+200     write by owner
+020     write by group
+002     write by anybody
+100     execute by owner
+010     execute by group
+001     execute by anybody
+```
+
+Pour obtenir une combinaison, il suffit de les additionner. +
+Par exemple, pour être lu, écrit, exécuté par le propriétaire, +
+lu, exécuté, par groupe et exécuté par n'importe qui, +
+vous ajouteriez 400+200+100+040+010+001 pour donner 751. +

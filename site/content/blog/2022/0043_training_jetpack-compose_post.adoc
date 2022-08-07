@@ -1,0 +1,26 @@
+= Training - Jetpack Compose
+@CherOliv
+2022-05-19
+:jbake-title: Training - Jetpack Compose
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, playground, jetpack, compose
+:jbake-status: published
+:jbake-date: 2022-05-19
+:summary: Training - Jetpack Compose
+
+
+github organisation: https://github.com/training-jetpack-compose[Training - Jetpack Compose]
+dépots:
+
+. link:0048_training_jetpack-compose_fundamentals_post.html[compose-fundamentals]
+. [building-layout-groups-in-compose]
+. [building-lists-with-jetpack-compose]
+. [combining-composables]
+. [using-compose-modifiers]
+. [managing-state-in-compose]
+. [applying-material-design-to-compose]
+. [using-constraintsets-in-composables]
+. [building-complex-ui-in-jetpack-compose]
+. [reacting-to-compose-lifecycle]
+. [animating-properties-using-compose]
+. [adding-view-compatibility]

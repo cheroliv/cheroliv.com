@@ -1,0 +1,114 @@
+= Kubernetes, Microk8s, Docker: premiers pas
+@CherOliv
+2020-11-03
+:jbake-title: Kubernetes, Microk8s, Docker: premiers pas
+:jbake-type: post
+:jbake-tags: blog, ticket, kubernetes, k8s, microk8s, docker, cloud, memo
+:jbake-status: published
+:jbake-date: 2020-11-03
+:summary: Installation, mise en place de micro kubernetes, docker, et lancement d'un helloworld sur linux/unix
+
+https://microk8s.io/docs/[doc officiel de microk8s] +
+
+==== Installation du paquet microk8s:
+
+[source,bash]
+```
+sudo snap install microk8s --classic --channel=1.19
+```
+
+==== Ajout de l'utilisateur courrant au group du processus microk8s
+
+[source,bash]
+```
+sudo usermod -a -G microk8s $USER
+sudo chown -f -R $USER ~/.kube
+su - $USER
+```
+
+==== Afficher l'état de microk8s
+
+[source,bash]
+```
+microk8s status --wait-ready
+```
+
+==== Acceder à Kubernetes
+
+Récuperer les nodes(noeuds): +
+[source,bash]
+```
+microk8s kubectl get nodes
+```
+
+Récuperer les services en cours: +
+[source,bash]
+```
+microk8s kubectl get services
+```
+Récuperer les pods en cours: +
+[source,bash]
+```
+microk8s kubectl get pods
+```
+
+==== Ajouter un alias à son shell
+
+===== pour zsh
+[source,bash]
+```
+touch ~/.zsh_alias;
+echo "alias kubectl='microk8s kubectl'" >> ~/.zsh_alias;
+```
+
+===== pour bash
+[source,bash]
+```
+touch ~/.bash_alias;
+echo "alias kubectl='microk8s kubectl'" >> ~/.bash_alias;
+```
+
+
+
+==== Installer des add-ons
+
+Pour commencer, il est recommandé d'ajouter la gestion DNS pour faciliter la communication entre les services. Pour les applications nécessitant du stockage, le module complémentaire «stockage» fournit un espace de répertoire sur l'hôte. Ceux-ci sont faciles à configurer:
+
+
+
+[source,bash]
+```
+microk8s enable dns storage
+```
+
+
+==== Démarrer et arreter MicroK8s
+
+
+[source,bash]
+```
+microk8s stop
+```
+
+[source,bash]
+```
+microk8s start
+```
+
+Notez que si vous laissez MicroK8 en marche, il redémarrera automatiquement après un redémarrage. Si vous ne voulez pas que cela se produise, n'oubliez pas de lancer l'arrêt microk8s avant de l'éteindre.
+
+
+
+==== Deployer une app
+
+[source,bash]
+```
+microk8s kubectl create deployment nginx --image=nginx
+```
+
+Pour vérifier l'état du déploiement:
+
+[source,bash]
+```
+microk8s kubectl get pods
+```

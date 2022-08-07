@@ -1,0 +1,57 @@
+= Gradle: Exécuter un processus externe depuis une tâche gradle
+@CherOliv
+2020-09-28
+:jbake-title: Gradle: Exécuter un processus externe depuis une tâche gradle
+:jbake-type: post
+:jbake-tags: blog, ticket, gradle, task, external-process, gradle-groovy-dsl, gradle-kotlin-dsl, memo
+:jbake-status: published
+:jbake-date: 2020-09-28
+:summary: Comment lancer un binaire externe depuis une tache gradle
+
+
+==== Gradle-Kotlin-DSL:
+
+[source,kotlin]
+```
+open class PrintHerokuVersion : Exec() {
+    init {
+        this.workingDir = project.rootDir
+        this.commandLine("/snap/bin/heroku", "-v")
+        this.standardOutput = ByteArrayOutputStream()
+    }
+}
+
+project.tasks.register<PrintHerokuVersion>("printHerokuVersion")
+
+project.tasks.withType<PrintHerokuVersion> {
+    doLast { logger.info(standardOutput.toString()) }
+}
+```
+
+Pour exécuter la tâche:
+[source,bash]
+```
+$ ./gradlew pHV
+```
+
+
+
+==== Gradle-Groovy-DSL:
+
+[source,groovy]
+```
+task printHerokuVersionGroovy(type: Exec) {
+    workingDir(project.projectDir)
+    commandLine("/snap/bin/heroku", "-v")
+    standardOutput = new ByteArrayOutputStream()
+    doLast {
+        logger.info(standardOutput.toString())
+    }
+}
+```
+
+Pour exécuter la tâche:
+[source,bash]
+```
+$ ./gradlew pHVG
+```

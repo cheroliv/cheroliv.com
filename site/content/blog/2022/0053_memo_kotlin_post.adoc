@@ -1,0 +1,21 @@
+= Mémo kotlin
+@CherOliv
+2022-05-29
+:jbake-title: Mémo kotlin
+:jbake-type: post
+:jbake-tags: blog, ticket, kotlin, memo
+:jbake-status: published
+:jbake-date: 2022-05-29
+:summary: simple mémo kotlin
+
+== Good links
+https://play.kotlinlang.org/[kotlinlang playground] +
+
+https://arrow-kt.io/[arrow.kt] +
+
+https://arkivanov.github.io/MVIKotlin/[MVI:Model View Intent] +
+
+https://github.com/arkivanov/Essenty[Essenty] +
+
+https://arkivanov.github.io/Decompose/[Decompose] +
+

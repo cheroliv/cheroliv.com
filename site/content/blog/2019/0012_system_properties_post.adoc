@@ -1,0 +1,61 @@
+= Java: System.Properties
+@CherOliv
+2019-08-17
+:jbake-title: Java: System.Properties
+:jbake-tags: blog, JVM, Java, System, Platform Environment, JDK8+
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-08-17
+:summary: la classe System.Properties de la jvm
+
+Un membre de la classe System assez intéressant dans la https://fr.wikipedia.org/wiki/Machine_virtuelle_Java[JVM], +
+qui méritait bien son ticket  https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html[System.Properties] +
+voici un tableau de quelques propriétés intéressantes +
+
+|===
+|Key |Meaning
+|"file.separator"
+|Character that separates components of a file path. This is "/" on UNIX and "\" on Windows.
+|"java.class.path"
+|Path used to find directories and JAR archives containing class files. Elements of the class path are separated by a platform-specific character specified in the path.separator property.
+|"java.home"
+|Installation directory for Java Runtime Environment (JRE)
+|"java.vendor"
+|JRE vendor name
+|"java.vendor.url"
+|JRE vendor URL
+|"java.version"
+|JRE version number
+|"line.separator"
+|Sequence used by operating system to separate lines in text files
+|"os.arch"
+|Operating system architecture
+|"os.name"
+|Operating system name
+|"os.version"
+|Operating system version
+|"path.separator"
+|Path separator character used in java.class.path
+|"user.dir"
+|User working directory
+|"user.home"
+|User home directory
+|"user.name"
+|User account name
+|===
+
+Ces propriétés sont intéressantes pour avoir des informations +
+sur le système hôte de la JVM.
+Exemple :
+[source,java]
+----
+
+System.getProperty("file.separator");
+
+----
+
+Sortie console:
+----
+jshell> System.getProperty("file.separator");
+$1 ==> "/"
+----

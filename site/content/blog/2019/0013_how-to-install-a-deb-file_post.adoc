@@ -1,0 +1,20 @@
+= Debian : Installer un fichier .deb en ligne de commandes
+@OlivCher
+2019-08-19
+:jbake-title: Debian : Installer un fichier .deb en ligne de commandes
+:jbake-tags: blog, debian, ubuntu, mint, pkg, dpkg, ligne de commande, command line, CLI, system, administration
+:jbake-type: post
+:jbake-status: published
+:jbake-date: 2019-08-19
+:summary: installer des .deb en ligne de commandes
+
+Pour installer un paquet debian depuis un fichier .deb en ligne de commandes. +
+[source,bash]
+----
+$ sudo dpkg -i /chemin/du/fichier/deb/
+----
+voir içi pour la https://unix.stackexchange.com/questions/159094/how-to-install-a-deb-file-by-dpkg-i-or-by-apt[référence] +
+
+
+
+

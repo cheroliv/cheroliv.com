@@ -1,0 +1,11 @@
+= Docker, n’installe pas l’application mais tire la plutôt
+@CherOliv
+2020-09-24
+:jbake-title: Docker, n’installe pas l’application mais tire la plutôt
+:jbake-type: post
+:jbake-tags: blog, ticket, docker, memo
+:jbake-status: published
+:jbake-date: 2020-09-24
+:summary: docker optimisation
+
+==== source: https://hackernoon.com/dont-install-postgres-docker-pull-postgres-bee20e200198[hackernoon.com]

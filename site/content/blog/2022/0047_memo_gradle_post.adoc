@@ -1,0 +1,47 @@
+= Mémo Gradle
+@CherOliv
+2022-05-23
+:jbake-title: Mémo Gradle
+:jbake-type: post
+:jbake-tags: blog, ticket, gradle, memo
+:jbake-status: published
+:jbake-date: 2022-05-23
+:summary: simple mémo gradle
+
+
+== Surcharger la property 'param_component' par la ligne de commande :
+[source,bash]
+----
+./gradlew -Pparam_component=CUSTOM_VALUE
+----
+
+
+
+== ajouter un dossier a un source set dans un projet normal avec le kotlin-dsl
+[source,kotlin]
+----
+sourceSets {
+    getByName("test"){
+        java.srcDir("src/scripts/groovy")
+    }
+    getByName("test"){
+        java.srcDir("src/scripts/kscript")
+    }
+    getByName("test"){
+        java.srcDir("src/test/javascript")
+    }
+}
+----
+
+
+
+== ajouter un dossier à un source set dans un projet android avec le groovy-dsl
+[source,kotlin]
+----
+android {
+    sourceSets {
+        main.java.srcDirs += "src/main/../../../../ceelo/domain/src/main/java/"
+        test.java.srcDirs += "src/test/../../../../ceelo/domain/src/test/java/"
+    }
+}
+----

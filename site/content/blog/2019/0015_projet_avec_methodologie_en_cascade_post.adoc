@@ -1,0 +1,42 @@
+= Gérer un projet digital avec une méthodologie en cascade
+@CherOliv
+2019-08-01
+:jbake-title: Gérer un projet digital avec une méthodologie en cascade
+:jbake-tags: blog, méthodologie, projet, cascade, classique, prédicitive, management
+:jbake-date: 2019-08-01
+:jbake-type: post
+:jbake-status: published
+:summary: un peu de methodo des projets digitals avec la méthodologie en cascade
+
+=== Analyser et receuillir les besoins
+
+
+=== Definir la gestion de projet
+// to get previewable image::../../../assets/diagram/definir_projet.png[definir la gestion de projet]
+image::../../diagram/definir_projet.png[definir la gestion de projet]
+image::../../img/triangle_qcd.png[triangle_qcd]
+
+
+=== Contextualiser le projet
+
+
+=== Analyser et recueillir des besoins
+
+==== Formuler les objectifs et livrables
+
+
+=== Décrypter une grille de lecture
+
+
+== Cadrez le projet avec votre équipe
+
+image::../../img/conductor.png[chef d'orchestre]
+
+
+=== Consulter les experts pour trouver la solution
+
+
+=== Choisir une méthodologie de gestion de projet
+
+image::../../img/cascading_planning.png[planning en cascade]
+image::../../img/Cycle_V_details.jpeg[cycle en V]

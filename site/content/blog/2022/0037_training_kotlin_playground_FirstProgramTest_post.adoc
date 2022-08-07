@@ -1,0 +1,14 @@
+= Training - Playground kotlin: premier test.
+@CherOliv
+2022-05-13
+:jbake-title: Training - Playground kotlin: premier test.
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, playground
+:jbake-status: published
+:jbake-date: 2022-05-13
+:summary: Playground de programmation en kotlin, premier test.
+
+== FirstProgramTest
+
+FirstProgramTest: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/FirstProgramTest.kt[source] +
+notions: affichage écran, fonction

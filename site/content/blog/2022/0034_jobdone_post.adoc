@@ -1,0 +1,12 @@
+= JobDone
+@CherOliv
+2022-05-10
+:jbake-title: JobDone
+:jbake-type: post
+:jbake-tags: blog, ticket, projects, JobDone
+:jbake-status: published
+:jbake-date: 2022-05-10
+:summary: projet jobdone
+
+
+https://github.com/cheroliv/jobdone[dépot jobdone]

@@ -1,0 +1,23 @@
+date=2019-05-08
+type=page
+status=published
+~~~~~~
+
+==== À propos de cheroliv.com
+
+----
+Ce blog est ma carte de visite et mon support pour laisser des traces en ligne.
+Je partage savoir-faire, trucs et astuces, sur des sujets techniques.
+On peut me contacter à cette adresse: cheroliv.developer@laposte.net
+----
+
+===== *_socials:_*
+
+// suppress inspection "AsciiDocLinkResolve"
+* link:feed.xml[rss]
+* https://www.linkedin.com/in/cheroliv-com/[linkedin]
+* https://twitter.com/cheroliv[twitter]
+* https://www.meetup.com/members/290160850/[meetup]
+* https://github.com/cheroliv[github]
+* https://stackoverflow.com/users/837404[stack-overflow]
+* https://www.codewars.com/users/cheroliv[codewars]

@@ -1,0 +1,76 @@
+= Training - Playground kotlin: enum, sealed classes
+@CherOliv
+2022-05-17
+:jbake-title: Training - Playground kotlin: enum, sealed classes
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, playground, kotlin, enum, sealed
+:jbake-status: published
+:jbake-date: 2022-05-17
+:summary: Playground de programmation en kotlin: enum, sealed classes
+
+
+les sealed classes, ne sont pas des énumérations(mot clef:enum). +
+Venant de Java, vous pourriez être tenté de surcharger votre énumération d'apport de fonctionnalités:
+// Java code
+[source,java]
+----
+enum PizzaOrderStatus {
+    ORDER_RECEIVED,
+    PIZZA_BEING_MADE,
+    OUT_FOR_DELIVERY,
+    COMPLETED;
+    public PizzaOrderStatus nextStatus() {
+        switch (this) {
+        case ORDER_RECEIVED: return PIZZA_BEING_MADE;
+        case PIZZA_BEING_MADE: return OUT_FOR_DELIVERY;
+        case OUT_FOR_DELIVERY: return COMPLETED;
+        case COMPLETED:return COMPLETED;
+        }
+    }
+}
+----
+
+Au lieu de cela, vous pouvez utiliser la sealed classe :
+[source,kotlin]
+----
+sealed class PizzaOrderStatus(protected val orderId: Int) {
+    abstract fun nextStatus() : PizzaOrderStatus
+    class OrderReceived(orderId: Int) : PizzaOrderStatus(orderId) {
+        override fun nextStatus(): PizzaOrderStatus {
+            return PizzaBeingMade(orderId)
+        }
+    }
+    class PizzaBeingMade(orderId: Int) : PizzaOrderStatus(orderId) {
+        override fun nextStatus(): PizzaOrderStatus {
+            return OutForDelivery(orderId)
+        }
+    }
+    class OutForDelivery(orderId: Int) : PizzaOrderStatus(orderId) {
+        override fun nextStatus(): PizzaOrderStatus {
+            return Completed(orderId)
+        }
+    }
+    class Completed(orderId: Int) : PizzaOrderStatus(orderId) {
+        override fun nextStatus(): PizzaOrderStatus {
+            return this
+        }
+    }
+}
+----
+
+L'avantage de cette approche est que nous pouvons maintenant transmettre des données avec le
+statut:
+[source,kotlin]
+----
+var status: PizzaOrderStatus = OrderReceived(123)
+while (status !is Completed) {
+    status = when (status) {
+        is OrderReceived -> status.nextStatus()
+        is PizzaBeingMade -> status.nextStatus()
+        is OutForDelivery -> status.nextStatus()
+        is Completed -> status
+    }
+}
+----
+En général, les sealed classes sont bonnes si vous voulez avoir des données associées à un
+Etat.

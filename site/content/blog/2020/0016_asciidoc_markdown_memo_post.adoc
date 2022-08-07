@@ -1,0 +1,25 @@
+= Asciidoc/Markdown Memo
+@CherOliv
+2020-09-15
+:jbake-title: Asciidoc/Markdown Mémo
+:jbake-type: post
+:jbake-tags: blog, ticket, asciidoc, markdown, memo
+:jbake-status: published
+:jbake-date: 2020-09-15
+:summary: simple mémo ascidoc/markdown
+
+
+==== Pourquoi asciidoc ou markdown ?
+Ici je m'oriente vers asciidoc, car j'ai déjà quelques tickets écris en asciidoc. +
+Asciidoc est un langage de balisage, qui permet de produire du contenu, en apportant une mise en page qui garde le texte lisible pour un humain. +
+C'est une façon de standardiser les traitements de textes pour des contenus simples sans logiciel supplémentaire.
+
+
+==== Liens :
+* https://blog.oxiane.com/2018/06/13/asciidoc-documentation-as-code/[@jmdoudoux sur blog.oxiane.com] [asciidoc]
+
+* https://powerman.name/doc/asciidoc[powerman.name] [asciidoc]
+
+* http://hypertuxte.net/projetx/markdown.html[hypertuxte.net] [markdown]
+
+

@@ -1,0 +1,14 @@
+= Détruire une branch sur github
+@CherOliv
+2020-09-16
+:jbake-title: Détruire une branch sur github
+:jbake-type: post
+:jbake-tags: blog, ticket, branch, git, github, delete, vcs, csv
+:jbake-status: published
+:jbake-date: 2020-09-16
+:summary: complément mémo git
+
+==== Détruire une branch sur github
+
+==== Lien: https://gist.github.com/cheroliv/921a13ed23ae6d4d66af8d43dd536987[gist]
+
