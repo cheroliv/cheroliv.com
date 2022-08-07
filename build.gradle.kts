@@ -46,17 +46,17 @@ data class BakeConf(
     val cname: String,
 )
 
-data class site(
+data class Site(
     val cnameFileName: String = "CNAME",
     val homePath: String = getProperty("user.home"),
     val separator: String = getProperty("file.separator"),
     val origin: String = "origin",
     val remote: String = "remote",
-    val confPath: String = "$homePath$separator${properties["managed_config_path"]}",
-    val configFile: File = File(confPath),
+    //create property fun confPath
+//    val confPath: String = "${java.lang.System.getProperty("user.home")}${java.lang.System.getProperty("file.separator")}${properties["managed_config_path"]}",
+    //create property fun configFile
+//    val configFile: File = File(confPath),
 )
-
-
 
 val cnameFileName: String by lazy { "CNAME" }
 val homePath: String by lazy { getProperty("user.home") }
@@ -71,6 +71,7 @@ val conf: ManagedBlogConf by lazy {
         ManagedBlogConf::class.java
     )
 }
+
 val dummyConfig by lazy {
     ManagedBlogConf(
         bake = BakeConf(
