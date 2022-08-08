@@ -9,7 +9,7 @@ https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 == Modus operandi?
 
 
-====== Run in local mode :
+=== Run in local mode :
 
 Just in case, you need to make the script executable, for the first time you run it
 ```
@@ -21,7 +21,7 @@ Now enjoy the live local mode :
 ./jbake.sh
 ```
 
-===== Deploy blog to CDN
+=== Deploy blog to CDN
 ```
 ./gradlew publishSite
 ```
