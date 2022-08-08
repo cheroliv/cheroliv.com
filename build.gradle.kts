@@ -77,7 +77,7 @@ fun mapper() = ObjectMapper(YAMLFactory()).apply {
     registerKotlinModule()
 }
 
-fun createCnameFile() {
+fun createCnameFile(conf: ManagedBlogConf) {
     if (conf.bake.cname != "") file(
         "${project.buildDir.absolutePath}$separator${
             conf.bake.destDirPath
@@ -115,7 +115,10 @@ fun copyBakedFilesToRepo(
 }
 
 
-fun initAddCommit(repoDir: File): RevCommit {
+fun initAddCommit(
+    repoDir: File,
+    conf: ManagedBlogConf,
+): RevCommit {
     //3) initialiser un repo dans le dossier cvs
     init()
         .setDirectory(repoDir)
@@ -135,7 +138,10 @@ fun initAddCommit(repoDir: File): RevCommit {
         }
 }
 
-fun push(repoDir: File): MutableIterable<PushResult>? {
+fun push(
+    repoDir: File,
+    conf: ManagedBlogConf,
+): MutableIterable<PushResult>? {
     Git(FileRepositoryBuilder()
         .setGitDir(File("${repoDir.absolutePath}${separator}.git"))
         .readEnvironment()
@@ -168,6 +174,8 @@ fun push(repoDir: File): MutableIterable<PushResult>? {
     }
 }
 
+//TODO: article sur https://docs.gradle.org/current/userguide/more_about_tasks.html#sec:passing_arguments_to_a_task_constructor
+//tasks.register("pushPages", conf)
 tasks.register("pushPages") {
     group = "managed"
     description = "Push pages to repository."
@@ -184,9 +192,9 @@ tasks.register("pushPages") {
             )
             //3) initialiser un repo dans le dossier cvs
             // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
-            initAddCommit(repoDir = this)
+            initAddCommit(repoDir = this, conf)
             //6) push
-            push(repoDir = this)
+            push(repoDir = this, conf)
             deleteRecursively()
         }
     }
@@ -202,40 +210,22 @@ tasks.register("publishSite") {
         srcDirName = conf.bake.srcPath
         destDirName = conf.bake.destDirPath
     }
-    doFirst { createCnameFile() }
+    doFirst { createCnameFile(conf) }
 }
 
+
+
+
+//TODO: article sur https://docs.gradle.org/current/userguide/more_about_tasks.html#sec:passing_arguments_to_a_task_constructor
+//tasks.register("publishSiteGitHubActions", conf)
 tasks.register("publishSiteGitHubActions") {
     group = "managed"
     description = "Publish site online with github actions."
-}
-
-tasks.register("showBlogContextFile") {
-    group = "managed"
-    description = "Show blog context file."
-    doLast { println(configFile.readText(UTF_8)) }
-}
-tasks.register("showBlogContextYaml") {
-    group = "managed"
-    description = "Show blog context in yaml format."
-    doLast { println(mapper().writeValueAsString(conf)) }
-}
-tasks.register("showBlogContext") {
-    group = "managed"
-    description = "Show blog context toString()."
-    doLast { println(conf) }
-}
-
-tasks.register("initConf") {
-    group = "managed"
-    description =
-        "create a new blog configuration if not exists and adapt it for your needs by editing the file $confPath"
-    doFirst {
-        println(
-            "create a new blog configuration if not exists and adapt it for your needs by editing the file $confPath"
-        )
-        File(confPath).apply { if (!exists()) createConf() }
+    dependsOn("bake")
+    finalizedBy("pushPages")
+    jbake {
+        srcDirName = conf.bake.srcPath
+        destDirName = conf.bake.destDirPath
     }
+    doFirst { createCnameFile(conf) }
 }
-
-fun createConf() = println("Not yet implemented")
