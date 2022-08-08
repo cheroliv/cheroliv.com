@@ -257,6 +257,11 @@ tasks.register("publishSite") {
     doFirst { createCnameFile() }
 }
 
+tasks.register("publishSiteGitHubActions") {
+    group = "managed"
+    description = "Publish site online with github actions."
+}
+
 tasks.register("showBlogContextFile") {
     group = "managed"
     description = "Show blog context file."

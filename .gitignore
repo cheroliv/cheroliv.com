@@ -1,5 +1,5 @@
 *.hprof
-managed-jbake.code-workspace
+cheroliv.com.code-workspace
 managed-jbake-context.yml
 gradle-home.properties
 build
