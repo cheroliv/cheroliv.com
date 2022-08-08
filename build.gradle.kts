@@ -72,58 +72,6 @@ val conf: ManagedBlogConf by lazy {
     )
 }
 
-val dummyConfig by lazy {
-    ManagedBlogConf(
-        bake = BakeConf(
-            srcPath = ".",
-            destDirPath = "jbake",
-            cname = "www.acme.com"
-        ),
-        pushPage = GitPushConf(
-            from = "build/jbake",
-            to = ".",
-            repo = RepoConf(
-                name = "static-content.github.io",
-                repository = "https://github.com/static-content/static-content.github.io.git",
-                credentials = RepoCredentials(
-                    username = "",
-                    password = ""
-                )
-            ),
-            branch = "master",
-            message = "www.acme.com"
-        ),
-        pushSource = GitPushConf(
-            from = "",
-            to = "",
-            repo = RepoConf(
-                name = "",
-                repository = "",
-                credentials = RepoCredentials(
-                    username = "jdoe@acme.com",
-                    password = "pw"
-                )
-            ),
-            branch = "master",
-            message = ""
-        ),
-        pushTemplate = GitPushConf(
-            from = "",
-            to = "",
-            repo = RepoConf(
-                name = "",
-                repository = "",
-                credentials = RepoCredentials(
-                    username = "",
-                    password = ""
-                )
-            ),
-            branch = "master",
-            message = ""
-        ),
-    )
-}
-
 fun mapper() = ObjectMapper(YAMLFactory()).apply {
     disable(WRITE_DATES_AS_TIMESTAMPS)
     registerKotlinModule()
@@ -276,12 +224,6 @@ tasks.register("showBlogContext") {
     group = "managed"
     description = "Show blog context toString()."
     doLast { println(conf) }
-}
-
-tasks.register("showHardCodedBlogContextObjectToYaml") {
-    group = "managed"
-    description = "Show blog context object in yaml format."
-    doLast { println(mapper().writeValueAsString(dummyConfig)) }
 }
 
 tasks.register("initConf") {

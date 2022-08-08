@@ -12,6 +12,10 @@ pluginManagement {
             val commonsIoVersion = "2.11.0"
             val slf4jVersion = "1.7.36"
             val xzVersion = "1.9"
+
+            classpath(dependencyNotation = "org.slf4j:slf4j-simple:$slf4jVersion")
+            classpath(dependencyNotation = "commons-io:commons-io:$commonsIoVersion")
+
             classpath(dependencyNotation = "com.fasterxml.jackson.module:jackson-module-kotlin:$jacksonVersion")
             classpath(dependencyNotation = "com.fasterxml.jackson.dataformat:jackson-dataformat-yaml:$jacksonVersion")
             classpath(dependencyNotation = "com.fasterxml.jackson.datatype:jackson-datatype-jsr310:$jacksonVersion")
@@ -20,9 +24,6 @@ pluginManagement {
             classpath(dependencyNotation = "org.eclipse.jgit:org.eclipse.jgit.archive:$jgitVersion")
             classpath(dependencyNotation = "org.eclipse.jgit:org.eclipse.jgit.ssh.jsch:$jgitVersion")
             classpath(dependencyNotation = "org.tukaani:xz:$xzVersion")
-
-            classpath(dependencyNotation = "commons-io:commons-io:$commonsIoVersion")
-            classpath(dependencyNotation = "org.slf4j:slf4j-simple:$slf4jVersion")
         }
     }
     plugins { id("org.jbake.site").version(extra["jbake_gradle_plugin_version"].toString()) }
