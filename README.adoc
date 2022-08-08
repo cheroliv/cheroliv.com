@@ -1,8 +1,11 @@
 = Managed JBake, static site
 
 ifdef::status[]
-image:https://github.com/cheroliv/cheroliv.com/workflows/CI/badge.svg[Build Status (GitHub Actions),link=https://github.com/cheroliv/cheroliv.com/actions?query=workflow%3ACI+branch%3Amain]
+image:https://github.com/cheroliv/cheroliv.com/actions/workflows/gradle.yml/badge.svg[Build Status (GitHub Actions),link=https://github.com/cheroliv/cheroliv.com/actions/workflows/gradle.yml]
 endif::[]
+
+[![Java CI with Gradle](https://github.com/cheroliv/cheroliv.com/actions/workflows/gradle.yml/badge.svg)](https://github.com/cheroliv/cheroliv.com/actions/workflows/gradle.yml)
+
 
 https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 + https://jbake.org/[JBake]
