@@ -213,16 +213,12 @@ tasks.register("publishSite") {
     doFirst { createCnameFile(conf) }
 }
 
-
-
-
-//TODO: article sur https://docs.gradle.org/current/userguide/more_about_tasks.html#sec:passing_arguments_to_a_task_constructor
-//tasks.register("publishSiteGitHubActions", conf)
 tasks.register("publishSiteGitHubActions") {
     group = "managed"
     description = "Publish site online with github actions."
     dependsOn("bake")
     finalizedBy("pushPages")
+    //TODO:create conf here
     jbake {
         srcDirName = conf.bake.srcPath
         destDirName = conf.bake.destDirPath
