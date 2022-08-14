@@ -625,9 +625,12 @@ class DatesHoursTest {
 <<toc>>
 [source,kotlin]
 ----
+package playground.programming
+
 import java.util.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
+import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
 class ArrayCollectionStreamTest {
@@ -639,7 +642,7 @@ class ArrayCollectionStreamTest {
         val intArray = arrayOf(10, 5, 7, -3)
         //tri le tableau
         Arrays.sort(intArray)
-        val pos = Arrays.binarySearch(intArray, 7)
+        var pos = Arrays.binarySearch(intArray, 7)
         //la valeur 7 est trouvé a l'index 2
         assertEquals(2, pos)
         //12 pas trouvé retourne une valeur negative
@@ -676,7 +679,6 @@ class ArrayCollectionStreamTest {
         assertTrue(type.isArray())
         //est ce que data est un tableau de byte
         assertEquals(Byte::class.java, type.getComponentType())
-
 
         //Collection
         val s = java.util.HashSet<String>()
@@ -747,12 +749,49 @@ class ArrayCollectionStreamTest {
         list.add("clé")
         //en premier on trie
         Collections.sort(list)
+        //en kotlin
+        list.sort()
         //en deuxieme on cherche
         //retourne l'index du premier trouvé sinon -1
         pos = Collections.binarySearch(list, "clé")
-        assertEquals(0,pos)
-        //autre méthides intéressantes concernant Collections
+        assertEquals(0, pos)
+        val list1 = mutableListOf(1, 2, 3, 4, 5)
+        val list2 = mutableListOf<Int>(0, 0, 0, 0, 0)
 
+        //d'autres méthodes intéressantes concernant Collections
+
+        //copie list1 dans list2, 2e parametre dans 1er parametre
+        Collections.copy(list2, list1)
+        //comparaison de la copy avec filter
+        assertTrue(list1.filterIndexed { i: Int, it: Int -> it != list2[i] }.isEmpty())
+        //comparaison de la copy avec map
+        list1.mapIndexed { index: Int, it: Int -> assertEquals(it, list2[index]) }
+
+        //rempli avec des 0
+        Collections.fill(list2, 0)
+        assertTrue(list2.none { it != 0 })
+
+        //le maximum
+        assertEquals(5, Collections.max(list1))
+
+        //le minimum
+        assertEquals(1, Collections.min(list1))
+
+        //renverse
+        Collections.reverse(list)
+        listOf("items3", "items2", "items1", "clé").mapIndexed { i: Int, it: String -> assertEquals(it, list[i]) }
+
+        //mélange la list
+        Collections.shuffle(list)
+
+        //retourne un ensemble immuable possédant un seul élément 0
+        Collections.singleton(0)
+        //renvoi un emballage immuable autour d'une liste
+        Collections.unmodifiableList(list)
+        //renvoi un emballage synchronisé autour d'une map, ensemble clé valeur
+        Collections.synchronizedMap(m)
+
+        //java.util.Properties un est objet key value
     }
 }
 ----

@@ -174,8 +174,6 @@ fun push(
     }
 }
 
-//TODO: article sur https://docs.gradle.org/current/userguide/more_about_tasks.html#sec:passing_arguments_to_a_task_constructor
-//tasks.register("pushPages", conf)
 tasks.register("pushPages") {
     group = "managed"
     description = "Push pages to repository."
@@ -200,6 +198,47 @@ tasks.register("pushPages") {
     }
     doLast { File(bakedPath).deleteRecursively() }
 }
+abstract class CustomTask @Inject constructor(
+    private val message: String,
+    private val number: Int
+) : DefaultTask()
+
+tasks.register<CustomTask>("myTask", "hello", 42)
+
+
+abstract class PushPagesTask @Inject constructor(
+    private val conf: ManagedBlogConf,
+) : DefaultTask()
+
+//TODO: article sur https://docs.gradle.org/current/userguide/more_about_tasks.html#sec:passing_arguments_to_a_task_constructor
+//tasks.register("pushPages", conf)
+tasks.register<PushPagesTask>("pushPagesGitHubActions")
+{
+    group = "managed"
+    description = "Push pages to repository."
+    val bakedPath = "${project.buildDir.absolutePath}$separator${conf.bake.destDirPath}"
+    doFirst {
+        //1) créer un dossier cvs
+        createRepoDir(
+            path = "${project.buildDir.absolutePath}$separator${conf.pushPage.to}"
+        ).apply {
+            //2) déplacer le contenu du dossier jbake dans le dossier cvs
+            copyBakedFilesToRepo(
+                bakeDirPath = bakedPath,
+                repoDir = this
+            )
+            //3) initialiser un repo dans le dossier cvs
+            // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
+            initAddCommit(repoDir = this, conf)
+            //6) push
+            push(repoDir = this, conf)
+            deleteRecursively()
+        }
+    }
+    doLast { File(bakedPath).deleteRecursively() }
+}
+
+
 
 tasks.register("publishSite") {
     group = "managed"
