@@ -1,0 +1,10 @@
+build
+.gradle
+.idea
+.settings
+bin
+codes_template
+.classpath
+.project
+local.properties
+/codes.code-workspace

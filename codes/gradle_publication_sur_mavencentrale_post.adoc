@@ -1,0 +1,4 @@
+= Publier un projet sur maven centrale avec gradle
+
+_https://www.albertgao.xyz/2018/01/18/how-to-publish-artifact-to-maven-central-via-gradle/[source]_ +
+

@@ -1,3 +1,5 @@
+import Build_gradle.Tasks.TASK_BAKE
+import Build_gradle.Tasks.TASK_PUSH_PAGES
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
@@ -174,7 +176,11 @@ fun push(
     }
 }
 
-tasks.register("pushPages") {
+object Tasks {
+    const val TASK_PUSH_PAGES = "pushPages"
+    const val TASK_BAKE = "bake"
+}
+tasks.register(TASK_PUSH_PAGES) {
     group = "managed"
     description = "Push pages to repository."
     val bakedPath = "${project.buildDir.absolutePath}$separator${conf.bake.destDirPath}"
@@ -239,12 +245,11 @@ abstract class PushPagesTask @Inject constructor(
 //}
 
 
-
 tasks.register("publishSite") {
     group = "managed"
     description = "Publish site online."
-    dependsOn("bake")
-    finalizedBy("pushPages")
+    dependsOn(TASK_BAKE )
+    finalizedBy(TASK_PUSH_PAGES)
     jbake {
         srcDirName = conf.bake.srcPath
         destDirName = conf.bake.destDirPath
@@ -255,8 +260,8 @@ tasks.register("publishSite") {
 //tasks.register("publishSiteGitHubActions") {
 //    group = "managed"
 //    description = "Publish site online with github actions."
-//    dependsOn("bake")
-//    finalizedBy("pushPages")
+//    dependsOn(TASK_BAKE )
+//    finalizedBy(TASK_PUSH_PAGES)
 //    //TODO:create conf here
 //    jbake {
 //        srcDirName = conf.bake.srcPath

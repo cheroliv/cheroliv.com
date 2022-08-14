@@ -28,4 +28,16 @@ pluginManagement {
     }
     plugins { id("org.jbake.site").version(extra["jbake_gradle_plugin_version"].toString()) }
 }
+@Suppress("UnstableApiUsage")
+dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        mavenLocal()
+        google()
+        mavenCentral()
+        maven { url = uri("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/bootstrap/") }
+//        maven { url = uri("https://jitpack.io") }
+    }
+}
 rootProject.name = "cheroliv.com"
+include("codes")
