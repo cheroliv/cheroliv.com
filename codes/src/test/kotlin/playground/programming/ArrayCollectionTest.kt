@@ -1,9 +1,10 @@
-//@file:Suppress(
-//    "RemoveRedundantQualifierName",
-//    "UsePropertyAccessSyntax",
-//    "UNUSED_VARIABLE", "LocalVariableName", "ReplaceGetOrSet",
-//    "ReplaceNegatedIsEmptyWithIsNotEmpty",
-//)
+@file:Suppress(
+    "RemoveRedundantQualifierName",
+    "UNUSED_VARIABLE", "LocalVariableName", "ReplaceGetOrSet",
+    "ReplaceNegatedIsEmptyWithIsNotEmpty", "JavaCollectionsStaticMethod",
+    "DEPRECATION", "ReplacePutWithAssignment",
+    "PLATFORM_CLASS_MAPPED_TO_KOTLIN","UsePropertyAccessSyntax",
+)
 
 package playground.programming
 
@@ -136,7 +137,7 @@ class ArrayCollectionTest {
         pos = Collections.binarySearch(list, "clé")
         assertEquals(0, pos)
         val list1 = mutableListOf(1, 2, 3, 4, 5)
-        val list2 = mutableListOf<Int>(0, 0, 0, 0, 0)
+        val list2 = mutableListOf(0, 0, 0, 0, 0)
 
         //d'autres méthodes intéressantes concernant Collections
 
@@ -170,7 +171,5 @@ class ArrayCollectionTest {
         Collections.unmodifiableList(list)
         //renvoi un emballage synchronisé autour d'une map, ensemble clé valeur
         Collections.synchronizedMap(m)
-
-        //java.util.Properties un est objet key value
     }
 }
