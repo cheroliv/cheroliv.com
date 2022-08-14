@@ -4,7 +4,7 @@
 :jbake-title: Java: System.Properties
 :jbake-tags: blog, JVM, Java, System, Platform Environment, JDK8+
 :jbake-type: post
-:jbake-status: published
+:jbake-status: draft
 :jbake-date: 2019-08-17
 :summary: la classe System.Properties de la jvm
 
