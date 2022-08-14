@@ -3,7 +3,7 @@
     "UNUSED_VARIABLE", "LocalVariableName", "ReplaceGetOrSet",
     "ReplaceNegatedIsEmptyWithIsNotEmpty", "JavaCollectionsStaticMethod",
     "DEPRECATION", "ReplacePutWithAssignment",
-    "PLATFORM_CLASS_MAPPED_TO_KOTLIN","UsePropertyAccessSyntax",
+    "PLATFORM_CLASS_MAPPED_TO_KOTLIN", "UsePropertyAccessSyntax",
 )
 
 package playground.programming
@@ -160,7 +160,14 @@ class ArrayCollectionTest {
 
         //renverse
         Collections.reverse(list)
-        listOf("items3", "items2", "items1", "clé").mapIndexed { i: Int, it: String -> assertEquals(it, list[i]) }
+        listOf(
+            "items3",
+            "items2",
+            "items1",
+            "clé"
+        ).mapIndexed { i: Int, it: String ->
+            assertEquals(it, list[i])
+        }
 
         //mélange la list
         Collections.shuffle(list)
