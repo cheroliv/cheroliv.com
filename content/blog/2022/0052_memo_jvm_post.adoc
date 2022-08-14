@@ -12,7 +12,8 @@
 . <<char>>
 . <<math>>
 . <<date>>
-. <<arrColStream>>
+. <<arrCol>>
+. <<sysProp>>
 
 == chaines de caractères et caractères [[char]]
 <<toc>>
@@ -620,7 +621,7 @@ class DatesHoursTest {
 }
 ----
 
-== tableaux, collections et streams [[arrColStream]]
+== tableaux et collections [[arrCol]]
 
 <<toc>>
 [source,kotlin]
@@ -633,7 +634,7 @@ import kotlin.test.assertEquals
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
-class ArrayCollectionStreamTest {
+class ArrayCollectionTest {
     @Test
     fun `Tableaux, collections, streams`() {
         //Tableau
@@ -795,3 +796,46 @@ class ArrayCollectionStreamTest {
     }
 }
 ----
+
+
+== System.Properties [[sysProp]]
+
+<<toc>>
+
+https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html[System.Properties doc officielle]
+
+voici un tableau de quelques propriétés intéressantes +
+Ces propriétés sont intéressantes pour avoir des informations +
+sur le système hôte de la JVM.
+
+|===
+|Key |Meaning
+|"file.separator"
+|Character that separates components of a file path. This is "/" on UNIX and "\" on Windows.
+|"java.class.path"
+|Path used to find directories and JAR archives containing class files. Elements of the class path are separated by a platform-specific character specified in the path.separator property.
+|"java.home"
+|Installation directory for Java Runtime Environment (JRE)
+|"java.vendor"
+|JRE vendor name
+|"java.vendor.url"
+|JRE vendor URL
+|"java.version"
+|JRE version number
+|"line.separator"
+|Sequence used by operating system to separate lines in text files
+|"os.arch"
+|Operating system architecture
+|"os.name"
+|Operating system name
+|"os.version"
+|Operating system version
+|"path.separator"
+|Path separator character used in java.class.path
+|"user.dir"
+|User working directory
+|"user.home"
+|User home directory
+|"user.name"
+|User account name
+|===
