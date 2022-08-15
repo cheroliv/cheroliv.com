@@ -74,8 +74,7 @@ class ThreadsTest {
 
         override fun run() {
             while (keepRunning) {
-                val time = df.format(Date())
-                println(time)
+                println(df.format(Date()))
                 try {
                     Thread.sleep(1000)
                 } catch (e: InterruptedException) {
