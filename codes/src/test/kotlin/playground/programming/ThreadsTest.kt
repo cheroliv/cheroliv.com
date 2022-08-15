@@ -88,4 +88,11 @@ class ThreadsTest {
         }
     }
 
+    //java.util.Timer
+    //java.util.TimerTask
+    //ces classes permettent l'exécution de taches répétitives
+    @Test
+    fun `Timer et TimerTask test`() {
+//        p180
+    }
 }
