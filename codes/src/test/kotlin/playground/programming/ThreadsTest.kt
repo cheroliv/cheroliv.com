@@ -2,6 +2,7 @@
 
 package playground.programming
 
+import java.text.DateFormat
 import java.util.*
 import kotlin.test.Test
 
@@ -41,21 +42,51 @@ class ThreadsTest {
         //alors celui de niveau inférieur ne peut s'exécuter
 
         //on définit un thread avec une priorité inférieur à la normale
-        t.setPriority(Thread.NORM_PRIORITY-1)
+        t.setPriority(Thread.NORM_PRIORITY - 1)
 
         //ici on définit un thread avec une priorité inférieur à la priorité
         //du thread courant
-        t.setPriority(Thread.currentThread().getPriority()-1)
+        t.setPriority(Thread.currentThread().getPriority() - 1)
 
         //Thread.yield() fait une pause pour laisser les autres threads de meme priorité s'exécuter
+
+        DummyClock()
     }
 
-    class BackgroundSorter(val l: List<Int>) : Thread() {
+    class BackgroundSorter(private val l: List<Int>) : Thread() {
         override fun run() {
             Collections.sort(l)
             println("list2 sorted$l")
         }
     }
 
+    //arrete du thread plutôt qu'utiliser la fonction Thread.stop()
+    // qui laisse dans un etat non controlé la memoire.
+    //utiliser la méthode tel que l'exemple pleaseStop()
+    class DummyClock(
+        private val df: DateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM),
+        private var keepRunning: Boolean = true
+    ) : Thread() {
+        init {
+            isDaemon = true
+            start()
+        }
+
+        override fun run() {
+            while (keepRunning) {
+                val time = df.format(Date())
+                println(time)
+                try {
+                    Thread.sleep(1000)
+                } catch (e: InterruptedException) {
+                    println(e.message)
+                }
+            }
+        }
+
+        fun pleaseStop() {
+            keepRunning = false
+        }
+    }
 
 }
