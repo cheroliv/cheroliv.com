@@ -851,10 +851,6 @@ sur le système hôte de la JVM.
 [source,kotlin]
 
 ----
-@file:Suppress("UsePropertyAccessSyntax")
-
-package playground.programming
-
 import java.text.DateFormat
 import java.util.*
 import kotlin.test.Test
@@ -911,8 +907,8 @@ class ThreadsTest {
         }
     }
 
-    //arrêt du thread plutôt qu'utiliser la fonction Thread.stop()
-    // qui laisse dans un état non controlé de la memoire.
+    //pour l'arrêt du thread, plutôt qu'utiliser la fonction Thread.stop()
+    // qui laisse la memoire dans un état non controlé.
     //utiliser la méthode tel que l'exemple pleaseStop()
     class DummyClock(
         private val df: DateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM),
@@ -927,7 +923,7 @@ class ThreadsTest {
             while (keepRunning) {
                 println(df.format(Date()))
                 try {
-                    Thread.sleep(1000)
+                    sleep(1000)
                 } catch (e: InterruptedException) {
                     println(e.message)
                 }
