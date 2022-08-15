@@ -49,8 +49,6 @@ class ThreadsTest {
         t.setPriority(Thread.currentThread().getPriority() - 1)
 
         //Thread.yield() fait une pause pour laisser les autres threads de meme priorité s'exécuter
-
-        DummyClock()
     }
 
     class BackgroundSorter(private val l: List<Int>) : Thread() {
@@ -60,8 +58,8 @@ class ThreadsTest {
         }
     }
 
-    //arrete du thread plutôt qu'utiliser la fonction Thread.stop()
-    // qui laisse dans un etat non controlé la memoire.
+    //pour l'arrêt du thread, plutôt qu'utiliser la fonction Thread.stop()
+    // qui laisse la memoire dans un état non controlé.
     //utiliser la méthode tel que l'exemple pleaseStop()
     class DummyClock(
         private val df: DateFormat = DateFormat.getTimeInstance(DateFormat.MEDIUM),
@@ -76,7 +74,7 @@ class ThreadsTest {
             while (keepRunning) {
                 println(df.format(Date()))
                 try {
-                    Thread.sleep(1000)
+                    sleep(1000)
                 } catch (e: InterruptedException) {
                     println(e.message)
                 }
@@ -93,6 +91,6 @@ class ThreadsTest {
     //ces classes permettent l'exécution de taches répétitives
     @Test
     fun `Timer et TimerTask test`() {
-//        p180
+        DummyClock()
     }
 }
