@@ -3,10 +3,10 @@
 2022-05-09
 :jbake-title: Ceelo
 :jbake-type: post
-:jbake-tags: blog, ticket, projects, ceelo
+:jbake-tags: blog, ticket, projects, ceelo, android, github, google-play
 :jbake-status: published
 :jbake-date: 2022-05-09
-:summary: Ceelo
+:summary: Ceelo: android dice game
 
-
-https://github.com/cheroliv/ceelo[dépot ceelo]
+https://play.google.com/store/apps/details?id=game.ceelo[application android] +
+https://github.com/cheroliv/ceelo[dépot github]
