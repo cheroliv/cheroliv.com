@@ -8,7 +8,7 @@
 :jbake-date: 2022-05-23
 :summary: simple mémo gradle
 
-
+//TODO: passer en memo gradle
 == Surcharger la property 'param_component' par la ligne de commande :
 [source,bash]
 ----

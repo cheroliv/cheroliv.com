@@ -9,6 +9,6 @@
 :summary: Playground de programmation en kotlin, premier test.
 
 == FirstProgramTest
-
+//TODO : changer vers codes module
 FirstProgramTest: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/FirstProgramTest.kt[source] +
 notions: affichage écran, fonction

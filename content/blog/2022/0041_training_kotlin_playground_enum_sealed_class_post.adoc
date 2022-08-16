@@ -8,7 +8,7 @@
 :jbake-date: 2022-05-17
 :summary: Playground de programmation en kotlin: enum, sealed classes
 
-
+//TODO: Passer cette article en memo kotlin
 les sealed classes, ne sont pas des énumérations(mot clef:enum). +
 Venant de Java, vous pourriez être tenté de surcharger votre énumération d'apport de fonctionnalités:
 // Java code

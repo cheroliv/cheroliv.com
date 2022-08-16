@@ -4,7 +4,7 @@
 :jbake-title: Training - Playground
 :jbake-type: post
 :jbake-tags: blog, ticket, Training, playground
-:jbake-status: published
+:jbake-status: draft
 :jbake-date: 2022-05-11
 :summary: Playground de programmation
 

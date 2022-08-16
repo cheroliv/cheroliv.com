@@ -10,5 +10,6 @@
 
 
 ==  ConcatFunctionTest
+//TODO : changer vers codes module
 ExampleUnitTest: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/ConcatFunctionTest.kt[source] +
 notions: mémoire, variable, valeur, objet, extension de fonction
