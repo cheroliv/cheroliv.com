@@ -32,7 +32,7 @@ jobs:
     - name: Build with Gradle
       uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
       with:
-#        arguments: build -x :codes:check -x :code:assemble -x :codes:build -Psite_push_repo_name= -Psite_push_repo_url=  -Psite_push_repo_username= -Psite_push_repo_password=
-        arguments: :displayParam -Psite_push_repo_name=${{ secrets.SITE_PUSH_REPO_NAME }}
-#        arguments: :displayParam
         gradle-version: 7.5.1
+#        arguments: build -x :codes:check -x :code:assemble -x :codes:build -Psite_push_repo_name= -Psite_push_repo_url=  -Psite_push_repo_username= -Psite_push_repo_password=
+        arguments: :displayParam -Psite_push_repo_name=secrets.SITE_PUSH_REPO_NAME
+#        arguments: :displayParam
