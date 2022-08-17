@@ -30,12 +30,14 @@ jobs:
           distribution: 'temurin'
           cache: gradle
       - name: Build with Gradle
+        env:
+            SITE_PUSH_REPO_NAME: ${{ secrets.SITE_PUSH_REPO_NAME }}
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
         #        env:
         #          SITE_PUSH_REPO_NAME: ${{ secrets.SITE_PUSH_REPO_NAME }}
         with:
           gradle-version: 7.5.1
           #        arguments: build -x :codes:check -x :code:assemble -x :codes:build -Psite_push_repo_name= -Psite_push_repo_url=  -Psite_push_repo_username= -Psite_push_repo_password=
-#          SITE_PUSH_REPO_NAME: ${{ secrets.SITE_PUSH_REPO_NAME }}
-#          arguments: -q :displayParam -Psite_push_repo_name=${{ SITE_PUSH_REPO_NAME }}
+          #          SITE_PUSH_REPO_NAME: ${{ secrets.SITE_PUSH_REPO_NAME }}
+          #          arguments: -q :displayParam -Psite_push_repo_name=${{ SITE_PUSH_REPO_NAME }}
           arguments: -q :displayParam -Psite_push_repo_name=${{ secrets.SITE_PUSH_REPO_NAME }}
