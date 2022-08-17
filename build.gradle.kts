@@ -1,7 +1,8 @@
 import Build_gradle.Tasks.TASK_BAKE
+import Build_gradle.Tasks.TASK_PUBLISH_SITE
 import Build_gradle.Tasks.TASK_PUSH_PAGES
 import com.fasterxml.jackson.databind.ObjectMapper
-import com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS
+import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.module.kotlin.registerKotlinModule
 import org.eclipse.jgit.api.Git
@@ -19,8 +20,8 @@ plugins { id("org.jbake.site") }
 data class ManagedBlogConf(
     val bake: BakeConf,
     val pushPage: GitPushConf,
-    val pushSource: GitPushConf?,
-    val pushTemplate: GitPushConf?,
+    val pushSource: GitPushConf? = null,
+    val pushTemplate: GitPushConf? = null,
 )
 
 data class RepoCredentials(
@@ -67,16 +68,37 @@ val origin: String by lazy { "origin" }
 val remote: String by lazy { "remote" }
 val confPath: String by lazy { "$homePath$separator${properties["managed_config_path"]}" }
 val configFile by lazy { File(confPath) }
-val conf: ManagedBlogConf by lazy {
-    mapper().readValue(
+val localConf: ManagedBlogConf by lazy {
+    ObjectMapper(YAMLFactory()).apply {
+        disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+        registerKotlinModule()
+    }.readValue(
         configFile,
         ManagedBlogConf::class.java
     )
 }
-
-fun mapper() = ObjectMapper(YAMLFactory()).apply {
-    disable(WRITE_DATES_AS_TIMESTAMPS)
-    registerKotlinModule()
+val actionConf: ManagedBlogConf by lazy {
+    ManagedBlogConf(
+        BakeConf(
+            srcPath = properties["site_bake_src"].toString(),
+            destDirPath = properties["site_bake_dest"].toString(),
+            cname = properties["site_bake_cname"].toString()
+        ),
+        GitPushConf(
+            from = properties["site_push_from"].toString(),
+            to = properties["site_push_to"].toString(),
+            repo = RepoConf(
+                name = properties["site_push_repo_name"].toString(),
+                repository = properties["site_push_repo_url"].toString(),
+                credentials = RepoCredentials(
+                    username = properties["site_push_repo_username"].toString(),
+                    password = properties["site_push_repo_password"].toString()
+                ),
+            ),
+            branch = properties["site_push_branch"].toString(),
+            message = properties["site_push_message"].toString()
+        )
+    )
 }
 
 fun createCnameFile(conf: ManagedBlogConf) {
@@ -107,12 +129,7 @@ fun copyBakedFilesToRepo(
     bakeDirPath: String,
     repoDir: File
 ): Unit = File(bakeDirPath).run {
-    assert(
-        copyRecursively(
-            target = repoDir,
-            overwrite = true
-        )
-    )
+    assert(copyRecursively(target = repoDir, overwrite = true))
     assert(deleteRecursively())
 }
 
@@ -179,15 +196,17 @@ fun push(
 object Tasks {
     const val TASK_PUSH_PAGES = "pushPages"
     const val TASK_BAKE = "bake"
+    const val TASK_PUBLISH_SITE = "publishSite"
 }
+
 tasks.register(TASK_PUSH_PAGES) {
     group = "managed"
     description = "Push pages to repository."
-    val bakedPath = "${project.buildDir.absolutePath}$separator${conf.bake.destDirPath}"
+    val bakedPath = "${project.buildDir.absolutePath}$separator${localConf.bake.destDirPath}"
     doFirst {
         //1) créer un dossier cvs
         createRepoDir(
-            path = "${project.buildDir.absolutePath}$separator${conf.pushPage.to}"
+            path = "${project.buildDir.absolutePath}$separator${localConf.pushPage.to}"
         ).apply {
             //2) déplacer le contenu du dossier jbake dans le dossier cvs
             copyBakedFilesToRepo(
@@ -196,65 +215,53 @@ tasks.register(TASK_PUSH_PAGES) {
             )
             //3) initialiser un repo dans le dossier cvs
             // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
-            initAddCommit(repoDir = this, conf)
+            initAddCommit(repoDir = this, localConf)
             //6) push
-            push(repoDir = this, conf)
+            push(repoDir = this, localConf)
             deleteRecursively()
         }
     }
     doLast { File(bakedPath).deleteRecursively() }
 }
-abstract class CustomTask @Inject constructor(
-    private val message: String,
-    private val number: Int
-) : DefaultTask()
-
-tasks.register<CustomTask>("myTask", "hello", 42)
 
 
-abstract class PushPagesTask @Inject constructor(
-    private val conf: ManagedBlogConf,
-) : DefaultTask()
+tasks.register("pushPagesGitHubActions") {
+    group = "managed"
+    description = "Push pages to repository."
 
-//TODO: article sur https://docs.gradle.org/current/userguide/more_about_tasks.html#sec:passing_arguments_to_a_task_constructor
-//tasks.register("pushPages", conf)
-//tasks.register<PushPagesTask>("pushPagesGitHubActions")
-//{
-//    group = "managed"
-//    description = "Push pages to repository."
-//    val bakedPath = "${project.buildDir.absolutePath}$separator${conf.bake.destDirPath}"
-//    doFirst {
-//        //1) créer un dossier cvs
-//        createRepoDir(
-//            path = "${project.buildDir.absolutePath}$separator${conf.pushPage.to}"
-//        ).apply {
-//            //2) déplacer le contenu du dossier jbake dans le dossier cvs
-//            copyBakedFilesToRepo(
-//                bakeDirPath = bakedPath,
-//                repoDir = this
-//            )
-//            //3) initialiser un repo dans le dossier cvs
-//            // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
-//            initAddCommit(repoDir = this, conf)
-//            //6) push
-//            push(repoDir = this, conf)
-//            deleteRecursively()
-//        }
-//    }
-//    doLast { File(bakedPath).deleteRecursively() }
-//}
+    val bakedPath = "${project.buildDir.absolutePath}$separator${actionConf.bake.destDirPath}"
+    doFirst {
+        //1) créer un dossier cvs
+        createRepoDir(
+            path = "${project.buildDir.absolutePath}$separator${actionConf.pushPage.to}"
+        ).apply {
+            //2) déplacer le contenu du dossier jbake dans le dossier cvs
+            copyBakedFilesToRepo(
+                bakeDirPath = bakedPath,
+                repoDir = this
+            )
+            //3) initialiser un repo dans le dossier cvs
+            // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
+            initAddCommit(repoDir = this, actionConf)
+            //6) push
+            push(repoDir = this, actionConf)
+            deleteRecursively()
+        }
+    }
+    doLast { File(bakedPath).deleteRecursively() }
+}
 
 
-tasks.register("publishSite") {
+tasks.register(TASK_PUBLISH_SITE) {
     group = "managed"
     description = "Publish site online."
-    dependsOn(TASK_BAKE )
+    dependsOn(TASK_BAKE)
     finalizedBy(TASK_PUSH_PAGES)
     jbake {
-        srcDirName = conf.bake.srcPath
-        destDirName = conf.bake.destDirPath
+        srcDirName = localConf.bake.srcPath
+        destDirName = localConf.bake.destDirPath
     }
-    doFirst { createCnameFile(conf) }
+    doFirst { createCnameFile(localConf) }
 }
 
 //tasks.register("publishSiteGitHubActions") {
@@ -269,3 +276,8 @@ tasks.register("publishSite") {
 //    }
 //    doFirst { createCnameFile(conf) }
 //}
+
+tasks.register("displayParam"){
+    group = "managed"
+    println("site_push_repo_name : ${properties["site_push_repo_name"]}")
+}
