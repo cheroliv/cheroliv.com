@@ -1,0 +1,31 @@
+name: Java CI with Gradle Wrapper
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          java-version: '18'
+          distribution: 'temurin'
+          cache: gradle
+      - name: Build with Gradle Wrapper
+        #        env:
+        #          repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
+#        with:
+#          gradle-version: 7.5.1
+          #          repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
+          #          arguments: build -x :codes:check -x :code:assemble -x :codes:build -Psite_push_repo_name= -Psite_push_repo_url=  -Psite_push_repo_username= -Psite_push_repo_password=
+#          arguments: :displayParam -q -Psite_push_repo_name=${{ repo-name }}
+        run: ./gradlew :displayParam -q -Psite_push_repo_name=repo-name
