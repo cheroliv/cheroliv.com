@@ -34,5 +34,5 @@ jobs:
         with:
           gradle-version: 7.5.1
           #        arguments: build -x :codes:check -x :code:assemble -x :codes:build -Psite_push_repo_name= -Psite_push_repo_url=  -Psite_push_repo_username= -Psite_push_repo_password=
-          arguments: :displayParam -Psite_push_repo_name=${{ repo-name }}
           repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
+          arguments: :displayParam -Psite_push_repo_name=${{ repo-name }}
