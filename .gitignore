@@ -8,7 +8,6 @@ todo.adoc
 content/ignored
 .idea
 .settings
-gradle/wrapper/gradle-wrapper.jar
 .project
 templates/code.txt
 /site.code-workspace
