@@ -24,7 +24,7 @@ jobs:
         env:
           repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
         with:
-          repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
+#          repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
           arguments: :displayParam -q -Psite_push_repo_name=${{ repo-name }} # -Psite_push_repo_url=${{ repo-url }} -Psite_push_repo_username=${{ repo-username }} -Psite_push_repo_password=${{ repo-password }}
           gradle-version: 7.5.1
         uses: gradle/gradle-build-action@67421db6bd0bf253fb4bd25b31ebb98943c375e1
