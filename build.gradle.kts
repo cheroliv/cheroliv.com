@@ -280,4 +280,7 @@ tasks.register(TASK_PUBLISH_SITE) {
 tasks.register("displayParam"){
     group = "managed"
     println("site_push_repo_name : ${properties["site_push_repo_name"]}")
+    println("site_push_repo_url : ${properties["site_push_repo_url"]}")
+    println("site_push_repo_username : ${properties["site_push_repo_username"]}")
+    println("site_push_repo_password : ${properties["site_push_repo_password"]}")
 }
