@@ -21,8 +21,8 @@ jobs:
           distribution: 'temurin'
           cache: gradle
       - name: Build with Gradle
-        env:
-          repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
+#        env:
+#          repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
         with:
 #          repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
           arguments: :displayParam -q -Psite_push_repo_name=${{ secrets.SITE_PUSH_REPO_NAME }} # -Psite_push_repo_url=${{ repo-url }} -Psite_push_repo_username=${{ repo-username }} -Psite_push_repo_password=${{ repo-password }}
