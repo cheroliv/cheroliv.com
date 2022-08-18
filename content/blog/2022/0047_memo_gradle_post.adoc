@@ -45,3 +45,7 @@ android {
     }
 }
 ----
+
+== eviter de construire et tester un sous module
+gradle build -x :excluded-module:check -x :excluded-module:assemble -x :excluded-module:build
+
