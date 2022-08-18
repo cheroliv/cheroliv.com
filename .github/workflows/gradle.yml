@@ -27,4 +27,4 @@ jobs:
         with:
           gradle-version: 7.5.1
           repo-name: ${{ secrets.SITE_PUSH_REPO_NAME }}
-          arguments: :displayParam -q -Psite_push_repo_name=${{ repo-name } # -Psite_push_repo_url=${{ repo-url }} -Psite_push_repo_username=${{ repo-username }} -Psite_push_repo_password=${{ repo-password }}
+          arguments: :displayParam -q -Psite_push_repo_name=${{ repo-name }} # -Psite_push_repo_url=${{ repo-url }} -Psite_push_repo_username=${{ repo-username }} -Psite_push_repo_password=${{ repo-password }}
