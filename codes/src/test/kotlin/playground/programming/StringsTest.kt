@@ -15,6 +15,7 @@ import java.util.*
 import kotlin.test.*
 
 class StringsTest {
+
     @Test
     fun `chaines de caractères et caractères`() {
         //inférence de type
@@ -24,6 +25,11 @@ class StringsTest {
         //concaténation
         val t: String = s + " le moment."
         assertEquals("C'est le moment.", t)
+
+        //valeur ascii d'un caractere
+        assertEquals(expected = 65, actual = 'A'.code.toByte().toInt())
+        assertEquals(expected = 32, actual = ' '.code.toByte().toInt())
+        assertEquals(expected = 33, actual = '!'.code.toByte().toInt())
 
         // StringBuilder
         val t1: String = s + buildString { append(" le moment.") }

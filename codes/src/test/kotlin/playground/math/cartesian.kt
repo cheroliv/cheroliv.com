@@ -2,9 +2,6 @@ package playground.math
 
 import kotlin.random.Random.Default.nextInt
 
-
-
-
 data class Point(
     val x: Number,
     val y: Number,

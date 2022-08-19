@@ -67,10 +67,12 @@ class ThreadsTest {
     ) : Thread() {
         init {
             isDaemon = true
+            println("init")
             start()
         }
 
         override fun run() {
+            println("run in! $keepRunning")
             while (keepRunning) {
                 println(df.format(Date()))
                 try {
@@ -79,6 +81,7 @@ class ThreadsTest {
                     println(e.message)
                 }
             }
+            println("run out: $keepRunning")
         }
 
         fun pleaseStop() {
@@ -92,5 +95,6 @@ class ThreadsTest {
     @Test
     fun `Timer et TimerTask test`() {
         DummyClock()
+
     }
 }

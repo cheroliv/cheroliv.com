@@ -1,4 +1,6 @@
 //(1)
+@file:Suppress("UNUSED_VARIABLE")
+
 package playground.lang
 
 import kotlin.test.Test
@@ -25,9 +27,9 @@ class LambdaTest {
         //fonction anonyme
         // (callback), affecté à une variable
         // fonction expression body style
-        @Suppress("UNUSED_VARIABLE") val foisDeuxFunAno: (Int) -> Int = fun(x: Int): Int = x * 2
+        val foisDeuxFunAno: (Int) -> Int = fun(x: Int): Int = x * 2
         //fonction block body style
-        @Suppress("UNUSED_VARIABLE") val additionFunAno: (Int, Int) -> Int = fun(x: Int, y: Int): Int {
+        val additionFunAno: (Int, Int) -> Int = fun(x: Int, y: Int): Int {
             return x + y
         }
 
