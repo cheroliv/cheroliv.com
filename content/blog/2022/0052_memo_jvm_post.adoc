@@ -655,6 +655,15 @@ image::../../img/java8-date-time.png[java8 date time]
 
 [source,kotlin]
 ----
+import java.time.LocalDate
+import java.time.Month
+import java.time.Period
+import java.time.YearMonth
+import java.time.temporal.*
+import java.util.HashMap
+import java.util.stream.Collectors
+import kotlin.test.Test
+
 class DatesHoursJava8Test {
     class BirthdayDiary {
         private val birthdays: MutableMap<String, LocalDate>
@@ -718,6 +727,8 @@ class DatesHoursJava8Test {
                 .sum()
     }
 
+    //Les ajusteurs modifient les objets de date et d'heure. Supposons, par exemple, que nous voulions
+    //renvoie le premier jour d'un trimestre qui contient un horodatage particulier :
     class FirstDayOfQuarter : TemporalAdjuster {
         override fun adjustInto(temporal: Temporal): Temporal? {
             val currentQuarter: Int = YearMonth.from(temporal)
@@ -747,6 +758,7 @@ class DatesHoursJava8Test {
         FIRST, SECOND, THIRD, FOURTH
     }
 
+    //Dans quel trimestre de l'année cette date se situe-t-elle ?
     class QuarterOfYearQuery : TemporalQuery<Quarter> {
         override fun queryFrom(temporal: TemporalAccessor): Quarter {
             val now = LocalDate.from(temporal)

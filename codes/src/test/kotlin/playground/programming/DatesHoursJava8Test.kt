@@ -74,6 +74,8 @@ class DatesHoursJava8Test {
                 .sum()
     }
 
+    //Les ajusteurs modifient les objets de date et d'heure. Supposons, par exemple, que nous voulions
+    //renvoie le premier jour d'un trimestre qui contient un horodatage particulier :
     class FirstDayOfQuarter : TemporalAdjuster {
         override fun adjustInto(temporal: Temporal): Temporal? {
             val currentQuarter: Int = YearMonth.from(temporal)
@@ -103,6 +105,7 @@ class DatesHoursJava8Test {
         FIRST, SECOND, THIRD, FOURTH
     }
 
+    //Dans quel trimestre de l'année cette date se situe-t-elle ?
     class QuarterOfYearQuery : TemporalQuery<Quarter> {
         override fun queryFrom(temporal: TemporalAccessor): Quarter {
             val now = LocalDate.from(temporal)
