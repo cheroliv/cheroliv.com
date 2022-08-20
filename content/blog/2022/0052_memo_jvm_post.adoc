@@ -816,7 +816,7 @@ import kotlin.test.assertTrue
 
 class ArrayCollectionTest {
     @Test
-    fun `Tableaux, collections, streams`() {
+    fun `Tableaux, collections`() {
         //Tableau
         //java.util.Arrays définit d'utiles méthodes de manipulation de tableaux,
         //y compris de tri et de recherche au sein d'un tableau
