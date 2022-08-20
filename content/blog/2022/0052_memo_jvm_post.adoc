@@ -802,6 +802,8 @@ class DatesHoursJava8Test {
 
 == tableaux et collections [[arrCol]]
 
+image::../../img/collections_classes_inheritance.png[Classes de collections et héritage]
+
 [source,kotlin]
 ----
 package playground.programming
