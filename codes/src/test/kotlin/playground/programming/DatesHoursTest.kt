@@ -1,7 +1,7 @@
 @file:Suppress(
     "RemoveRedundantQualifierName",
     "UsePropertyAccessSyntax",
-    "UNUSED_VARIABLE", "LocalVariableName",
+    "UNUSED_VARIABLE", "LocalVariableName", "NonAsciiCharacters", "unused",
 )
 
 package playground.programming
@@ -9,10 +9,15 @@ package playground.programming
 import java.text.DateFormat
 import java.text.SimpleDateFormat
 import java.time.Instant
+import java.time.LocalDate
+import java.time.Month
+import java.time.Period
 import java.util.*
+import java.util.stream.Collectors
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertTrue
+
 
 class DatesHoursTest {
     @Test
@@ -110,4 +115,69 @@ class DatesHoursTest {
     @Test
     fun `Dates et heures après java 8`() {
     }
+
+
+    class BirthdayDiary {
+        private val birthdays: MutableMap<String, LocalDate>
+
+        init {
+            birthdays = HashMap()
+        }
+
+        fun addBirthday(
+            name: String, day: Int, month: Int,
+            year: Int
+        ): LocalDate {
+            val birthday: LocalDate = LocalDate.of(year, month, day)
+            birthdays[name] = birthday
+            return birthday
+        }
+
+        fun getBirthdayFor(name: String): LocalDate? {
+            return birthdays[name]
+        }
+
+        fun getAgeInYear(name: String, year: Int): Int {
+            val period: Period = Period.between(
+                birthdays[name],
+                birthdays[name]!!.withYear(year)
+            )
+            return period.getYears()
+        }
+
+        fun getFriendsOfAgeIn(age: Int, year: Int): Set<String> {
+            return birthdays.keys.stream()
+                .filter { p: String -> getAgeInYear(p, year) == age }
+                .collect(Collectors.toSet())
+        }
+
+        fun getDaysUntilBirthday(name: String): Int {
+            val period: Period = Period.between(
+                LocalDate.now(),
+                birthdays[name]
+            )
+            return period.getDays()
+        }
+
+        fun getBirthdaysIn(month: Month): Set<String> {
+            return birthdays.entries.stream()
+                .filter { (_, value): Map.Entry<String, LocalDate> -> value.getMonth() === month }
+                .map<String> { (key): Map.Entry<String, LocalDate> -> key }
+                .collect(Collectors.toSet())
+        }
+
+        val birthdaysInCurrentMonth: Set<String>
+            get() = getBirthdaysIn(LocalDate.now().getMonth())
+        val totalAgeInYears: Int
+            get() = birthdays.keys.stream()
+                .mapToInt { p: String ->
+                    getAgeInYear(
+                        p,
+                        LocalDate.now().getYear()
+                    )
+                }
+                .sum()
+    }
+
+
 }
