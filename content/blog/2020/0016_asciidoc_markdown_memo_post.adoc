@@ -22,4 +22,7 @@ C'est une façon de standardiser les traitements de textes pour des contenus sim
 
 * http://hypertuxte.net/projetx/markdown.html[hypertuxte.net] [markdown]
 
+===== asciidoc:
+https://docs.asciidoctor.org/asciidoc/latest/attributes/character-replacement-ref/[character-replacement-ref]
+
 
