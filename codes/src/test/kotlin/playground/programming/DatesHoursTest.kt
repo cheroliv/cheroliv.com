@@ -112,11 +112,6 @@ class DatesHoursTest {
         assertTrue(monthAfter.after(kotlinAnnounceDate))
     }
 
-    @Test
-    fun `Dates et heures après java 8`() {
-    }
-
-
     class BirthdayDiary {
         private val birthdays: MutableMap<String, LocalDate>
 
@@ -180,4 +175,7 @@ class DatesHoursTest {
     }
 
 
+    @Test
+    fun `Dates et heures après java 8`() {
+    }
 }

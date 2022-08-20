@@ -9,6 +9,7 @@
 :summary: simple mémo JVM
 
 == table des matieres[[toc]]
+
 . <<char>>
 . <<math>>
 . <<date>>
@@ -317,10 +318,10 @@ class StringsTest {
 }
 ----
 
-
 <<toc>>
 
 == nombres et math [[math]]
+
 [source,kotlin]
 ----
 import java.math.BigInteger
@@ -518,7 +519,6 @@ class NumbersMathTest {
 }
 ----
 
-
 <<toc>>
 
 == dates et heures [[date]]
@@ -632,26 +632,90 @@ class DatesHoursTest {
 
 == dates et heures java8 [[java8date]]
 
-image::../../img/java8-date-time.png[java8 date time]
+image::../../img/java8-date-time.png[java8 date time] +
 
-Java 8 introduces the new package java.time , which contains the core classes that
-most developers work with. It also contains four subpackages:
- *_java.time.chrono_* +
-Alternative chronologies that developers using calendaring systems that do not
-follow the ISO standard will interact with. An example would be a Japanese cal‐
-endaring system.
-java.time.format
-Contains the DateTimeFormatter used for converting date and time objects
-into a String and also for parsing strings into the data and time objects.
-java.time.temporal
-Contains the interfaces required by the core date and time classes and also
-abstractions (such as queries and adjusters) for advanced operations with dates.
-java.time.zone
-Classes used for the underlying time zone rules; most developers won’t require
-this package.
+Java 8 introduit le nouveau package java.time , qui contient les classes de base qui +
+la plupart des développeurs travaillent avec.
+Il contient également quatre sous-packages: +
+
+*_java.time.chrono_* +
+Chronologies alternatives que les développeurs utilisant des systèmes de calendrier qui ne +
+suivre la norme ISO va interagir avec.
+Un exemple serait un cal japonais +
+système endurant. +
+*_java.time.format_* +
+Contient le DateTimeFormatter utilisé pour convertir les objets de date et d'heure +
+dans une chaîne et également pour analyser les chaînes dans les objets de données et de temps. +
+*_java.time.temporal_* +
+Contient les interfaces requises par les classes de date et d'heure de base et également +
+des abstractions (telles que des requêtes et des ajusteurs) pour des opérations avancées avec des dates. +
+*_java.time.zone_* +
+Classes utilisées pour les règles de fuseau horaire sous-jacentes; +
+la plupart des développeurs n'auront pas besoin ce paquet. +
+
 [source,kotlin]
 ----
+class BirthdayDiary {
+    private val birthdays: MutableMap<String, LocalDate>
 
+    init {
+        birthdays = HashMap()
+    }
+
+    fun addBirthday(
+        name: String, day: Int, month: Int,
+        year: Int
+    ): LocalDate {
+        val birthday: LocalDate = LocalDate.of(year, month, day)
+        birthdays[name] = birthday
+        return birthday
+    }
+
+    fun getBirthdayFor(name: String): LocalDate? {
+        return birthdays[name]
+    }
+
+    fun getAgeInYear(name: String, year: Int): Int {
+        val period: Period = Period.between(
+            birthdays[name],
+            birthdays[name]!!.withYear(year)
+        )
+        return period.getYears()
+    }
+
+    fun getFriendsOfAgeIn(age: Int, year: Int): Set<String> {
+        return birthdays.keys.stream()
+            .filter { p: String -> getAgeInYear(p, year) == age }
+            .collect(Collectors.toSet())
+    }
+
+    fun getDaysUntilBirthday(name: String): Int {
+        val period: Period = Period.between(
+            LocalDate.now(),
+            birthdays[name]
+        )
+        return period.getDays()
+    }
+
+    fun getBirthdaysIn(month: Month): Set<String> {
+        return birthdays.entries.stream()
+            .filter { (_, value): Map.Entry<String, LocalDate> -> value.getMonth() === month }
+            .map<String> { (key): Map.Entry<String, LocalDate> -> key }
+            .collect(Collectors.toSet())
+    }
+
+    val birthdaysInCurrentMonth: Set<String>
+        get() = getBirthdaysIn(LocalDate.now().getMonth())
+    val totalAgeInYears: Int
+        get() = birthdays.keys.stream()
+            .mapToInt { p: String ->
+                getAgeInYear(
+                    p,
+                    LocalDate.now().getYear()
+                )
+            }
+            .sum()
+}
 ----
 
 <<toc>>
@@ -831,11 +895,9 @@ class ArrayCollectionTest {
 }
 ----
 
-
 <<toc>>
 
 == System.Properties [[sysProp]]
-
 
 https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html[System.Properties doc officielle]
 
@@ -875,15 +937,11 @@ sur le système hôte de la JVM.
 |User account name
 |===
 
-
-
 <<toc>>
 
 == Threads [[threads]]
 
-
 [source,kotlin]
-
 ----
 import java.text.DateFormat
 import java.util.*
@@ -983,9 +1041,7 @@ class ThreadsTest {
 
 == Expressions Régulières [[regex]]
 
-
 [source,kotlin]
-
 ----
 import java.util.*
 import java.util.regex.Matcher
@@ -1055,8 +1111,8 @@ class RegularExpressionsTest {
 }
 ----
 
-
 === Tableau regex metacharacters
+
 |===
 |Metacharacter |fonctionnalité |Notes
 |?
