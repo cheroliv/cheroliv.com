@@ -49,18 +49,6 @@ data class BakeConf(
     val cname: String,
 )
 
-data class Site(
-    val cnameFileName: String = "CNAME",
-    val homePath: String = getProperty("user.home"),
-    val separator: String = getProperty("file.separator"),
-    val origin: String = "origin",
-    val remote: String = "remote",
-    //create property fun confPath
-//    val confPath: String = "${java.lang.System.getProperty("user.home")}${java.lang.System.getProperty("file.separator")}${properties["managed_config_path"]}",
-    //create property fun configFile
-//    val configFile: File = File(confPath),
-)
-
 val cnameFileName: String by lazy { "CNAME" }
 val homePath: String by lazy { getProperty("user.home") }
 val separator: String by lazy { getProperty("file.separator") }
@@ -68,6 +56,7 @@ val origin: String by lazy { "origin" }
 val remote: String by lazy { "remote" }
 val confPath: String by lazy { "$homePath$separator${properties["managed_config_path"]}" }
 val configFile by lazy { File(confPath) }
+
 val localConf: ManagedBlogConf by lazy {
     ObjectMapper(YAMLFactory()).apply {
         disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
@@ -75,29 +64,6 @@ val localConf: ManagedBlogConf by lazy {
     }.readValue(
         configFile,
         ManagedBlogConf::class.java
-    )
-}
-val actionConf: ManagedBlogConf by lazy {
-    ManagedBlogConf(
-        BakeConf(
-            srcPath = properties["site_bake_src"].toString(),
-            destDirPath = properties["site_bake_dest"].toString(),
-            cname = properties["site_bake_cname"].toString()
-        ),
-        GitPushConf(
-            from = properties["site_push_from"].toString(),
-            to = properties["site_push_to"].toString(),
-            repo = RepoConf(
-                name = properties["site_push_repo_name"].toString(),
-                repository = properties["site_push_repo_url"].toString(),
-                credentials = RepoCredentials(
-                    username = properties["site_push_repo_username"].toString(),
-                    password = properties["site_push_repo_password"].toString()
-                ),
-            ),
-            branch = properties["site_push_branch"].toString(),
-            message = properties["site_push_message"].toString()
-        )
     )
 }
 
@@ -224,34 +190,6 @@ tasks.register(TASK_PUSH_PAGES) {
     doLast { File(bakedPath).deleteRecursively() }
 }
 
-
-tasks.register("pushPagesGitHubActions") {
-    group = "managed"
-    description = "Push pages to repository."
-
-    val bakedPath = "${project.buildDir.absolutePath}$separator${actionConf.bake.destDirPath}"
-    doFirst {
-        //1) créer un dossier cvs
-        createRepoDir(
-            path = "${project.buildDir.absolutePath}$separator${actionConf.pushPage.to}"
-        ).apply {
-            //2) déplacer le contenu du dossier jbake dans le dossier cvs
-            copyBakedFilesToRepo(
-                bakeDirPath = bakedPath,
-                repoDir = this
-            )
-            //3) initialiser un repo dans le dossier cvs
-            // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
-            initAddCommit(repoDir = this, actionConf)
-            //6) push
-            push(repoDir = this, actionConf)
-            deleteRecursively()
-        }
-    }
-    doLast { File(bakedPath).deleteRecursively() }
-}
-
-
 tasks.register(TASK_PUBLISH_SITE) {
     group = "managed"
     description = "Publish site online."
@@ -264,19 +202,6 @@ tasks.register(TASK_PUBLISH_SITE) {
     doFirst { createCnameFile(localConf) }
 }
 
-//tasks.register("publishSiteGitHubActions") {
-//    group = "managed"
-//    description = "Publish site online with github actions."
-//    dependsOn(TASK_BAKE )
-//    finalizedBy(TASK_PUSH_PAGES)
-//    //TODO:create conf here
-//    jbake {
-//        srcDirName = conf.bake.srcPath
-//        destDirName = conf.bake.destDirPath
-//    }
-//    doFirst { createCnameFile(conf) }
-//}
-
 tasks.register("displayParam"){
     group = "managed"
     println("site_push_repo_name : ${properties["site_push_repo_name"]}")
@@ -284,3 +209,5 @@ tasks.register("displayParam"){
     println("site_push_repo_username : ${properties["site_push_repo_username"]}")
     println("site_push_repo_password : ${properties["site_push_repo_password"]}")
 }
+
+//TODO convert asciidoc to markdown
