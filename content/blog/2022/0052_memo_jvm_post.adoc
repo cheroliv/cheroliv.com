@@ -12,13 +12,16 @@
 . <<char>>
 . <<math>>
 . <<date>>
+. <<java8date>>
 . <<arrCol>>
 . <<sysProp>>
 . <<threads>>
 . <<regex>>
 
-== chaines de caractères et caractères [[char]]
 <<toc>>
+
+== chaines de caractères et caractères [[char]]
+
 [source,kotlin]
 ----
 import java.text.Collator
@@ -315,8 +318,9 @@ class StringsTest {
 ----
 
 
-== nombres et math [[math]]
 <<toc>>
+
+== nombres et math [[math]]
 [source,kotlin]
 ----
 import java.math.BigInteger
@@ -515,9 +519,10 @@ class NumbersMathTest {
 ----
 
 
+<<toc>>
+
 == dates et heures [[date]]
 
-<<toc>>
 [source,kotlin]
 ----
 import java.text.DateFormat
@@ -623,9 +628,22 @@ class DatesHoursTest {
 }
 ----
 
-== tableaux et collections [[arrCol]]
+<<toc>>
+
+== dates et heures java8 [[java8date]]
+
+image::../../img/java8-date-time.png[java8 date time]
+
+
+[source,kotlin]
+----
+
+----
 
 <<toc>>
+
+== tableaux et collections [[arrCol]]
+
 [source,kotlin]
 ----
 package playground.programming
@@ -800,9 +818,10 @@ class ArrayCollectionTest {
 ----
 
 
+<<toc>>
+
 == System.Properties [[sysProp]]
 
-<<toc>>
 
 https://docs.oracle.com/javase/tutorial/essential/environment/sysprop.html[System.Properties doc officielle]
 
@@ -844,10 +863,10 @@ sur le système hôte de la JVM.
 
 
 
+<<toc>>
 
 == Threads [[threads]]
 
-<<toc>>
 
 [source,kotlin]
 
@@ -946,9 +965,10 @@ class ThreadsTest {
 }
 ----
 
+<<toc>>
+
 == Expressions Régulières [[regex]]
 
-<<toc>>
 
 [source,kotlin]
 
