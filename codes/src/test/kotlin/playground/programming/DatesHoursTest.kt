@@ -106,4 +106,8 @@ class DatesHoursTest {
         //date est elle avant ou apres?
         assertTrue(monthAfter.after(kotlinAnnounceDate))
     }
+
+    @Test
+    fun `Dates et heures après java 8`() {
+    }
 }
