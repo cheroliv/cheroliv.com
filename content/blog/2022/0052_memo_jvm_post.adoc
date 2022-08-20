@@ -632,9 +632,7 @@ class DatesHoursTest {
 
 == dates et heures java8 [[java8date]]
 
-image::../../img/java8-date-time.png[java8 date time] +
-
-Java 8 introduit le nouveau package java.time , qui contient les classes de base qui +
+Java 8 introduit le nouveau package *_java.time_*, qui contient les classes de base qui +
 la plupart des développeurs travaillent avec.
 Il contient également quatre sous-packages: +
 
@@ -653,68 +651,138 @@ des abstractions (telles que des requêtes et des ajusteurs) pour des opération
 Classes utilisées pour les règles de fuseau horaire sous-jacentes; +
 la plupart des développeurs n'auront pas besoin ce paquet. +
 
+image::../../img/java8-date-time.png[java8 date time]
+
 [source,kotlin]
 ----
-class BirthdayDiary {
-    private val birthdays: MutableMap<String, LocalDate>
+class DatesHoursJava8Test {
+    class BirthdayDiary {
+        private val birthdays: MutableMap<String, LocalDate>
 
-    init {
-        birthdays = HashMap()
+        init {
+            birthdays = HashMap()
+        }
+
+        fun addBirthday(
+            name: String, day: Int, month: Int,
+            year: Int
+        ): LocalDate {
+            val birthday: LocalDate = LocalDate.of(year, month, day)
+            birthdays[name] = birthday
+            return birthday
+        }
+
+        fun getBirthdayFor(name: String): LocalDate? {
+            return birthdays[name]
+        }
+
+        fun getAgeInYear(name: String, year: Int): Int {
+            val period: Period = Period.between(
+                birthdays[name],
+                birthdays[name]!!.withYear(year)
+            )
+            return period.getYears()
+        }
+
+        fun getFriendsOfAgeIn(age: Int, year: Int): Set<String> {
+            return birthdays.keys.stream()
+                .filter { p: String -> getAgeInYear(p, year) == age }
+                .collect(Collectors.toSet())
+        }
+
+        fun getDaysUntilBirthday(name: String): Int {
+            val period: Period = Period.between(
+                LocalDate.now(),
+                birthdays[name]
+            )
+            return period.getDays()
+        }
+
+        fun getBirthdaysIn(month: Month): Set<String> {
+            return birthdays.entries.stream()
+                .filter { (_, value): Map.Entry<String, LocalDate> -> value.getMonth() === month }
+                .map<String> { (key): Map.Entry<String, LocalDate> -> key }
+                .collect(Collectors.toSet())
+        }
+
+        val birthdaysInCurrentMonth: Set<String>
+            get() = getBirthdaysIn(LocalDate.now().getMonth())
+        val totalAgeInYears: Int
+            get() = birthdays.keys.stream()
+                .mapToInt { p: String ->
+                    getAgeInYear(
+                        p,
+                        LocalDate.now().getYear()
+                    )
+                }
+                .sum()
     }
 
-    fun addBirthday(
-        name: String, day: Int, month: Int,
-        year: Int
-    ): LocalDate {
-        val birthday: LocalDate = LocalDate.of(year, month, day)
-        birthdays[name] = birthday
-        return birthday
-    }
+    class FirstDayOfQuarter : TemporalAdjuster {
+        override fun adjustInto(temporal: Temporal): Temporal? {
+            val currentQuarter: Int = YearMonth.from(temporal)
+                .get(IsoFields.QUARTER_OF_YEAR)
+            return when (currentQuarter) {
+                1 -> LocalDate.from(temporal)
+                    .with(TemporalAdjusters.firstDayOfYear())
 
-    fun getBirthdayFor(name: String): LocalDate? {
-        return birthdays[name]
-    }
+                2 -> LocalDate.from(temporal)
+                    .withMonth(Month.APRIL.value)
+                    .with(TemporalAdjusters.firstDayOfMonth())
 
-    fun getAgeInYear(name: String, year: Int): Int {
-        val period: Period = Period.between(
-            birthdays[name],
-            birthdays[name]!!.withYear(year)
-        )
-        return period.getYears()
-    }
+                3 -> LocalDate.from(temporal)
+                    .withMonth(Month.JULY.value)
+                    .with(TemporalAdjusters.firstDayOfMonth())
 
-    fun getFriendsOfAgeIn(age: Int, year: Int): Set<String> {
-        return birthdays.keys.stream()
-            .filter { p: String -> getAgeInYear(p, year) == age }
-            .collect(Collectors.toSet())
-    }
+                4 -> LocalDate.from(temporal)
+                    .withMonth(Month.OCTOBER.value)
+                    .with(TemporalAdjusters.firstDayOfMonth())
 
-    fun getDaysUntilBirthday(name: String): Int {
-        val period: Period = Period.between(
-            LocalDate.now(),
-            birthdays[name]
-        )
-        return period.getDays()
-    }
-
-    fun getBirthdaysIn(month: Month): Set<String> {
-        return birthdays.entries.stream()
-            .filter { (_, value): Map.Entry<String, LocalDate> -> value.getMonth() === month }
-            .map<String> { (key): Map.Entry<String, LocalDate> -> key }
-            .collect(Collectors.toSet())
-    }
-
-    val birthdaysInCurrentMonth: Set<String>
-        get() = getBirthdaysIn(LocalDate.now().getMonth())
-    val totalAgeInYears: Int
-        get() = birthdays.keys.stream()
-            .mapToInt { p: String ->
-                getAgeInYear(
-                    p,
-                    LocalDate.now().getYear()
-                )
+                else -> null
             }
-            .sum()
+        }
+    }
+
+    enum class Quarter {
+        FIRST, SECOND, THIRD, FOURTH
+    }
+
+    class QuarterOfYearQuery : TemporalQuery<Quarter> {
+        override fun queryFrom(temporal: TemporalAccessor): Quarter {
+            val now = LocalDate.from(temporal)
+            return if (now.isBefore(now.with(Month.APRIL).withDayOfMonth(1)))
+                Quarter.FIRST
+            else if (now.isBefore(
+                    now.with(Month.JULY)
+                        .withDayOfMonth(1)
+                )
+            ) Quarter.SECOND else if (now.isBefore(
+                    now.with(Month.NOVEMBER)
+                        .withDayOfMonth(1)
+                )
+            ) Quarter.THIRD else Quarter.FOURTH
+        }
+    }
+
+    @Test
+    fun `Dates et heures après java 8`() {
+        val today = LocalDate.now()
+        val currentMonth = today.month
+        val firstMonthOfQuarter = currentMonth.firstMonthOfQuarter()
+
+        val q = QuarterOfYearQuery()
+        // Direct
+        var quarter: Quarter? = q.queryFrom(LocalDate.now())
+        println(quarter)
+        // Indirect
+        quarter = LocalDate.now().query(q)
+        println(quarter)
+
+
+        val now = LocalDate.now()
+        val fdoq: Temporal = now.with(FirstDayOfQuarter())
+        println(fdoq)
+    }
 }
 ----
 
