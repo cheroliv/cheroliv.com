@@ -634,7 +634,21 @@ class DatesHoursTest {
 
 image::../../img/java8-date-time.png[java8 date time]
 
-
+Java 8 introduces the new package java.time , which contains the core classes that
+most developers work with. It also contains four subpackages:
+ *_java.time.chrono_* +
+Alternative chronologies that developers using calendaring systems that do not
+follow the ISO standard will interact with. An example would be a Japanese cal‐
+endaring system.
+java.time.format
+Contains the DateTimeFormatter used for converting date and time objects
+into a String and also for parsing strings into the data and time objects.
+java.time.temporal
+Contains the interfaces required by the core date and time classes and also
+abstractions (such as queries and adjusters) for advanced operations with dates.
+java.time.zone
+Classes used for the underlying time zone rules; most developers won’t require
+this package.
 [source,kotlin]
 ----
 
