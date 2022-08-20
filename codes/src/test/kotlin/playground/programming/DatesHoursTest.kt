@@ -8,10 +8,8 @@ package playground.programming
 
 import java.text.DateFormat
 import java.text.SimpleDateFormat
-import java.time.Instant
-import java.time.LocalDate
-import java.time.Month
-import java.time.Period
+import java.time.*
+import java.time.temporal.*
 import java.util.*
 import java.util.stream.Collectors
 import kotlin.test.Test
@@ -174,8 +172,72 @@ class DatesHoursTest {
                 .sum()
     }
 
+    class FirstDayOfQuarter : TemporalAdjuster {
+        override fun adjustInto(temporal: Temporal): Temporal? {
+            val currentQuarter: Int = YearMonth.from(temporal)
+                .get(IsoFields.QUARTER_OF_YEAR)
+            return when (currentQuarter) {
+                1 -> LocalDate.from(temporal)
+                    .with(TemporalAdjusters.firstDayOfYear())
 
+                2 -> LocalDate.from(temporal)
+                    .withMonth(Month.APRIL.value)
+                    .with(TemporalAdjusters.firstDayOfMonth())
+
+                3 -> LocalDate.from(temporal)
+                    .withMonth(Month.JULY.value)
+                    .with(TemporalAdjusters.firstDayOfMonth())
+
+                4 -> LocalDate.from(temporal)
+                    .withMonth(Month.OCTOBER.value)
+                    .with(TemporalAdjusters.firstDayOfMonth())
+
+                else -> null
+            }
+        }
+    }
+    enum class Quarter {
+        FIRST, SECOND, THIRD, FOURTH
+    }
+    class QuarterOfYearQuery : TemporalQuery<Quarter> {
+        override fun queryFrom(temporal: TemporalAccessor): Quarter {
+            val now = LocalDate.from(temporal)
+            return if (now.isBefore(now.with(Month.APRIL).withDayOfMonth(1))) {
+                Quarter.FIRST
+            } else if (now.isBefore(
+                    now.with(Month.JULY)
+                        .withDayOfMonth(1)
+                )
+            ) {
+                Quarter.SECOND
+            } else if (now.isBefore(
+                    now.with(Month.NOVEMBER)
+                        .withDayOfMonth(1)
+                )
+            ) {
+                Quarter.THIRD
+            } else {
+                Quarter.FOURTH
+            }
+        }
+    }
     @Test
     fun `Dates et heures après java 8`() {
+        val today = LocalDate.now()
+        val currentMonth = today.month
+        val firstMonthOfQuarter = currentMonth.firstMonthOfQuarter()
+
+        val q = QuarterOfYearQuery()
+        // Direct
+        var quarter: Quarter? = q.queryFrom(LocalDate.now())
+        println(quarter)
+        // Indirect
+        quarter = LocalDate.now().query(q)
+        println(quarter)
+
+
+        val now = LocalDate.now()
+        val fdoq: Temporal = now.with(FirstDayOfQuarter())
+        println(fdoq)
     }
 }
