@@ -15,6 +15,7 @@
 . <<arrCol>>
 . <<sysProp>>
 . <<threads>>
+. <<regex>>
 
 == chaines de caractères et caractères [[char]]
 <<toc>>
@@ -944,3 +945,72 @@ class ThreadsTest {
     }
 }
 ----
+
+== Expressions Régulières [[regex]]
+
+<<toc>>
+
+[source,kotlin]
+
+----
+----
+
+
+=== Tableau regex metacharacters
+|===
+|Metacharacter |fonctionnalité |Notes
+|?
+|Caractère facultatif—zéro ou une instance
+|
+|*
+|Zéro ou plus du caractère précédent
+|
+|+
+|Un ou plusieurs des caractères précédents
+|
+|{M,N}
+|Entre M et N instances du caractère précédent
+|
+|\d
+|Un chiffre
+|
+|\D
+|Un caractère non numérique
+|
+|\w
+|Un caractère de mot
+|Chiffres, lettres et _
+|\W
+|Un caractère sans mot
+|
+|\s
+|Un caractère d'espacement
+|
+|\S
+|Un caractère non blanc
+|
+|\n
+|Caractère de saut de ligne
+|
+|\t
+|Caractère de tabulation
+|
+|.
+|Un caractère n'importe lequel
+|N'inclut pas la nouvelle ligne en Java
+|[ ]
+|Tout caractère contenu entre crochets
+|Appelé une classe de caractères
+|[^ ]
+|Tout caractère non contenu entre crochets
+|Appelé une classe de caractères inversée
+|( )
+|Construire un groupe d'éléments de motif
+|Appelé un groupe (ou groupe de capture)
+|{vbar}
+|Définir des possibilités alternatives
+|Implémente le OU logique
+|^
+|Début de chaîne $ Fin de chaîne
+|
+|===
