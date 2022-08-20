@@ -1,4 +1,8 @@
-@file:Suppress("NonAsciiCharacters", "ReplaceJavaStaticMethodWithKotlinAnalog")
+@file:Suppress(
+    "NonAsciiCharacters",
+    "ReplaceJavaStaticMethodWithKotlinAnalog",
+    "DANGEROUS_CHARACTERS"
+)
 
 package playground.programming
 
@@ -40,7 +44,7 @@ class RegularExpressionsTest {
         println(" ; match: " + m.group())
 
         //N'importe quel nombre de lettres, qui doivent toutes être comprises entre 'a' et 'j'
-        //mais peut être en majuscule ou en minuscule
+        //mais peut-être en majuscule ou en minuscule.
         pStr = "([a..jA..J]*)"
         p = Pattern.compile(pStr)
         m = p.matcher(text)
@@ -63,6 +67,8 @@ class RegularExpressionsTest {
         val containDigits: List<String> = ls.stream()
             .filter(p.asPredicate())
             .collect(Collectors.toList())
-        println(containDigits)
+        assert(containDigits.contains("Ice-9"))
+        assert(containDigits.contains("99 Luftballoons"))
+        assertEquals(2, containDigits.size)
     }
 }
