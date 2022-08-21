@@ -1,6 +1,3 @@
-import Build_gradle.Tasks.TASK_BAKE
-import Build_gradle.Tasks.TASK_PUBLISH_SITE
-import Build_gradle.Tasks.TASK_PUSH_PAGES
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
@@ -13,7 +10,7 @@ import org.eclipse.jgit.transport.PushResult
 import org.eclipse.jgit.transport.URIish
 import org.eclipse.jgit.transport.UsernamePasswordCredentialsProvider
 import java.lang.System.getProperty
-import java.nio.charset.StandardCharsets.UTF_8
+import java.nio.charset.StandardCharsets
 
 plugins { id("org.jbake.site") }
 
@@ -49,36 +46,41 @@ data class BakeConf(
     val cname: String,
 )
 
-val cnameFileName: String by lazy { "CNAME" }
-val homePath: String by lazy { getProperty("user.home") }
-val separator: String by lazy { getProperty("file.separator") }
-val origin: String by lazy { "origin" }
-val remote: String by lazy { "remote" }
-val confPath: String by lazy { "$homePath$separator${properties["managed_config_path"]}" }
-val configFile by lazy { File(confPath) }
+object Tasks {
+    const val TASK_PUSH_PAGES = "pushPages"
+    const val TASK_BAKE = "bake"
+    const val TASK_PUBLISH_SITE = "publishSite"
+}
+
+object Site {
+    val separator: String by lazy { getProperty("file.separator") }
+    val origin: String by lazy { "origin" }
+    val remote: String by lazy { "remote" }
+}
 
 val localConf: ManagedBlogConf by lazy {
     ObjectMapper(YAMLFactory()).apply {
         disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
         registerKotlinModule()
     }.readValue(
-        configFile,
+        File("${getProperty("user.home")}${Site.separator}${properties["managed_config_path"]}"),
         ManagedBlogConf::class.java
     )
 }
 
+
 fun createCnameFile(conf: ManagedBlogConf) {
     if (conf.bake.cname != "") file(
-        "${project.buildDir.absolutePath}$separator${
+        "${project.buildDir.absolutePath}${Site.separator}${
             conf.bake.destDirPath
-        }$separator$cnameFileName"
+        }${Site.separator}CNAME"
     ).run {
         if (exists() && isDirectory) assert(deleteRecursively())
         else if (exists()) assert(delete())
         assert(!exists())
         assert(createNewFile())
         @Suppress("USELESS_ELVIS")
-        appendText(text = conf.bake.cname ?: "", UTF_8)
+        appendText(text = conf.bake.cname ?: "", StandardCharsets.UTF_8)
         assert(exists() && !isDirectory)
     }
 }
@@ -112,7 +114,7 @@ fun initAddCommit(
             assert(repository.directory.isDirectory)
             // add remote repo:
             remoteAdd().apply {
-                setName(origin)
+                setName(Site.origin)
                 setUri(URIish(conf.pushPage.repo.repository))
                 // you can add more settings here if needed
             }.call()
@@ -128,7 +130,7 @@ fun push(
     conf: ManagedBlogConf,
 ): MutableIterable<PushResult>? {
     Git(FileRepositoryBuilder()
-        .setGitDir(File("${repoDir.absolutePath}${separator}.git"))
+        .setGitDir(File("${repoDir.absolutePath}${Site.separator}.git"))
         .readEnvironment()
         .findGitDir()
         .setMustExist(true)
@@ -136,8 +138,8 @@ fun push(
         .apply {
             config.apply {
                 getString(
-                    remote,
-                    origin,
+                    Site.remote,
+                    Site.origin,
                     conf.pushPage.repo.repository
                 )
                 save()
@@ -153,26 +155,20 @@ fun push(
                 )
             )
             //you can add more settings here if needed
-            remote = origin
+            remote = Site.origin
             isForce = true
         }.call()
     }
 }
 
-object Tasks {
-    const val TASK_PUSH_PAGES = "pushPages"
-    const val TASK_BAKE = "bake"
-    const val TASK_PUBLISH_SITE = "publishSite"
-}
-
-tasks.register(TASK_PUSH_PAGES) {
+tasks.register(Tasks.TASK_PUSH_PAGES) {
     group = "managed"
     description = "Push pages to repository."
-    val bakedPath = "${project.buildDir.absolutePath}$separator${localConf.bake.destDirPath}"
+    val bakedPath = "${project.buildDir.absolutePath}${Site.separator}${localConf.bake.destDirPath}"
     doFirst {
         //1) créer un dossier cvs
         createRepoDir(
-            path = "${project.buildDir.absolutePath}$separator${localConf.pushPage.to}"
+            path = "${project.buildDir.absolutePath}${Site.separator}${localConf.pushPage.to}"
         ).apply {
             //2) déplacer le contenu du dossier jbake dans le dossier cvs
             copyBakedFilesToRepo(
@@ -190,11 +186,11 @@ tasks.register(TASK_PUSH_PAGES) {
     doLast { File(bakedPath).deleteRecursively() }
 }
 
-tasks.register(TASK_PUBLISH_SITE) {
+tasks.register(Tasks.TASK_PUBLISH_SITE) {
     group = "managed"
     description = "Publish site online."
-    dependsOn(TASK_BAKE)
-    finalizedBy(TASK_PUSH_PAGES)
+    dependsOn(Tasks.TASK_BAKE)
+    finalizedBy(Tasks.TASK_PUSH_PAGES)
     jbake {
         srcDirName = localConf.bake.srcPath
         destDirName = localConf.bake.destDirPath
@@ -202,7 +198,7 @@ tasks.register(TASK_PUBLISH_SITE) {
     doFirst { createCnameFile(localConf) }
 }
 
-tasks.register("displayParam"){
+tasks.register("displayParam") {
     group = "managed"
     println("site_push_repo_name : ${properties["site_push_repo_name"]}")
     println("site_push_repo_url : ${properties["site_push_repo_url"]}")
