@@ -19,3 +19,16 @@ https://github.com/arkivanov/Essenty[Essenty] +
 
 https://arkivanov.github.io/Decompose/[Decompose] +
 
+== Bout de code divers
+
+=== map reduce
+Convertir une list de bite vers une list de string et résumer la list de string +
+dans une string contenant la concatenation.
+Comment logger la request envoyé(requestBodyContent:byte[])
+[source,kotlin]
+----
+log.info(
+    requestBodyContent!!.map { it.toInt().toChar().toString() }
+        .reduce { request: String, s: String -> request + s }
+)
+----

@@ -14,7 +14,8 @@
 https://www.jhipster.tech/creating-an-app/[doc create app]
 [source,bash]
 ----
-jhipster --blueprints kotlin --skip-install --skip-client
+khipster --blueprints kotlin --skip-install --skip-client
+khipster --force --with-entities
 ----
 
 ==== liste de langues
