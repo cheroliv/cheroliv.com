@@ -179,4 +179,9 @@ class ArrayCollectionTest {
         //renvoi un emballage synchronisé autour d'une map, ensemble clé valeur
         Collections.synchronizedMap(m)
     }
+
+    @Test
+    fun `Foreach loops and iteration`(){
+
+    }
 }
