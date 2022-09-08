@@ -4,15 +4,15 @@ status=published
 ~~~~~~
 
 ----
-                Artisanat Digital
+                Artisan Logiciel
 ----
 
 
-*Mon but: Améliorer votre expérience digitale.*
+*Mon but: Améliorer votre expérience numérique.*
 
 ==== _Supports de communication:_
 * application android
-* site internet
+* web services
 
 ==== _Comment j'interviens ?_
 * Analyse des besoins, identifications des traitements
@@ -21,12 +21,13 @@ status=published
 * Déploiement et exploitation de la solution
 
 ==== _Mes outils:_
-* Design: Figma
-* Langages: Java, Kotlin, Javascript
-* Mobile: Android
+* Mobile: Android jetpack
 * Back-end: Spring Framework
+* Langages: Java, Kotlin, Javascript, Typescript
 * Front-end: Html, Css, ReactJs, GatsbyJs
-* DevOps: integration continue, déploiement continue
+* Design: Figma
+* DevOps: integration continue, déploiement continu
 * Méthodologies: Agile, Scrum, Kanban, Test Driven Developement
+* aws, google cloud, azure
 
 ==== contact: cheroliv.developer@laposte.net
