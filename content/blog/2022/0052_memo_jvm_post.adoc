@@ -988,34 +988,34 @@ Ces propriétés sont intéressantes pour avoir des informations +
 sur le système hôte de la JVM.
 
 |===
-|Key |Meaning
-|"file.separator"
+|*Key* |*Meaning*
+|file.separator
 |Character that separates components of a file path. This is "/" on UNIX and "\" on Windows.
-|"java.class.path"
+|java.class.path
 |Path used to find directories and JAR archives containing class files. Elements of the class path are separated by a platform-specific character specified in the path.separator property.
-|"java.home"
+|java.home
 |Installation directory for Java Runtime Environment (JRE)
-|"java.vendor"
+|java.vendor
 |JRE vendor name
-|"java.vendor.url"
+|java.vendor.url
 |JRE vendor URL
-|"java.version"
+|java.version
 |JRE version number
-|"line.separator"
+|line.separator
 |Sequence used by operating system to separate lines in text files
-|"os.arch"
+|os.arch
 |Operating system architecture
-|"os.name"
+|os.name
 |Operating system name
-|"os.version"
+|os.version
 |Operating system version
-|"path.separator"
+|path.separator
 |Path separator character used in java.class.path
-|"user.dir"
+|user.dir
 |User working directory
-|"user.home"
+|user.home
 |User home directory
-|"user.name"
+|user.name
 |User account name
 |===
 
