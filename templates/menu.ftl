@@ -57,8 +57,8 @@
 
             <ul class="nav navbar-nav">
                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>${config.feed_file}"><i class="fa fa-rss fa-lg"></i></a></li>
-                <li><a href="https://github.com/cheroliv"><i class="fab fa-github fa-lg"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/cheroliv-com/"><i class="fab fa-linkedin fa-lg"></i></a></li>
+                <li><a href="https://github.com/cheroliv" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/cheroliv-com/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
             </ul>
 
         </div><!--/.nav-collapse -->

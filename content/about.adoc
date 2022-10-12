@@ -15,9 +15,9 @@ On peut me contacter à cette adresse: cheroliv.developer@laposte.net
 
 // suppress inspection "AsciiDocLinkResolve"
 * link:feed.xml[rss]
-* https://www.linkedin.com/in/cheroliv-com/[linkedin]
-* https://twitter.com/cheroliv[twitter]
-* https://www.meetup.com/members/290160850/[meetup]
-* https://github.com/cheroliv[github]
-* https://stackoverflow.com/users/837404[stack-overflow]
-* https://www.codewars.com/users/cheroliv[codewars]
+* https://www.linkedin.com/in/cheroliv-com/[linkedin,window="_blank"]
+* https://twitter.com/cheroliv[twitter,window="_blank"]
+* https://www.meetup.com/members/290160850/[meetup,window="_blank"]
+* https://github.com/cheroliv[github,window="_blank"]
+* https://stackoverflow.com/users/837404[stack-overflow,window="_blank"]
+* https://www.codewars.com/users/cheroliv[codewars,window="_blank"]
