@@ -7,7 +7,6 @@ status=published
                 Artisan Logiciel
 ----
 
-
 *Mon but: Améliorer votre expérience numérique.*
 
 ==== _Supports de communication:_
@@ -23,11 +22,9 @@ status=published
 ==== _Mes outils:_
 * Mobile: Android jetpack
 * Back-end: Spring Framework
-* Langages: Java, Kotlin, Javascript, Typescript
-* Front-end: Html, Css, ReactJs, GatsbyJs
-* Design: Figma
-* DevOps: integration continue, déploiement continu
+* Langages: Java, Kotlin, Groovy, SQL, Bash
+* Design: Figma, plantUml
+* DevOps: integration continue, déploiement continu, aws, google cloud, azure
 * Méthodologies: Agile, Scrum, Kanban, Test Driven Developement
-* aws, google cloud, azure
 
 ==== contact: cheroliv.developer@laposte.net
