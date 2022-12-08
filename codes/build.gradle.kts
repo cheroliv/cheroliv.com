@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.ByteArrayOutputStream
 
 plugins {
-    val kotlinVersion = "1.7.10"
+    val kotlinVersion = "1.7.21"
     java
     groovy
     kotlin("jvm") version (kotlinVersion)

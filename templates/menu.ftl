@@ -16,21 +16,11 @@
                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>consulting.html">Consulting</a></li>
 
                 <li class="dropdown">
-                 <a class="dropdown-toggle" data-toggle="dropdown">Trainings<b class="caret"></b></a>
-                <ul class="dropdown-menu">
-                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0036_training_kotlin_playground_post.html">kotlin playground</a></li>
-                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0049_training_android-jetpack_post.html">android-jetpack</a></li>
-                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0043_training_jetpack-compose_post.html">jetpack-compose</a></li>
-                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li>
-                 </ul>
-                 </li>
-
-                <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0033_ceelo_post.html">ceelo</a></li>
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0034_jobdone_post.html">jobdone</a></li>
-                        <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0032_managed-jbake_post.html">managed-jbake</a></li>
+                        <li><a href="https://github.com/cheroliv/cheroliv.com" target="_blank"><i class="fab fa-github"></i> cheroliv.com</a></li>
+                        <li><a href="https://github.com/cheroliv/ceelo" target="_blank"><i class="fab fa-github"></i> game.ceelo</a></li>
+                        <li><a href="https://github.com/cheroliv/kotlin-springboot-monolith" target="_blank"><i class="fab fa-github"></i> kotlin-springboot-monolith</a></li>
                     </ul>
                 </li>
 
@@ -48,8 +38,15 @@
                 </ul>
                 </li>
 
-
-<#--                <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog.html">Blog</a></li>-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Trainings<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0036_training_kotlin_playground_post.html">kotlin playground</a></li>
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0049_training_android-jetpack_post.html">android-jetpack</a></li>
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0043_training_jetpack-compose_post.html">jetpack-compose</a></li>
+<#--                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
+                    </ul>
+                </li>
 
                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">&Agrave; propos</a></li>
             </ul>

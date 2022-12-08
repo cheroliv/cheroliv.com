@@ -7,24 +7,27 @@ status=published
                 Artisan Logiciel
 ----
 
-*Mon but: Améliorer votre expérience numérique.*
+==== _Expertises:_
 
-==== _Supports de communication:_
-* application android
-* web services
+* *application android*
+* *web services*
+
 
 ==== _Comment j'interviens ?_
+
 * Analyse des besoins, identifications des traitements
 * Prototypage et proposition de budget
 * Développement d'une solution
 * Déploiement et exploitation de la solution
 
+
 ==== _Mes outils:_
-* Mobile: Android jetpack
-* Back-end: Spring Framework
-* Langages: Java, Kotlin, Groovy, SQL, Bash
-* Design: Figma, plantUml
-* DevOps: integration continue, déploiement continu, aws, google cloud, azure
-* Méthodologies: Agile, Scrum, Kanban, Test Driven Developement
+
+* *Mobile*: android jetpack
+* *Backend*: springboot
+* *Langages*: java, kotlin, groovy, sql
+* *Design*: figma, plantUml
+* *DevOps*: integration continue, déploiement continu, aws, google cloud, azure, playstore
+* *Méthodologies*: Agile, Scrum, Kanban, Test Driven Development
 
 ==== contact: cheroliv.developer@laposte.net

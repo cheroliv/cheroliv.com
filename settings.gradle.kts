@@ -7,8 +7,8 @@ pluginManagement {
             maven(url = "https://repo.eclipse.org/content/groups/releases/")
         }
         dependencies {
-            val jacksonVersion = "2.13.2"
-            val jgitVersion = "6.1.0.202203080745-r"
+            val jacksonVersion = "2.14.1"
+            val jgitVersion = "6.4.0.202211300538-r"
             val commonsIoVersion = "2.11.0"
             val slf4jVersion = "1.7.36"
             val xzVersion = "1.9"
@@ -28,15 +28,13 @@ pluginManagement {
     }
     plugins { id("org.jbake.site").version(extra["jbake_gradle_plugin_version"].toString()) }
 }
-@Suppress("UnstableApiUsage")
+
 dependencyResolutionManagement {
-//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         mavenLocal()
         google()
         mavenCentral()
         maven { url = uri("https://maven.pkg.jetbrains.space/kotlin/p/kotlin/bootstrap/") }
-//        maven { url = uri("https://jitpack.io") }
     }
 }
 rootProject.name = "cheroliv.com"
