@@ -27,7 +27,7 @@ status=published
 * *Backend*: springboot
 * *Langages*: java, kotlin, groovy, sql
 * *Design*: figma, plantUml
-* *DevOps*: integration continue, déploiement continu, aws, google cloud, azure, playstore
-* *Méthodologies*: Agile, Scrum, Kanban, Test Driven Development
+* *DevOps*: intégration continue, déploiement continu, aws, google cloud, azure, playstore
+* *Méthodologies*: Agile, Scrum, Kanban, Test Driven Development, Merise
 
 ==== contact: cheroliv.developer@laposte.net

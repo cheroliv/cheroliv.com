@@ -1,3 +1,6 @@
+import Build_gradle.Tasks.TASK_BAKE
+import Build_gradle.Tasks.TASK_PUBLISH_SITE
+import Build_gradle.Tasks.TASK_PUSH_PAGES
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
@@ -161,7 +164,7 @@ fun push(
     }
 }
 
-tasks.register(Tasks.TASK_PUSH_PAGES) {
+tasks.register(TASK_PUSH_PAGES) {
     group = "managed"
     description = "Push pages to repository."
     val bakedPath = "${project.buildDir.absolutePath}${Site.separator}${localConf.bake.destDirPath}"
@@ -186,11 +189,11 @@ tasks.register(Tasks.TASK_PUSH_PAGES) {
     doLast { File(bakedPath).deleteRecursively() }
 }
 
-tasks.register(Tasks.TASK_PUBLISH_SITE) {
+tasks.register(TASK_PUBLISH_SITE) {
     group = "managed"
     description = "Publish site online."
-    dependsOn(Tasks.TASK_BAKE)
-    finalizedBy(Tasks.TASK_PUSH_PAGES)
+    dependsOn(TASK_BAKE)
+    finalizedBy(TASK_PUSH_PAGES)
     jbake {
         srcDirName = localConf.bake.srcPath
         destDirName = localConf.bake.destDirPath
