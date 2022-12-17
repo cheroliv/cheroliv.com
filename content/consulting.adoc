@@ -12,13 +12,12 @@ status=published
 * *application android*
 * *web services*
 
-
 ==== _Comment j'interviens ?_
 
-* Analyse des besoins, identifications des traitements
-* Prototypage et proposition de budget
-* Développement d'une solution
-* Déploiement et exploitation de la solution
+* Analyse des besoins métiers, identifications des traitements
+* Prototypage et proposition de devis
+* Développement d'une solution android native et pour le web service basé sur le framework spring
+* Déploiement et exploitation de la solution, sur playstore pour android et sur un cloud pour le web-service
 
 
 ==== _Mes outils:_
@@ -27,8 +26,8 @@ status=published
 * *Backend*: springboot
 * *Langages*: kotlin, groovy, java, sql
 * *Méthodologies*: agile, scrum, kanban, test driven development(TDD), merise
-* *DevOps*: intégration continue, déploiement continu, aws, google cloud, azure, playstore
 * *Design*: figma
 * *Documentation*: asciidoc, markdown, plantuml
+* *DevOps*: intégration continue, déploiement continu, aws, google cloud, azure, playstore
 
 ==== contact: cheroliv.developer@laposte.net
