@@ -14,11 +14,23 @@ title Training - Playground kotlin
 *** android studio
 
 ** <&globe>Syntaxe
+*** Expressions, Variables & Constants
+*** Types & Operations
+*** Control flow
 *** Imperative
 *** Orienté objet
 *** Boucles
+*** Fonctions
+**** basiques
+***** paramètre
+***** valeur de retour
+***** paramètre valeur
+***** overloading(surcharge)
+***** variable function
+***** paramètre function
+***** retourner rien: Nothing
+*** Nullabilité
 *** Function d'extension
-
 ** <&graph>Design pattern
 ** <&pulse>Programmation fonctionnelle
 ** <&people>Stream
