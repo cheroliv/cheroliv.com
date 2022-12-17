@@ -9,7 +9,7 @@
 :summary: Playground de programmation en kotlin, plan.
 
 == Mind map
-image:../../diagram/training_kotlin_playground.png[]
+image:../../diagram/training_kotlin.png[]
 
 == Plan
 

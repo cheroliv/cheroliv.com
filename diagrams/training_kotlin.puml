@@ -21,14 +21,13 @@ title Training - Playground kotlin
 *** Orienté objet
 *** Boucles
 *** Fonctions
-**** basiques
-***** paramètre
-***** valeur de retour
-***** paramètre valeur
-***** overloading(surcharge)
-***** variable function
-***** paramètre function
-***** retourner rien: Nothing
+**** paramètre
+**** valeur de retour
+**** paramètre valeur
+**** overloading(surcharge)
+**** variable function
+**** paramètre function
+**** retourner rien: Nothing
 *** Nullabilité
 *** Function d'extension
 ** <&graph>Design pattern

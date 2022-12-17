@@ -25,9 +25,10 @@ status=published
 
 * *Mobile*: android jetpack
 * *Backend*: springboot
-* *Langages*: java, kotlin, groovy, sql
-* *Design*: figma, plantUml
+* *Langages*: kotlin, groovy, java, sql
+* *Méthodologies*: agile, scrum, kanban, test driven development(TDD), merise
 * *DevOps*: intégration continue, déploiement continu, aws, google cloud, azure, playstore
-* *Méthodologies*: Agile, Scrum, Kanban, Test Driven Development, Merise
+* *Design*: figma
+* *Documentation*: asciidoc, markdown, plantuml
 
 ==== contact: cheroliv.developer@laposte.net
