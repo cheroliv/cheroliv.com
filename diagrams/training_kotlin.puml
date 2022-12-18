@@ -32,6 +32,11 @@ title Training - Playground kotlin
 *** Function d'extension
 ** <&graph>Design pattern
 ** <&pulse>Programmation fonctionnelle
+*** Théorie des catégories
+*** Concepts fonctionnelle
+*** Expression, Evaluation & Laziness
+*** HOF fonction de premier ordre
+*** Immutabilité et récursivité
 ** <&people>Stream
 ** <&star>Reactive
 ** <&star>Threads et coroutines
