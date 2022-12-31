@@ -36,3 +36,20 @@ log.info(
 === enum et sealed classes
 
 post: link:0038_training_kotlin_playground_enum_sealed_class_post.html[training kotlin playground enum sealed class, window="_blank"]
+
+=== functionnal interface et method reference
+
+On peut transformer une entité en model domain de dto avec un methode reference(functionnal style- java 8)
+[source,kotlin]
+----
+fun findAllByLoginNot(
+        pageable:Pageable,
+        login:String)
+    :Page<UserDto> {
+    return userDao.findAllByLoginNot(
+                    pageable,
+                    login).map(::fromEntity)
+}
+----
+
+une https://stackoverflow.com/a/22245383/837404[bonne explication]
