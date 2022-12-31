@@ -6,7 +6,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import java.io.ByteArrayOutputStream
 
 plugins {
-    val kotlinVersion = "1.7.21"
+    val kotlinVersion = "1.8.0"
     java
     groovy
     kotlin("jvm") version (kotlinVersion)
@@ -14,17 +14,17 @@ plugins {
 
 dependencies {
     // Kotlin lib: jdk8, reflexion, coroutines
-    implementation(platform("org.jetbrains.kotlin:kotlin-bom"))
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    testImplementation(platform("org.jetbrains.kotlin:kotlin-bom"))
+    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     //miscellaneous
-    implementation("commons-io:commons-io:${properties["commons_io_version"]}")
-    implementation("org.apache.commons:commons-lang3:${properties["commons_lang3_version"]}")
+    testImplementation("commons-io:commons-io:${properties["commons_io_version"]}")
+    testImplementation("org.apache.commons:commons-lang3:${properties["commons_lang3_version"]}")
     // Kotlin test lib
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${properties["kotlinx_coroutines_version"]}")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-swing:${properties["kotlinx_coroutines_version"]}")
     // Groovy
-    testImplementation("org.codehaus.groovy:groovy-all:${properties["groovy_version"]}")
+    testImplementation("org.apache.groovy:groovy:${properties["groovy_version"]}")
     // Logger
     testImplementation("ch.qos.logback:logback-classic:${properties["logback_version"]}")
     testImplementation("ch.qos.logback:logback-classic:${properties["logback_version"]}")

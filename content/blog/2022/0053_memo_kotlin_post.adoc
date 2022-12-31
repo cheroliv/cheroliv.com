@@ -1,7 +1,7 @@
-= Mémo kotlin
+= Mémo Kotlin
 @CherOliv
 2022-05-29
-:jbake-title: Mémo kotlin
+:jbake-title: Mémo Kotlin
 :jbake-type: post
 :jbake-tags: blog, ticket, kotlin, memo
 :jbake-status: published

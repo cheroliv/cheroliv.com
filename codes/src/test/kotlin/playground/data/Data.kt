@@ -1,8 +1,29 @@
-package playground
+package playground.data
 
+import kotlinx.coroutines.*
 import org.apache.commons.lang3.StringUtils
+import playground.data.Data.nameToLoginNormalizer
 import java.text.Normalizer
+import kotlin.test.Test
+class UsualDataTest {
+    @OptIn(DelicateCoroutinesApi::class)
+    @Test
+    fun data_test() {
+        val result: List<Deferred<Int>> = (1..1_000).map { n ->
+            val deferred: Deferred<Int> = GlobalScope.async {
+                delay(1_000)
+                println(n)
+                n
+            }
+            deferred
+        }
+        runBlocking {
+            println("the sum is ${result.sumOf { it.await() }}")
+        }
+        println(Data.intellectuals.nameToLoginNormalizer())
+    }
 
+}
 object Data {
 
     val basics: Array<String> = arrayOf(
@@ -102,3 +123,4 @@ object Data {
             .unaccent()
     }.toTypedArray()
 }
+

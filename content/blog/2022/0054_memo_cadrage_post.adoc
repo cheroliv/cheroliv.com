@@ -1,6 +1,6 @@
 = Mémo Cadrage
 @CherOliv
-2022-05-29
+2022-12-31
 :jbake-title: Mémo Cadrage
 :jbake-type: post
 :jbake-tags: blog, ticket, memo, Cadrage

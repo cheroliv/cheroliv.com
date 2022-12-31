@@ -2,7 +2,7 @@
 //(4)
 package playground.lang
 
-import playground.Data
+import playground.data.Data
 import kotlin.test.Test
 
 class ZipTest {
