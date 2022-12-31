@@ -1,12 +1,12 @@
-= Training - Kotlin SpringBoot
+= Training - Devops
 @CherOliv
 2023-01-05
-:jbake-title: Training - Kotlin SpringBoot
+:jbake-title: Training - Devops
 :jbake-type: post
-:jbake-tags: blog, ticket, Training, SpringBoot
+:jbake-tags: blog, ticket, Training, Devops
 :jbake-status: draft
-:jbake-date: 2022-12-31
-:summary:  Programmation SpringBoot en kotlin.
+:jbake-date: 2023-01-05
+:summary:  Devops: déploiement et intégration continue.
 
 == Mind map
 

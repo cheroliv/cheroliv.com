@@ -1,12 +1,12 @@
-= Training - Kotlin SpringBoot
+= Training - Mathématique
 @CherOliv
 2023-01-03
-:jbake-title: Training - Kotlin SpringBoot
+:jbake-title: Training - Mathématique
 :jbake-type: post
-:jbake-tags: blog, ticket, Training, SpringBoot
+:jbake-tags: blog, ticket, Training, Mathématique
 :jbake-status: draft
 :jbake-date: 2022-12-31
-:summary:  Programmation SpringBoot en kotlin.
+:summary:  Notions de mathématique.
 
 == Mind map
 

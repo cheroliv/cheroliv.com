@@ -1,12 +1,12 @@
-= Training - Kotlin SpringBoot
+= Training - Kotlin Architecture
 @CherOliv
 2023-01-04
-:jbake-title: Training - Kotlin SpringBoot
+:jbake-title: Training - Kotlin Architecture
 :jbake-type: post
-:jbake-tags: blog, ticket, Training, SpringBoot
+:jbake-tags: blog, ticket, Training, Architecture
 :jbake-status: draft
 :jbake-date: 2022-12-31
-:summary:  Programmation SpringBoot en kotlin.
+:summary:  Architecture logiciel en kotlin.
 
 == Mind map
 

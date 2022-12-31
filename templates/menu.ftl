@@ -18,9 +18,9 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="https://github.com/cheroliv/cheroliv.com" target="_blank"><i class="fab fa-github"></i> cheroliv.com</a></li>
                         <li><a href="https://github.com/cheroliv/ceelo" target="_blank"><i class="fab fa-github"></i> game.ceelo</a></li>
                         <li><a href="https://github.com/cheroliv/kotlin-springboot-monolith" target="_blank"><i class="fab fa-github"></i> kotlin-springboot-monolith</a></li>
+                        <li><a href="https://github.com/cheroliv/cheroliv.com" target="_blank"><i class="fab fa-github"></i> cheroliv.com</a></li>
                     </ul>
                 </li>
 
