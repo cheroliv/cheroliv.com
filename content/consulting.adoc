@@ -16,18 +16,53 @@ status=published
 
 * Analyse des besoins métiers, identifications des traitements
 * Prototypage et proposition de devis
-* Développement d'une solution android native et pour le web service basé sur le framework spring
+* Développement d'une solution mobile android native et d'une solution de web service basé sur le framework spring
 * Déploiement et exploitation de la solution, sur playstore pour android et sur un cloud pour le web-service
 
 
 ==== _Mes outils:_
 
-* *Mobile*: android jetpack
-* *Backend*: springboot
+* *Mobile*: android-studio jetpack koin room retrofit
+* *Backend*: springboot webflux security springdata r2dbc
 * *Langages*: kotlin, groovy, java, sql
+* *software*: gradle maven git docker
 * *Méthodologies*: agile, scrum, kanban, test driven development(TDD), merise
 * *Design*: figma
 * *Documentation*: asciidoc, markdown, plantuml
 * *DevOps*: intégration continue, déploiement continu, aws, google cloud, azure, playstore
 
-==== contact: cheroliv.developer@laposte.net
+==== contact: mailto:cheroliv.developer@laposte.net[courriel]
+
+=== english version
+
+
+----
+                Software Craftsman
+----
+
+
+==== _Expertise:_
+
+* *android application*
+* *web services*
+
+==== _How do I intervene ?_
+
+* Analysis of business needs, identification of processing
+* Prototyping and quote proposal
+* Development of a native android mobile solution and a web service solution based on the spring framework
+* Deployment and put into production of the solution, on playstore for android and on a cloud for the web-service
+
+
+==== _My tools:_
+
+* *Mobile*: android-studio jetpack koin room retrofit
+* *Backend*: springboot webflux security springdata r2dbc
+* *Langages*: kotlin, groovy, java, sql
+* *software*: gradle maven git docker
+* *Méthodologies*: agile, scrum, kanban, test driven development(TDD), merise
+* *Design*: figma
+* *Documentation*: asciidoc, markdown, plantuml
+* *DevOps*: continuous integration, continuous deployment, aws, google cloud, azure, playstore
+
+==== contact: mailto:cheroliv.developer@laposte.net[mail]
