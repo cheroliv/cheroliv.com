@@ -32,3 +32,7 @@ log.info(
         .reduce { request: String, s: String -> request + s }
 )
 ----
+
+=== enum et sealed classes
+
+post: link:0038_training_kotlin_playground_enum_sealed_class_post.html[training kotlin playground enum sealed class, window="_blank"]
