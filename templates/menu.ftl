@@ -24,6 +24,22 @@
                     </ul>
                 </li>
 
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown">Trainings<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0036_training_kotlin_playground_post.html"><i class="fa-brands fa-java"></i> kotlin playground</a></li>
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0049_training_android-jetpack_post.html"><i class="fa-brands fa-android"></i> android-jetpack</a></li>
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0043_training_jetpack-compose_post.html"><i class="fa-brands fa-android"></i> jetpack-compose</a></li>
+<#--SpringBoot                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html"><i class="fa-duotone fa-coffee-bean"></i> khipster-compose</a></li> -->
+<#--mathematique                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
+<#--algorithmique                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
+<#--architecture                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
+<#--devops                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
+                    </ul>
+                </li>
+
+
                 <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">Memos<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -38,19 +54,6 @@
                 </ul>
                 </li>
 
-                <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown">Trainings<b class="caret"></b></a>
-                    <ul class="dropdown-menu">
-                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0036_training_kotlin_playground_post.html">kotlin playground</a></li>
-                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0049_training_android-jetpack_post.html">android-jetpack</a></li>
-                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0043_training_jetpack-compose_post.html">jetpack-compose</a></li>
-<#--SpringBoot                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-<#--mathematique                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-<#--algorithmique                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-<#--architecture                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-<#--devops                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-                    </ul>
-                </li>
 
                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">&Agrave; propos</a></li>
             </ul>
