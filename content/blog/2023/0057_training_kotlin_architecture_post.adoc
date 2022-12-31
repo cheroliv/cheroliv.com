@@ -1,6 +1,6 @@
 = Training - Kotlin SpringBoot
 @CherOliv
-2022-12-31
+2023-01-04
 :jbake-title: Training - Kotlin SpringBoot
 :jbake-type: post
 :jbake-tags: blog, ticket, Training, SpringBoot

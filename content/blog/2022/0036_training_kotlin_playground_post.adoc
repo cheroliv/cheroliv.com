@@ -8,19 +8,23 @@
 :jbake-date: 2022-05-12
 :summary: Playground de programmation en kotlin, plan.
 
+
 == Mind map
 image:../../diagram/training_kotlin.png[]
+
+
 
 == Plan
 
 === FirstProgramTest
-link:0037_training_kotlin_playground_FirstProgramTest_post.html[FirstProgramTest] +
-notions: affichage écran, fonction
+notions: affichage écran, fonction +
+FirstProgramTest: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/FirstProgramTest.kt[source] +
 
 === ConcatFunctionTest
-link:0038_training_kotlin_playground_ConcatFunctionTest_post.html[ExampleUnitTest] +
-notions: memoire, variable, valeur, objet, extension de fonction
+notions: memoire, variable, valeur, objet, extension de fonction +
+ExampleUnitTest: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/ConcatFunctionTest.kt[source] +
 
 === BirthdayMessageTestOutput
-link:0039_training_kotlin_playground_BirthdayMessageTestOutput_post.html[BirthdayMessageTestOutput] +
-notions: ensembles, boucles
+notions: ensembles, boucles +
+https://developer.android.com/codelabs/basic-android-kotlin-training-first-kotlin-program?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-one%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-first-kotlin-program[Introduction to kotlin] +
+BirthdayMessageTestOutput: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/BirthdayMessageTestOutput.kt[source] +

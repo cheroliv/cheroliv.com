@@ -22,14 +22,14 @@ status=published
 
 ==== _Mes outils:_
 
-* *Mobile*: android-studio jetpack koin room retrofit
-* *Backend*: springboot webflux security springdata r2dbc
+* *Mobile*: android-jetpack
+* *Backend*: springboot
 * *Langages*: kotlin, groovy, java, sql
 * *software*: gradle maven git docker
-* *Méthodologies*: agile, scrum, kanban, test driven development(TDD), merise
+* *Méthodologies*: agile, scrum, test driven development(TDD)
 * *Design*: figma
 * *Documentation*: asciidoc, markdown, plantuml
-* *DevOps*: intégration continue, déploiement continu, aws, google cloud, azure, playstore
+* *DevOps*: intégration continue, déploiement continu sur cloud et playstore
 
 ==== contact: mailto:cheroliv.developer@laposte.net[courriel]
 
@@ -56,13 +56,13 @@ status=published
 
 ==== _My tools:_
 
-* *Mobile*: android-studio jetpack koin room retrofit
-* *Backend*: springboot webflux security springdata r2dbc
+* *Mobile*: android-jetpack
+* *Backend*: springboot
 * *Langages*: kotlin, groovy, java, sql
 * *software*: gradle maven git docker
-* *Méthodologies*: agile, scrum, kanban, test driven development(TDD), merise
+* *Méthodologies*: agile, scrum, test driven development(TDD)
 * *Design*: figma
 * *Documentation*: asciidoc, markdown, plantuml
-* *DevOps*: continuous integration, continuous deployment, aws, google cloud, azure, playstore
+* *DevOps*: continuous integration, continuous deployment on cloud & playstore
 
 ==== contact: mailto:cheroliv.developer@laposte.net[mail]

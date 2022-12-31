@@ -11,4 +11,3 @@ title=Trainings
 . link:blog/2022/0036_training_kotlin_playground_post.html[kotlin playground]
 . link:blog/2022/0049_training_android-jetpack_post.html[android-jetpack]
 . link:blog/2022/0043_training_jetpack-compose_post.html[jetpack-compose]
-. link:blog/2022/0044_training_khipster_post.html[khipster-compose]

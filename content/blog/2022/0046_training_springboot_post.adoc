@@ -6,7 +6,14 @@
 :jbake-tags: blog, ticket, Training, playground, Springboot
 :jbake-status: published
 :jbake-date: 2022-05-22
-:summary: Training - Springboot
+:summary: Programmation SpringBoot en kotlin.
 
+== Mind map
 
-github organisation: https://github.com/training-springboot[Training - Springboot]
+== Plan
+
+github organisation: https://github.com/training-springboot[Training - Springboot, window="_blank"]
+
+== Code base monolith
+
+https://github.com/cheroliv/kotlin-springboot-monolith[kotlin-springboot-monolith, window="_blank"]

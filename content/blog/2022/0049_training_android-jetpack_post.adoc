@@ -12,5 +12,23 @@ github organisation: https://github.com/training-android-jetpack[Training - Andr
 
 == Travaux pratiques
 
-. link:0050_training_android-jetpack_TP00AndroidAdb_post.html[TP00AndroidAdb]
-. link:0051_training_android-jetpack_TP01AndroidHelloWorld_post.html[TP01AndroidHelloWorld]
+
+=== TP 00 Android Adb: Se connecter à l'ADB
+dépot: https://github.com/training-android-jetpack/TP00AndroidAdb[TP00AndroidAdb]
+
+==== se connecter au shell de l'émulateur
+
+===== récupérer le path du sdk :
+* sous linux : cd ~/Android/Sdk/
+* sous microsoft : C:\Users\__MonUserName__\AppData\Local\Android\Sdk
+
+===== ouvrir un terminal:
+[source,bash]
+----
+cd ~/Android/Sdk/platform-tools/;
+./adb shell;
+----
+
+
+=== TP 01 Android HelloWorld
+dépot: https://github.com/training-android-jetpack/TP01AndroidHelloWorld[TP01AndroidHelloWorld]

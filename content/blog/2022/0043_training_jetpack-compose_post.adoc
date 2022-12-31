@@ -9,7 +9,7 @@
 :summary: Training - Jetpack Compose
 
 
-github organisation: https://github.com/training-jetpack-compose[Training - Jetpack Compose]
+github organisation: https://github.com/training-jetpack-compose[Training - Jetpack Compose] +
 dépots:
 
 . link:0048_training_jetpack-compose_fundamentals_post.html[compose-fundamentals]
