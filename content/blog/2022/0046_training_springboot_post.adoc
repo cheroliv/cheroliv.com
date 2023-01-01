@@ -16,4 +16,4 @@ github organisation: https://github.com/training-springboot[Training - Springboo
 
 == Code base monolith
 
-https://github.com/cheroliv/kotlin-springboot-monolith[kotlin-springboot-monolith, window="_blank"]
+https://github.com/cheroliv/kotlin-springboot[kotlin-springboot, window="_blank"]
