@@ -14,7 +14,7 @@ github organisation: https://github.com/training-android-jetpack[Training - Andr
 
 
 === TP 00 Android Adb: Se connecter à l'ADB
-dépot: https://github.com/training-android-jetpack/TP00AndroidAdb[TP00AndroidAdb]
+dépot: https://github.com/training-android-jetpack/android_tp_00_adb[android_tp_00_adb,windows="_blank"]
 
 ==== se connecter au shell de l'émulateur
 
@@ -31,4 +31,4 @@ cd ~/Android/Sdk/platform-tools/;
 
 
 === TP 01 Android HelloWorld
-dépot: https://github.com/training-android-jetpack/TP01AndroidHelloWorld[TP01AndroidHelloWorld]
+dépot: https://github.com/training-android-jetpack/android_tp_01_helloworld[android_tp_01_helloworld,windows="_blank"]
