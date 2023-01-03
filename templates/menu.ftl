@@ -13,13 +13,13 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
 
-                <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>consulting.html">Consulting</a></li>
+          <#--      <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>consulting.html">Consulting</a></li> -->
 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/cheroliv/ceelo" target="_blank"><i class="fab fa-github"></i> game.ceelo</a></li>
-                        <li><a href="https://github.com/cheroliv/kotlin-springboot-monolith" target="_blank"><i class="fab fa-github"></i> kotlin-springboot-monolith</a></li>
+                        <li><a href="https://github.com/cheroliv/kotlin-springboot" target="_blank"><i class="fab fa-github"></i> kotlin-springboot</a></li>
                         <li><a href="https://github.com/cheroliv/cheroliv.com" target="_blank"><i class="fab fa-github"></i> cheroliv.com</a></li>
                     </ul>
                 </li>
@@ -54,6 +54,7 @@
                 </ul>
                 </li>
 
+                <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog.html">Blog</a></li>
 
                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>about.html">&Agrave; propos</a></li>
             </ul>

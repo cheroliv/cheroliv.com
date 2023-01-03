@@ -4,9 +4,9 @@ status=published
 title=Trainings
 ~~~~~~
 
-----
-                Trainings
-----
+
+= Trainings
+
 
 . link:blog/2022/0036_training_kotlin_playground_post.html[kotlin playground]
 . link:blog/2022/0049_training_android-jetpack_post.html[android-jetpack]

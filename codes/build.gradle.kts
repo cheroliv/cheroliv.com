@@ -75,18 +75,3 @@ tasks.withType<KotlinCompile>().configureEach {
         kotlinOptions.freeCompilerArgs += properties["opt_in_kotlin_compiler_option"].toString()
     }
 }
-
-
-open class PrintHerokuVersion : Exec() {
-    init {
-        this.workingDir = project.rootDir
-        this.commandLine("/snap/bin/heroku", "-v")
-        this.standardOutput = ByteArrayOutputStream()
-    }
-}
-
-project.tasks.register<PrintHerokuVersion>("printHerokuVersion")
-
-project.tasks.withType<PrintHerokuVersion> {
-    doLast { logger.info(standardOutput.toString()) }
-}

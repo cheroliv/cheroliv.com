@@ -3,27 +3,17 @@ type=page
 status=published
 ~~~~~~
 
-==== À propos de cheroliv.com
+Ce site est une carte de visite et un support de présence en ligne. +
+Dans la thématique du developement d'application cloud et mobile. +
+Le but est le Partage de savoir-faire, trucs et astuces. +
 
-----
-Ce blog est ma carte de visite et mon support pour laisser des traces en ligne.
-Je partage savoir-faire, trucs et astuces, sur des sujets techniques.
-----
-
-----
-This blog is my business card and my medium for leaving traces online.
-I share know-how, tips and tricks on technical subjects.
-----
-
-
-===== *_socials:_*
 
 // suppress inspection "AsciiDocLinkResolve"
-* mailto:cheroliv.developer@laposte.net[mail]
-* https://www.linkedin.com/in/cheroliv-com/[linkedin,window="_blank"]
-* https://github.com/cheroliv[github,window="_blank"]
-* https://stackoverflow.com/users/837404[stack-overflow,window="_blank"]
-* https://twitter.com/cheroliv[twitter,window="_blank"]
-* https://www.meetup.com/members/290160850/[meetup,window="_blank"]
-* https://www.codewars.com/users/cheroliv[codewars,window="_blank"]
-* link:feed.xml[rss]
+- mailto:cheroliv.developer@laposte.net[courriel]
+- https://github.com/cheroliv[github,window="_blank"]
+- https://stackoverflow.com/users/837404[stackoverflow,window="_blank"]
+- https://www.codewars.com/users/cheroliv[codewars,window="_blank"]
+- https://www.meetup.com/members/290160850/[meetup,window="_blank"]
+- https://www.linkedin.com/in/cheroliv-com/[linkedin,window="_blank"]
+- https://twitter.com/cheroliv[twitter,window="_blank"]
+- link:feed.xml[rss]
