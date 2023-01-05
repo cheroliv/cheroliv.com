@@ -14,12 +14,15 @@ title Training - Playground kotlin
 *** android studio
 
 ** <&globe>Syntaxe
+*** Instructions & pseudo langage
 *** Expressions, Variables & Constants
 *** Types & Operations
+*** Nullabilité
 *** Control flow
 *** Imperative
 *** Orienté objet
 *** Boucles
+*** Function d'extension
 *** Fonctions
 **** paramètre
 **** valeur de retour
@@ -28,8 +31,12 @@ title Training - Playground kotlin
 **** variable function
 **** paramètre function
 **** retourner rien: Nothing
-*** Nullabilité
-*** Function d'extension
+** <&people>Stream
+** <&star>Reactive
+** <&star>Threads et coroutines
+** <&star>Concurrence
+** <&star>Reactive microservices
+** <&star>Idioms et anti-pattern
 ** <&graph>Design pattern
 ** <&pulse>Programmation fonctionnelle
 *** Théorie des catégories
@@ -37,12 +44,6 @@ title Training - Playground kotlin
 *** Expression, Evaluation & Laziness
 *** HOF fonction de premier ordre
 *** Immutabilité et récursivité
-** <&people>Stream
-** <&star>Reactive
-** <&star>Threads et coroutines
-** <&star>Concurrence
-** <&star>Idioms et anti-pattern
-** <&star>Reactive microservices
 
 
 header

@@ -10,7 +10,7 @@
 
 
 == Mind map
-image:../../diagram/training_kotlin.png[]
+image:../../diagram/training_kotlin.png[training_kotlin]
 
 
 

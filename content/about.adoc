@@ -4,16 +4,12 @@ status=published
 ~~~~~~
 
 Ce site est une carte de visite et un support de présence en ligne. +
-Dans la thématique du developement d'application cloud et mobile. +
+Dans la thématique du developpement d'application cloud et mobile. +
 Le but est le Partage de savoir-faire, trucs et astuces. +
-
-
-// suppress inspection "AsciiDocLinkResolve"
-- mailto:cheroliv.developer@laposte.net[courriel]
-- https://github.com/cheroliv[github,window="_blank"]
-- https://stackoverflow.com/users/837404[stackoverflow,window="_blank"]
-- https://www.codewars.com/users/cheroliv[codewars,window="_blank"]
-- https://www.meetup.com/members/290160850/[meetup,window="_blank"]
-- https://www.linkedin.com/in/cheroliv-com/[linkedin,window="_blank"]
-- https://twitter.com/cheroliv[twitter,window="_blank"]
-- link:feed.xml[rss]
+ +
+[cols=3]
+|===
+|mailto:cheroliv.developer@laposte.net[contact]
+|https://github.com/cheroliv[github,window="_blank"]
+|link:feed.xml[rss]
+|===

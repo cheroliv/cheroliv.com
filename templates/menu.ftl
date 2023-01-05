@@ -13,8 +13,6 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
 
-          <#--      <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>consulting.html">Consulting</a></li> -->
-
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -31,12 +29,12 @@
                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0036_training_kotlin_playground_post.html"><i class="fa-brands fa-java"></i> kotlin playground</a></li>
                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0049_training_android-jetpack_post.html"><i class="fa-brands fa-android"></i> android-jetpack</a></li>
                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0043_training_jetpack-compose_post.html"><i class="fa-brands fa-android"></i> jetpack-compose</a></li>
-<#--SpringBoot                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html"><i class="fa-duotone fa-coffee-bean"></i> khipster-compose</a></li> -->
-<#--mathematique                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-<#--algorithmique                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-<#--architecture                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-<#--devops                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0044_training_khipster_post.html">khipster-compose</a></li> -->
-                    </ul>
+        <!--                  <li><a ><i class="fa-duotone fa-coffee-bean"></i> springboot</a></li>
+                          <li><a > mathématique</a></li>
+                          <li><a >algorithmique</a></li>
+                          <li><a >architecture</a></li>
+                          <li><a >devops</a></li>
+         -->           </ul>
                 </li>
 
 
@@ -63,7 +61,6 @@
             <ul class="nav navbar-nav">
                 <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>${config.feed_file}"><i class="fa fa-rss fa-lg"></i></a></li>
                 <li><a href="https://github.com/cheroliv" target="_blank"><i class="fab fa-github fa-lg"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/cheroliv-com/" target="_blank"><i class="fab fa-linkedin fa-lg"></i></a></li>
             </ul>
 
         </div><!--/.nav-collapse -->
