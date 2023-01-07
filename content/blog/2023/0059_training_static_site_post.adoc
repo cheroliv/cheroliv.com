@@ -1,0 +1,60 @@
+// suppress inspection "GrazieInspection"
+= Training - Static site
+@CherOliv
+2023-01-06
+:jbake-title: Training - Static site
+:jbake-type: post
+:jbake-tags: blog, ticket, Training, Static site
+:jbake-status: draft
+:jbake-date: 2022-12-31
+:summary:  Créer son site statique avec jbake.
+
+==== prérequis:
+Connaitre github et avoir configuré sa clef ssh.
+
+== Créer son site statique avec jbake.
+
+=== Initialisation des dépots
+
+Créer un dossier racine pour le code source du projet. +
+Je le nomme static-site-jbake, libre à vous de lui donner +
+un nom plus pertinent à votre projet. +
+
+Ouvrir un terminal et diriger dans le dossier static-site-jbake, +
+une fois rendu alors initialisons un depot git, +
+puis un README pour présenter le mode d'emploi du site :
+
+[source,bash]
+----
+git init
+touch README.adoc
+----
+
+Créer un repo sur github que je nomme static-site-jbake. +
+Je récupère la ligne de commande fournie à la création du repo en ligne. +
+
+artisan-logiciel est mon nom de compte +
+static-site-jbake est le nom de mon repo +
+À vous d'adapter pour que cela soit conforme à votre nom de compte et de répo.
+
+[source,bash]
+----
+git remote add origin https://github.com/artisan-logiciel/static-site-jbake.git
+git branch -M master
+git push -u origin master
+----
+
+
+=== Installation des outils: curl, sdkman, java, gradle & jbake
+
+[source,bash]
+----
+sudo snap remove curl
+sudo apt install curl
+curl -s "https://get.sdkman.io" | bash
+sdk i java 17.0.5-tem
+sdk i gradle
+sdk i jbake
+----
+
+
