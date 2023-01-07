@@ -17,7 +17,7 @@
                     <a class="dropdown-toggle" data-toggle="dropdown">Projects<b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="https://github.com/cheroliv/ceelo" target="_blank"><i class="fab fa-github"></i> game.ceelo</a></li>
-                        <li><a href="https://github.com/cheroliv/kotlin-springboot" target="_blank"><i class="fab fa-github"></i> kotlin-springboot</a></li>
+                        <li><a href="https://github.com/artisan-logiciel/kotlin-springboot" target="_blank"><i class="fab fa-github"></i> kotlin-springboot</a></li>
                         <li><a href="https://github.com/cheroliv/cheroliv.com" target="_blank"><i class="fab fa-github"></i> cheroliv.com</a></li>
                     </ul>
                 </li>
