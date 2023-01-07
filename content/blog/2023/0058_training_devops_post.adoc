@@ -8,6 +8,9 @@
 :jbake-date: 2023-01-05
 :summary:  Devops: déploiement et intégration continue.
 
-== Mind map
-
 == Plan
+1) github +
+2) snap sdkman +
+3) appengine +
+4) mailslurp +
+5) dns +
