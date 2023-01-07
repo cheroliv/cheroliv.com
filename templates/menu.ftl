@@ -26,7 +26,8 @@
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown">Trainings<b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0036_training_kotlin_playground_post.html"><i class="fa-brands fa-java"></i> kotlin playground</a></li>
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2023/0059_training_static_site_post.html"><i class="fa-brands fa-java"></i> static-site</a></li>
+                         <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0036_training_kotlin_post.html"><i class="fa-brands fa-java"></i> kotlin playground</a></li>
                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0049_training_android-jetpack_post.html"><i class="fa-brands fa-android"></i> android-jetpack</a></li>
                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2022/0043_training_jetpack-compose_post.html"><i class="fa-brands fa-android"></i> jetpack-compose</a></li>
         <!--                  <li><a ><i class="fa-duotone fa-coffee-bean"></i> springboot</a></li>
@@ -34,7 +35,6 @@
                           <li><a >algorithmique</a></li>
                           <li><a >architecture</a></li>
                           <li><a >devops</a></li>         -->
-                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2023/0059_training_static_site_post.html"><i class="fa-brands fa-java"></i> static-site</a></li>
                   </ul>
                 </li>
 
