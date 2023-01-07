@@ -1,18 +1,19 @@
-// suppress inspection "GrazieInspection"
 = Training - Static site
 @CherOliv
 2023-01-06
 :jbake-title: Training - Static site
 :jbake-type: post
-:jbake-tags: blog, ticket, Training, Static site
-:jbake-status: draft
-:jbake-date: 2022-12-31
+:jbake-tags: blog, ticket, Training, Static site, asciidoc, gradle, Kotlin, org.jbake.site, git, github, ssh, disqus.com
+:jbake-status: published
+:jbake-date: 2023-01-06
 :summary:  Créer son site statique avec jbake.
+
+
+== Créer son site statique avec jbake.
 
 ==== prérequis:
 Connaitre github et avoir configuré sa clef ssh.
 
-== Créer son site statique avec jbake.
 
 === Initialisation des dépots
 
@@ -56,5 +57,7 @@ sdk i java 17.0.5-tem
 sdk i gradle
 sdk i jbake
 ----
+
+https://github.com/cheroliv/managed-jbake[dépot managed-jbake]
 
 

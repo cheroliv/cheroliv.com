@@ -33,8 +33,9 @@
                           <li><a > mathématique</a></li>
                           <li><a >algorithmique</a></li>
                           <li><a >architecture</a></li>
-                          <li><a >devops</a></li>
-         -->           </ul>
+                          <li><a >devops</a></li>         -->
+                          <li><a href="<#if (content.rootpath)??>${content.rootpath}<#else></#if>blog/2023/0059_training_static_site_post.html"><i class="fa-brands fa-java"></i> static-site</a></li>
+                  </ul>
                 </li>
 
 

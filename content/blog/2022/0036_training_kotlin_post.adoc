@@ -1,12 +1,12 @@
-= Training - Kotlin playground
+= Training - Kotlin
 @CherOliv
 2022-05-12
-:jbake-title: Training - Kotlin Playground
+:jbake-title: Training - Kotlin
 :jbake-type: post
-:jbake-tags: blog, ticket, Training, playground
+:jbake-tags: blog, ticket, Training, kotlin
 :jbake-status: published
 :jbake-date: 2022-05-12
-:summary: Playground de programmation en kotlin, plan.
+:summary: Programmation en kotlin, plan.
 
 
 == Mind map
@@ -15,7 +15,7 @@ image:../../diagram/training_kotlin.png[training_kotlin]
 
 
 == Plan
-
+//TODO: bouger le lien vers codes
 === FirstProgramTest
 notions: affichage écran, fonction +
 FirstProgramTest: https://github.com/cheroliv/playground/blob/master/src/test/kotlin/playground/programming/FirstProgramTest.kt[source] +

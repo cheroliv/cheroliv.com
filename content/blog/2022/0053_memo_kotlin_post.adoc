@@ -35,7 +35,7 @@ log.info(
 
 === enum et sealed classes
 
-post: link:0038_training_kotlin_playground_enum_sealed_class_post.html[training kotlin playground enum sealed class, window="_blank"]
+post: link:0038_training_kotlin_enum_sealed_class_post[training kotlin enum sealed class, window="_blank"]
 
 === functionnal interface et method reference
 

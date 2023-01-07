@@ -1,12 +1,12 @@
-= Training - Playground kotlin: enum, sealed classes
+= Training - kotlin: enum, sealed classes
 @CherOliv
 2022-05-17
-:jbake-title: Training - Playground kotlin: enum, sealed classes
+:jbake-title: Training - kotlin: enum, sealed classes
 :jbake-type: post
 :jbake-tags: blog, ticket, Training, playground, kotlin, enum, sealed
 :jbake-status: published
 :jbake-date: 2022-05-17
-:summary: Playground de programmation en kotlin: enum, sealed classes
+:summary: Programmation en kotlin: enum, sealed classes
 
 //TODO: Passer cette article en memo kotlin
 les sealed classes, ne sont pas des énumérations(mot clef:enum). +

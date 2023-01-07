@@ -5,7 +5,7 @@
 :jbake-type: post
 :jbake-tags: blog, ticket, Training, Mathématique
 :jbake-status: draft
-:jbake-date: 2022-12-31
+:jbake-date: 2023-01-03
 :summary:  Notions de mathématique.
 
 == Mind map
