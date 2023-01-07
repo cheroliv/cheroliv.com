@@ -18,7 +18,7 @@ dependencies {
     testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     //miscellaneous
     testImplementation("commons-io:commons-io:${properties["commons_io_version"]}")
-    testImplementation("org.apache.commons:commons-lang3:${properties["commons_lang3_version"]}")
+    implementation("org.apache.commons:commons-lang3:${properties["commons_lang3_version"]}")
     // Kotlin test lib
     testImplementation("org.jetbrains.kotlin:kotlin-reflect")
     testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:${properties["kotlinx_coroutines_version"]}")
