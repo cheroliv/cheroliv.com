@@ -12,19 +12,17 @@
 == Mind map
 image:../../diagram/training_kotlin.png[training_kotlin]
 
-
-
 == Plan
-//TODO: bouger le lien vers codes
+
 === FirstProgramTest
 notions: affichage écran, fonction +
 FirstProgramTest: https://github.com/cheroliv/cheroliv.com/blob/master/codes/src/test/kotlin/programming/FirstProgramTest.kt[source] +
 
 === ConcatFunctionTest
 notions: memoire, variable, valeur, objet, extension de fonction +
-ExampleUnitTest: https://github.com/cheroliv/playground/blob/master/codes/src/test/kotlin/programming/ConcatFunctionTest.kt[source] +
+ExampleUnitTest: https://github.com/cheroliv/cheroliv.com/blob/master/codes/src/test/kotlin/programming/ConcatFunctionTest.kt[source] +
 
 === BirthdayMessageTestOutput
 notions: ensembles, boucles +
 https://developer.android.com/codelabs/basic-android-kotlin-training-first-kotlin-program?continue=https%3A%2F%2Fdeveloper.android.com%2Fcourses%2Fpathways%2Fandroid-basics-kotlin-one%23codelab-https%3A%2F%2Fdeveloper.android.com%2Fcodelabs%2Fbasic-android-kotlin-training-first-kotlin-program[Introduction to kotlin] +
-BirthdayMessageTestOutput: https://github.com/cheroliv/playground/blob/master/codes/src/test/kotlin/programming/BirthdayMessageTestOutput.kt[source] +
+BirthdayMessageTestOutput: https://github.com/cheroliv/cheroliv.com/blob/master/codes/src/test/kotlin/programming/BirthdayMessageTestOutput.kt[source] +
