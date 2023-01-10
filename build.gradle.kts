@@ -21,12 +21,39 @@ import java.nio.charset.StandardCharsets.UTF_8
 
 plugins { id("org.jbake.site") }
 
+val localConf: ManagedBlogConf by lazy {
+    ObjectMapper(YAMLFactory()).apply {
+        disable(WRITE_DATES_AS_TIMESTAMPS)
+        registerKotlinModule()
+    }.readValue(
+        File(
+            "${project.rootDir}$separator${
+                properties["managed_config_path"]
+            }"
+        ), ManagedBlogConf::class.java
+    )
+}
+object Site {
+    const val TASK_PUSH_PAGES = "pushPages"
+    const val TASK_BAKE = "bake"
+    const val TASK_PUBLISH_SITE = "publishSite"
+    val separator: String by lazy { getProperty("file.separator") }
+    val origin: String by lazy { "origin" }
+    val remote: String by lazy { "remote" }
+    const val USER_HOME_KEY = "user.home"
+    const val CNAME = "CNAME"
+}
+
 data class ManagedBlogConf(
     val bake: BakeConf,
     val pushPage: GitPushConf,
     val pushSource: GitPushConf? = null,
     val pushTemplate: GitPushConf? = null,
-)
+) {
+    companion object {
+
+    }
+}
 
 data class RepoCredentials(
     val username: String,
@@ -52,38 +79,6 @@ data class BakeConf(
     val destDirPath: String,
     val cname: String,
 )
-
-object Site {
-    const val TASK_PUSH_PAGES = "pushPages"
-    const val TASK_BAKE = "bake"
-    const val TASK_PUBLISH_SITE = "publishSite"
-    val separator: String by lazy { getProperty("file.separator") }
-    val origin: String by lazy { "origin" }
-    val remote: String by lazy { "remote" }
-    const val USER_HOME_KEY = "user.home"
-    const val CNAME = "CNAME"
-
-}
-
-val localConf: ManagedBlogConf by lazy {
-    ObjectMapper(YAMLFactory()).apply {
-        disable(WRITE_DATES_AS_TIMESTAMPS)
-        registerKotlinModule()
-    }.readValue(
-        File(
-            "${project.rootDir}$separator${
-                properties["managed_config_path"]
-            }"
-        ),
-        ManagedBlogConf::class.java
-    )
-}
-
-val bakedPath by lazy {
-    "${project.buildDir.absolutePath}$separator${
-        localConf.bake.destDirPath
-    }"
-}
 
 fun createCnameFile(conf: ManagedBlogConf) {
     if (conf.bake.cname != "") file(
@@ -177,27 +172,6 @@ fun push(
     }
 }
 
-tasks.register(TASK_PUSH_PAGES) {
-    group = "managed"
-    description = "Push pages to repository."
-    doFirst {
-        //1) créer un dossier cvs
-        createRepoDir(
-            "${project.buildDir.absolutePath}$separator${localConf.pushPage.to}"
-        ).apply {
-            //2) déplacer le contenu du dossier jbake dans le dossier cvs
-            copyBakedFilesToRepo(bakedPath, this)
-            //3) initialiser un repo dans le dossier cvs
-            // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
-            initAddCommit(this, localConf)
-            //6) push
-            push(this, localConf)
-            deleteRecursively()
-        }
-    }
-    doLast { File(bakedPath).deleteRecursively() }
-}
-
 tasks.register(TASK_PUBLISH_SITE) {
     group = "managed"
     description = "Publish site online."
@@ -210,6 +184,37 @@ tasks.register(TASK_PUBLISH_SITE) {
     doFirst { createCnameFile(localConf) }
 }
 
+tasks.register(TASK_PUSH_PAGES) {
+    group = "managed"
+    description = "Push pages to repository."
+    doFirst {
+        //1) créer un dossier cvs
+        createRepoDir(
+            "${project.buildDir.absolutePath}$separator${localConf.pushPage.to}"
+        ).apply {
+            //2) déplacer le contenu du dossier jbake dans le dossier cvs
+            copyBakedFilesToRepo(
+                "${project.buildDir.absolutePath}$separator${
+                    localConf.bake.destDirPath
+                }", this
+            )
+            //3) initialiser un repo dans le dossier cvs
+            // 4 & 5) ajouter les fichiers du dossier cvs à l'index et commit
+            initAddCommit(this, localConf)
+            //6) push
+            push(this, localConf)
+            deleteRecursively()
+        }
+    }
+    doLast {
+        File(
+            "${project.buildDir.absolutePath}$separator${
+                localConf.bake.destDirPath
+            }"
+        ).deleteRecursively()
+    }
+}
+
 tasks.register("displayParam") {
     group = "managed"
     println("site_push_repo_name : ${properties["site_push_repo_name"]}")
@@ -217,5 +222,3 @@ tasks.register("displayParam") {
     println("site_push_repo_username : ${properties["site_push_repo_username"]}")
     println("site_push_repo_password : ${properties["site_push_repo_password"]}")
 }
-
-//TODO convert asciidoc to markdown
