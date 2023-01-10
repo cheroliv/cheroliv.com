@@ -73,7 +73,7 @@ val localConf: ManagedBlogConf by lazy {
         disable(WRITE_DATES_AS_TIMESTAMPS)
         registerKotlinModule()
     }.readValue(
-        File("${getProperty(USER_HOME_KEY)}$separator${properties["managed_config_path"]}"),
+        File("${project.rootDir}$separator${properties["managed_config_path"]}"),
         ManagedBlogConf::class.java
     )
 }

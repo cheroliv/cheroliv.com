@@ -27,8 +27,10 @@ puis un README pour présenter le mode d'emploi du site :
 
 [source,bash]
 ----
-git init
-touch README.adoc
+mkdir static-site-jbake;
+cd static-site-jbake;
+git init;
+touch README.adoc;
 ----
 
 Créer un repo sur github que je nomme static-site-jbake. +
@@ -36,13 +38,13 @@ Je récupère la ligne de commande fournie à la création du repo en ligne. +
 
 artisan-logiciel est mon nom de compte +
 static-site-jbake est le nom de mon repo +
-À vous d'adapter pour que cela soit conforme à votre nom de compte et de répo.
+À vous d'adapter sans les " pour que cela soit conforme à votre nom de compte et de répo.
 
 [source,bash]
 ----
-git remote add origin https://github.com/artisan-logiciel/static-site-jbake.git
-git branch -M master
-git push -u origin master
+git remote add origin https://github.com/"nom d'utilisateur"/"nom du répo".git;
+git branch -M master;
+git push -u origin master;
 ----
 
 
@@ -50,21 +52,22 @@ git push -u origin master
 
 [source,bash]
 ----
-sudo snap remove curl
-sudo apt install curl
-curl -s "https://get.sdkman.io" | bash
-sdk i java 17.0.5-tem
-sdk i gradle
-sdk i jbake
+sudo snap remove curl;
+sudo apt install curl;
+curl -s "https://get.sdkman.io" | bash;
+sdk i java 17.0.5-tem;
+sdk i gradle;
+sdk i jbake;
 ----
 
 === Géneration du site statique avec jbake
 
 [source,bash]
 ----
-$ mkdir jbake
-$ jbake -i
-$ jbake -b -s
+mkdir jbake;
+cd jbake;
+jbake -i;
+jbake -b -s;
 ----
 
 Accédez ensuite à http://localhost:8820 dans votre navigateur Web, +
@@ -72,5 +75,16 @@ pour voir votre site statique.
 
 === Création du mécanisme de déploiement avec gradle
 
+On revient au dossier parent du repo pour initialiser le build gradle.
+
+[source,bash]
+----
+cd ..;
+gradle init;
+touch gradle.properties;
+touch jbake.sh
+----
+
+[image du terminal]
 
 
