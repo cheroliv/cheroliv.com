@@ -49,11 +49,7 @@ data class ManagedBlogConf(
     val pushPage: GitPushConf,
     val pushSource: GitPushConf? = null,
     val pushTemplate: GitPushConf? = null,
-) {
-    companion object {
-
-    }
-}
+)
 
 data class RepoCredentials(
     val username: String,
