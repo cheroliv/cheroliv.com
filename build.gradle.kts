@@ -1,11 +1,10 @@
 import Build_gradle.Site.CNAME
-import Build_gradle.Site.USER_HOME_KEY
+import Build_gradle.Site.TASK_BAKE
+import Build_gradle.Site.TASK_PUBLISH_SITE
+import Build_gradle.Site.TASK_PUSH_PAGES
 import Build_gradle.Site.origin
 import Build_gradle.Site.remote
 import Build_gradle.Site.separator
-import Build_gradle.Tasks.TASK_BAKE
-import Build_gradle.Tasks.TASK_PUBLISH_SITE
-import Build_gradle.Tasks.TASK_PUSH_PAGES
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature.WRITE_DATES_AS_TIMESTAMPS
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
@@ -54,18 +53,16 @@ data class BakeConf(
     val cname: String,
 )
 
-object Tasks {
+object Site {
     const val TASK_PUSH_PAGES = "pushPages"
     const val TASK_BAKE = "bake"
     const val TASK_PUBLISH_SITE = "publishSite"
-}
-
-object Site {
     val separator: String by lazy { getProperty("file.separator") }
     val origin: String by lazy { "origin" }
     val remote: String by lazy { "remote" }
     const val USER_HOME_KEY = "user.home"
     const val CNAME = "CNAME"
+
 }
 
 val localConf: ManagedBlogConf by lazy {
@@ -73,11 +70,20 @@ val localConf: ManagedBlogConf by lazy {
         disable(WRITE_DATES_AS_TIMESTAMPS)
         registerKotlinModule()
     }.readValue(
-        File("${project.rootDir}$separator${properties["managed_config_path"]}"),
+        File(
+            "${project.rootDir}$separator${
+                properties["managed_config_path"]
+            }"
+        ),
         ManagedBlogConf::class.java
     )
 }
 
+val bakedPath by lazy {
+    "${project.buildDir.absolutePath}$separator${
+        localConf.bake.destDirPath
+    }"
+}
 
 fun createCnameFile(conf: ManagedBlogConf) {
     if (conf.bake.cname != "") file(
@@ -174,7 +180,6 @@ fun push(
 tasks.register(TASK_PUSH_PAGES) {
     group = "managed"
     description = "Push pages to repository."
-    val bakedPath = "${project.buildDir.absolutePath}$separator${localConf.bake.destDirPath}"
     doFirst {
         //1) créer un dossier cvs
         createRepoDir(
