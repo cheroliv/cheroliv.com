@@ -70,3 +70,7 @@ $ jbake -b -s
 Accédez ensuite à http://localhost:8820 dans votre navigateur Web, +
 pour voir votre site statique.
 
+=== Création du mécanisme de déploiement avec gradle
+
+
+
