@@ -1,4 +1,4 @@
-= Static site, based on JBake, Gradle and Git
+= Static site based on JBake, Gradle and Git
 
 https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 + https://jbake.org/[JBake]
