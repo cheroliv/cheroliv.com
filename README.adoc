@@ -10,18 +10,18 @@ https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 
 Just in case, you need to make the script executable, for the first time you run it
 ```
-chmod u+x jbake.sh;
+chmod u+x jbake.sh
 ```
 
 
 Run the live local mode :
 ```
-./jbake.sh;
+./jbake.sh
 ```
 
 
-=== Deploy to github-pages
+=== Deploy to Github Pages
 
 ```
-./gradlew publishSite;
+./gradlew publishSite
 ```
