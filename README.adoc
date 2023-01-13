@@ -6,7 +6,7 @@ https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 
 === Run in local mode :
 
-Just in case, you need to make the script executable, for the first time you run it
+Just in case, you need to make the script executable, for the first time you'll have run it
 ```
 chmod u+x jbake.sh
 ```
