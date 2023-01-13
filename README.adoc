@@ -6,13 +6,13 @@ https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 
 === Run in local mode :
 
-Just in case, you need to make the script executable, for the first time you'll have run it
+==== To make the script executable.
 ```
 chmod u+x jbake.sh
 ```
 
 
-Run the live local mode :
+==== Run in live local mode :
 ```
 ./jbake.sh
 ```
