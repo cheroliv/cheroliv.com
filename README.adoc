@@ -4,21 +4,19 @@ https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 + https://jbake.org/[JBake]
 + https://pages.github.com/[Github Pages]
 
-=== Run in local mode :
-
 ==== To make the script executable.
 ```
 chmod u+x jbake.sh
 ```
 
 
-==== Run in live local mode :
+== Run in live local mode :
 ```
 ./jbake.sh
 ```
 
 
-=== Deploy to Github Pages
+== Deploy to Github Pages
 
 ```
 ./gradlew publishSite
