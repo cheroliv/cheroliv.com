@@ -1,13 +1,10 @@
-= Managed JBake, static site
-
-image:https://github.com/cheroliv/cheroliv.com/actions/workflows/gradle.yml/badge.svg[Build Status (GitHub Actions),link=https://github.com/cheroliv/cheroliv.com/actions/workflows/gradle.yml]
+= Personal static site, based on JBake, Gradle and Git
 
 https://docs.gradle.org/current/userguide/userguide.html[Gradle]
 + https://jbake.org/[JBake]
 + https://pages.github.com/[Github Pages]
 
 == Modus operandi?
-
 
 === Run in local mode :
 
@@ -16,12 +13,15 @@ Just in case, you need to make the script executable, for the first time you run
 chmod u+x jbake.sh;
 ```
 
-Now enjoy the live local mode :
+
+Run the live local mode :
 ```
 ./jbake.sh
 ```
 
-=== Deploy blog to CDN
+
+=== Deploy to github-pages
+
 ```
 ./gradlew publishSite
 ```
